@@ -26,6 +26,7 @@
     --dot:#3F7FBD; --dot-deep:#2C4C81; --blue:#3A72AE; --dot-light:#579CB3;
     --on-dark:#F4F4F5; --on-dark-2:#B9BBC0;
     --memo:#E7F3E8; --chat:#F1F2F4;
+    --line-green:#06C755; --line-bubble:#A8EC7A; --line-talk:#8FA9CE;
     --ease-k:cubic-bezier(.4,.16,.34,.94);
     --f-ja:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",sans-serif;
     --f-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -312,6 +313,7 @@
   .panel h2{font-size:clamp(28px,3.4vw,42px);line-height:1.45;font-weight:700;margin-top:18px}
   .panel .lead{margin-top:20px}
   .feat{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:56px;align-items:center;margin-top:70px}
+  .pill.is-line{background:var(--line-green);letter-spacing:.08em}
   .pill{display:inline-block;font-family:var(--f-mono);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,var(--dot-deep),var(--dot-light));border-radius:999px;padding:6px 22px}
   .feat h3{font-size:clamp(24px,2.6vw,32px);line-height:1.5;margin-top:22px}
   .feat p{margin-top:22px;color:var(--ink-3);line-height:2}
@@ -328,23 +330,31 @@
   @keyframes blink{50%{opacity:.25}}
   .demo-bar .clock{font-family:var(--f-mono);font-weight:500;font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-left:10px}
   .demo-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:14px}
-  .chat{position:relative;background:#EEF2F7;border-radius:10px;padding:12px 12px 14px;display:flex;flex-direction:column;gap:8px;height:380px;overflow:hidden}
-  .chat-top{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:var(--ink-3);padding-bottom:8px;border-bottom:1px solid #DDE3EC;flex:none}
-  .chat-top i{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--dot-light),var(--dot-deep));flex:none}
-  .chat-top small{font-weight:500;color:var(--muted);margin-left:auto}
-  .chat-log{display:flex;flex-direction:column;gap:8px;justify-content:flex-end;flex:1;min-height:0;overflow:hidden}
-  .msg{max-width:84%;font-size:12.8px;line-height:1.7;padding:7px 11px;border-radius:14px;opacity:0;transform:translateY(10px) scale(.96);transition:opacity .35s ease,transform .45s cubic-bezier(.34,1.56,.64,1);flex:none;white-space:pre-wrap}
+  .chat{position:relative;background:var(--line-talk);border-radius:10px;padding:0;display:flex;flex-direction:column;height:430px;overflow:hidden}
+  .chat-top{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;color:var(--ink);padding:9px 12px;background:#fff;flex:none}
+  .chat-top small{font-weight:500;font-size:10.5px;color:var(--muted);margin-left:auto;white-space:nowrap}
+  .line-badge{display:inline-flex;align-items:center;gap:4px;flex:none;background:var(--line-green);color:#fff;border-radius:7px;padding:3px 8px 3px 6px;font-family:var(--f-en);font-weight:700;font-size:12.5px;letter-spacing:.02em;line-height:1.3}
+  .line-badge svg{width:15px;height:15px;display:block;fill:#fff}
+  .chat-log{display:flex;flex-direction:column;gap:10px;justify-content:flex-end;flex:1;min-height:0;overflow:hidden;padding:12px 12px 10px}
+  .chat-input{flex:none;display:flex;align-items:center;gap:10px;background:#fff;padding:7px 12px;color:var(--soft)}
+  .chat-input i{font-style:normal;font-size:17px;line-height:1;font-weight:500}
+  .chat-input span{flex:1;background:#F1F2F4;border-radius:999px;padding:2px 12px;font-size:11.5px;line-height:1.7;letter-spacing:0}
+  .msg{position:relative;max-width:78%;font-size:12.8px;line-height:1.7;padding:7px 11px;border-radius:16px;opacity:0;transform:translateY(10px) scale(.96);transition:opacity .35s ease,transform .45s cubic-bezier(.34,1.56,.64,1);flex:none;white-space:pre-wrap}
   .msg.is-in{opacity:1;transform:none}
-  .msg.q{align-self:flex-end;background:#fff;border-bottom-right-radius:4px;color:var(--ink)}
-  .msg.a{align-self:flex-start;background:var(--dot-deep);color:#fff;border-bottom-left-radius:4px}
-  .msg.a.hand{background:#fff;color:var(--ink);border:1.5px solid var(--dot);}
+  .msg.q{align-self:flex-end;background:var(--line-bubble);color:var(--ink)}
+  .msg.q::before{content:"";position:absolute;top:9px;right:-5px;border-left:7px solid var(--line-bubble);border-top:4px solid transparent;border-bottom:4px solid transparent}
+  .msg.q::after{content:"既読";position:absolute;right:calc(100% + 5px);bottom:1px;font-size:9.5px;line-height:1.2;letter-spacing:0;color:#fff;white-space:nowrap}
+  .msg.a{align-self:flex-start;margin-left:32px;background:#fff;color:var(--ink)}
+  .msg.a::before{content:"";position:absolute;top:9px;left:-5px;border-right:7px solid #fff;border-top:4px solid transparent;border-bottom:4px solid transparent}
+  .msg.a::after{content:"";position:absolute;top:0;left:-32px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--dot-light),var(--dot-deep))}
+  .msg.a.hand{box-shadow:inset 0 0 0 1.5px var(--dot-deep)}
   .msg .caret{display:inline-block;width:2px;height:1em;background:currentColor;vertical-align:-.12em;margin-left:1px;animation:blink .7s infinite}
   .msg.dots{display:flex;gap:4px;padding:10px 12px}
-  .msg.dots b{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.5;animation:dotup 1s infinite}
+  .msg.dots b{width:6px;height:6px;border-radius:50%;background:var(--soft);opacity:.5;animation:dotup 1s infinite}
   .msg.dots b:nth-child(2){animation-delay:.15s}
   .msg.dots b:nth-child(3){animation-delay:.3s}
   @keyframes dotup{0%,60%,100%{transform:none;opacity:.45}30%{transform:translateY(-4px);opacity:1}}
-  .desk{display:grid;grid-template-rows:auto 1fr auto;border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:0;height:380px}
+  .desk{display:grid;grid-template-rows:auto 1fr auto;border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:0;height:430px}
   .desk-h{font-size:11.5px;font-weight:700;padding:10px 12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}
   .desk-h span{color:var(--muted);font-weight:500}
   .log{list-style:none;margin:0;padding:10px 12px;display:grid;grid-template-columns:minmax(0,1fr);gap:8px;align-content:start;justify-items:stretch;overflow:hidden}
@@ -354,8 +364,8 @@
   .log .kind em{font-style:normal;color:#2E9B62}
   .log li.hand{background:#EAF1FA;box-shadow:inset 3px 0 0 var(--dot)}
   .log li.hand .kind em{color:var(--dot)}
-  .tally{display:grid;grid-template-columns:1fr 1fr;padding:8px 12px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
-  .tally span{display:flex;align-items:baseline;gap:6px}
+  .tally{display:grid;grid-template-columns:auto auto;justify-content:space-between;padding:8px 12px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+  .tally span{display:flex;align-items:baseline;gap:5px;white-space:nowrap}
   .tally span + span{border-left:1px solid var(--line);padding-left:10px}
   .tally b{display:inline-block;font-family:var(--f-en);font-size:22px;color:var(--ink);letter-spacing:-.02em;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
   .tally b.bump{transform:scale(1.35)}
@@ -687,7 +697,7 @@
     .demo{padding:14px}
     .demo-bar .sub{display:none}
     .demo-grid{grid-template-columns:1fr}
-    .chat{height:360px}
+    .chat{height:430px}
     .desk{height:auto}
     .demo-bar .clock{display:none}
     .ring b{font-size:14px}
@@ -816,12 +826,12 @@
             <p id="wh-p">チャット・LINEの一次対応をAIが担当。判断が必要な内容だけ担当者へ引き継ぎます。下の実演はこの仕組みの見本です。お客様へ直接返す形は、法律の確認が済んでからご案内します。</p>
             <dl class="wh-meta">
               <div><dt>人に残る作業</dt><dd id="wh-g">判断が要る問い合わせへの対応と、AIの答えの確認</dd></div>
-              <div><dt>こんな会社に</dt><dd id="wh-w">飲食・美容・不動産など、予約や問い合わせの多い会社</dd></div>
+              <div><dt>こんな会社に</dt><dd id="wh-w">飲食・美容・不動産など、問い合わせの多い会社</dd></div>
             </dl>
             <div class="wh-bar" aria-hidden="true"><i></i></div>
             <p class="wh-hint">項目を押すと説明が切り替わります。押さえている間は止まります。</p>
           </div>
-          <script type="application/json" id="wh-data">[["01", "24時間対応するAI受付・問い合わせ対応", "夜間や休日の問い合わせに、まず一次対応", "チャット・LINEの一次対応をAIが担当。判断が必要な内容だけ担当者へ引き継ぎます。下の実演はこの仕組みの見本です。お客様へ直接返す形は、法律の確認が済んでからご案内します。", "判断が要る問い合わせへの対応と、AIの答えの確認", "飲食・美容・不動産など、予約や問い合わせの多い会社"], ["02", "会議の録音から、議事録とタスクの下書きを作成", "会議のあとは、AIの下書きを確認するだけの形へ", "録音するだけで、要約・決定事項・担当者付きのTodoまで自動で作ります。", "議事録の確認と、決定事項の見直し", "業種を問わず、特に営業会議や商談の多い会社"], ["03", "請求書・領収書を撮って、入力の下書きを作成", "撮れば入力の下書きができ、確認するだけの形へ", "撮るだけで金額・日付・取引先を読み取り、仕訳の候補と一覧表を作ります。", "読み取り結果の確認と、仕訳の判断", "経理担当が1人の会社や、領収書の多い建設・飲食・運送の会社"], ["04", "会社名から、営業提案のたたき台を作成", "会社名から、下調べのたたき台を作成", "会社名から、事業内容・課題の仮説・提案の切り口・アプローチ文まで作ります。", "下調べの確認と、提案の判断", "法人のお客様に営業をしている会社"], ["05", "SNS投稿と口コミ返信の下書きづくり", "投稿と返信の下書きを月ごとにそろえ、確認して使う形へ", "投稿文・画像案・ハッシュタグを1か月分まとめて作り、口コミの返信文も作ります。", "投稿と返信の確認と、最後の送信", "飲食・小売・美容・観光など、見た目で選ばれるお店"], ["06", "社内の「これ、どうやるんだっけ？」に即答するAI", "マニュアルと規程を覚えた、御社専用のAI", "就業規則やマニュアルを覚えたAIが、社員の質問に根拠を添えてすぐ答えます。", "答えの元になる資料の更新と、難しい質問への対応", "従業員20名以上の会社や、マニュアルがあちこちに散らばっている会社"]]</script>
+          <script type="application/json" id="wh-data">[["01", "24時間対応するAI受付・問い合わせ対応", "夜間や休日の問い合わせに、まず一次対応", "チャット・LINEの一次対応をAIが担当。判断が必要な内容だけ担当者へ引き継ぎます。下の実演はこの仕組みの見本です。お客様へ直接返す形は、法律の確認が済んでからご案内します。", "判断が要る問い合わせへの対応と、AIの答えの確認", "飲食・美容・不動産など、問い合わせの多い会社"], ["02", "会議の録音から、議事録とタスクの下書きを作成", "会議のあとは、AIの下書きを確認するだけの形へ", "録音するだけで、要約・決定事項・担当者付きのTodoまで自動で作ります。", "議事録の確認と、決定事項の見直し", "業種を問わず、特に営業会議や商談の多い会社"], ["03", "請求書・領収書を撮って、入力の下書きを作成", "撮れば入力の下書きができ、確認するだけの形へ", "撮るだけで金額・日付・取引先を読み取り、仕訳の候補と一覧表を作ります。", "読み取り結果の確認と、仕訳の判断", "経理担当が1人の会社や、領収書の多い建設・飲食・運送の会社"], ["04", "会社名から、営業提案のたたき台を作成", "会社名から、下調べのたたき台を作成", "会社名から、事業内容・課題の仮説・提案の切り口・アプローチ文まで作ります。", "下調べの確認と、提案の判断", "法人のお客様に営業をしている会社"], ["05", "SNS投稿と口コミ返信の下書きづくり", "投稿と返信の下書きを月ごとにそろえ、確認して使う形へ", "投稿文・画像案・ハッシュタグを1か月分まとめて作り、口コミの返信文も作ります。", "投稿と返信の確認と、最後の送信", "飲食・小売・美容・観光など、見た目で選ばれるお店"], ["06", "社内の「これ、どうやるんだっけ？」に即答するAI", "マニュアルと規程を覚えた、御社専用のAI", "就業規則やマニュアルを覚えたAIが、社員の質問に根拠を添えてすぐ答えます。", "答えの元になる資料の更新と、難しい質問への対応", "従業員20名以上の会社や、マニュアルがあちこちに散らばっている会社"]]</script>
         </div>
         <p class="others">このほか、請求書・見積書・お知らせ・写真の整理・求人や補助金の書類なども、ヒアリングの内容に合わせてご提案します。</p>
       </div>
@@ -837,18 +847,19 @@
         <p class="lead">導入の例の「AI受付」を、そのまま動く見本にしました。夜間に届いたお問い合わせに、AIがどう答え、どこで担当者へ引き継ぐかをご覧いただけます。</p>
         <div class="feat ex-feat">
           <div>
-            <span class="pill">Demo</span>
-            <h3>営業時間外のお問い合わせにも、<br>AIがすぐに一次対応します</h3>
+            <span class="pill is-line">LINE</span>
+            <h3>営業時間外に届くLINEにも、<br>AIがすぐに一次対応します</h3>
             <p>LINEやチャットのお問い合わせに、AIが夜間・休日も一次対応します。判断が必要なご相談は、担当者へ引き継ぎます。</p>
             <p>AIが答えるのは、御社が決めた範囲のみです。値引きや健康に関するご相談には答えません。</p>
             <p class="fine">夜間に届いたお問い合わせへの、AI受付の対応例です。</p>
           </div>
-          <div class="demo" aria-label="夜に届いたお問い合わせに、AI受付が答えていく実演（架空）">
+          <div class="demo" aria-label="夜にLINEへ届いたお問い合わせに、AI受付が答えていく実演（架空）">
             <div class="demo-bar"><span><b>Demo</b><span class="clock" id="clock">23:14 営業時間外</span></span><span class="status" id="status"><i></i><span id="status-t">お問い合わせを待っています</span></span></div>
             <div class="demo-grid">
               <div class="chat">
-                <div class="chat-top"><i></i><span id="shop">ヘアサロン ことり（架空）</span><small>LINE</small></div>
+                <div class="chat-top"><span class="line-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.3 2.5 6.1 6 7.3l-.6 3 3.5-2.2c.4 0 .7.1 1.1.1 5.5 0 10-3.6 10-8.2S17.5 3 12 3z"/></svg>LINE</span><span id="shop">ヘアサロン ことり（架空）</span></div>
                 <div class="chat-log" id="chat" aria-live="off"></div>
+                <div class="chat-input" aria-hidden="true"><i>＋</i><span>メッセージを入力</span></div>
               </div>
               <div class="desk">
                 <div class="desk-h">受付の記録<span id="desk-d">今夜</span></div>
@@ -1064,17 +1075,17 @@
   }
   var shops = [
     { name:'ヘアサロン ことり（架空）', clock:'23:14 営業時間外', day:'今夜', talk:[
-      ['明日の15時って空いてますか？カットです', '明日11月2日（日）15:00、カットでご予約いただけます。お名前を教えていただけますか？', '予約', '明日15:00 カット'],
+      ['土曜日は何時まで開いていますか？', '土曜日は10:00から19:00まで営業しております。', 'よくある質問', '土曜日の営業時間'],
       ['カットとカラーだと、いくらくらいですか？', 'カットとカラーで、8,800円からです。髪の長さによって変わります。', '料金', 'カット＋カラーの料金'],
       ['前のカラーで頭皮がかゆくなったんですが、大丈夫でしょうか', 'ご心配をおかけしております。お肌のことは、担当の者から明日の朝10時までにご連絡いたします。', '担当者へ', '頭皮のかゆみのご相談']
     ]},
     { name:'みどり工務店（架空）', clock:'21:40 日曜日', day:'日曜の夜', talk:[
       ['お風呂のリフォームって、見積もりは無料ですか？', 'はい、お見積りは無料です。現地を下見して、1週間ほどでお出しします。', 'よくある質問', '見積もりは無料か'],
-      ['来週の土曜に、下見に来てもらえますか？', '11月8日（土）は、10:00と14:00が空いております。どちらがよろしいですか？', '予約', '11/8（土）の下見'],
+      ['工事の間、お風呂は使えますか？', '工事の間はお使いいただけません。日数は、下見のあとにご案内します。', 'よくある質問', '工事中のお風呂'],
       ['もう少し安くなりませんか？', 'お値引きのご相談は、担当の者から明日ご連絡いたします。少しお待ちください。', '担当者へ', 'お値引きのご相談']
     ]},
     { name:'居酒屋 ともしび（架空）', clock:'0:20 閉店後', day:'閉店後', talk:[
-      ['金曜の19時、6人で予約できますか？', '11月7日（金）19:00、6名様でお席をお取りできます。お名前とお電話番号をお願いいたします。', '予約', '11/7（金）19:00 6名'],
+      ['コースはいくらからありますか？', 'コースは4,000円からご用意しております。', '料金', 'コースの料金'],
       ['飲み放題はありますか？', 'はい、2時間の飲み放題がございます。コースと一緒にお選びいただけます。', 'よくある質問', '飲み放題の有無'],
       ['卵アレルギーの子がいるんですが、大丈夫ですか？', 'アレルギーのことは大切ですので、店長から明日の15時までにご連絡いたします。', '担当者へ', '卵アレルギーのご相談']
     ]}
