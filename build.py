@@ -32,4 +32,7 @@ out = head + s + '\n</body>\n</html>\n'
 open('docs/index.html', 'w', encoding='utf-8').write(out)
 open('docs/CNAME', 'w').write('coaxil.jp\n')
 open('docs/.nojekyll', 'w').write('')
+os.makedirs('docs/privacy', exist_ok=True)
+PV = os.path.expanduser('~/Library/CloudStorage/OneDrive-個人用/営業資料作成/templates/コアシル_プライバシーポリシー_案.html')
+open('docs/privacy/index.html', 'w', encoding='utf-8').write(open(PV, encoding='utf-8').read())
 print(len(out))
