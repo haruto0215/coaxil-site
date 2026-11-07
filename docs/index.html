@@ -774,6 +774,18 @@
   .inq-done{display:grid;gap:14px}
   .inq-done .cta-big{margin-top:16px}
   @media (max-width:700px){.inq-body{padding-top:28px}.inq-f{gap:26px}}
+
+  
+  .faq-list{margin:40px 0 0;display:grid;border-top:1.5px solid var(--ink)}
+  .faq-i{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:10px 60px;padding-block:26px;border-bottom:1px solid #C9CDD5}
+  .faq-i dt{font-size:17px;font-weight:700;line-height:1.7;color:var(--ink)}
+  .faq-i dt::before{content:"Q";font-family:var(--f-en);font-weight:600;color:var(--blue);margin-right:10px}
+  .faq-i dd{margin:0;font-size:15px;line-height:2;color:var(--ink-3)}
+  @media (max-width:860px){.faq-list{margin-top:28px}.faq-i{grid-template-columns:1fr;padding-block:22px}.faq-i dt{font-size:16.5px}.faq-i dd{font-size:14.5px;line-height:1.95}}
+
+  
+  .site-menu{overflow-y:auto}
+  @media (max-height:960px){.site-menu{padding-top:calc(84px + env(safe-area-inset-top,0px));padding-bottom:32px}.site-menu a{padding-block:12px;font-size:clamp(20px,4vw,28px)}}
 </style>
 </head>
 <body>
@@ -805,6 +817,7 @@
     <li><a href="#about"><small>About</small>私たちについて</a></li>
     <li><a href="#how"><small>Flow</small>導入の流れ</a></li>
     <li><a href="#price"><small>Price</small>料金</a></li>
+    <li><a href="#faq"><small>FAQ</small>よくあるご質問</a></li>
     <li><a href="#contact"><small>Contact</small>お問い合わせ</a></li>
   </ul>
 </nav>
@@ -1026,6 +1039,24 @@
     </div>
   </section>
 
+  <section class="faq sec" id="faq" aria-labelledby="faq-h">
+    <div class="in">
+      <div class="shead">
+        <div>
+          <p class="eyebrow">よくあるご質問</p>
+          <h2 id="faq-h" class="en big-en">FAQ</h2>
+        </div>
+        <p class="lead">ご相談の前に確かめておきたい点を、まとめました。</p>
+      </div>
+      <dl class="faq-list">
+        <div class="faq-i"><dt>契約期間の縛りはありますか。</dt><dd>最低契約期間はなく、いつでも解約いただけます。解約の違約金もありません。月額の見守りは仕組みごとに解約でき、前月末日までにお知らせいただくと、翌月から費用はかかりません。</dd></div>
+        <div class="faq-i"><dt>お預けする情報は安全ですか。</dt><dd>入力した内容はAIの学習に使われず、お預かりした資料は終了後30日以内に削除します。パスワードはお預かりしません。詳しい決まりは「お客様の情報の扱いについて」にまとめ、ご契約の前にお渡しします。</dd></div>
+        <div class="faq-i"><dt>パソコンが苦手でも使えますか。</dt><dd>操作説明と手順書をお渡しし、導入後のご質問はLINEで随時お受けします。使いにくい所があれば、導入後1か月は無償で修正します。</dd></div>
+        <div class="faq-i"><dt>補助金は使えますか。</dt><dd>補助金の対象になるかどうかは、制度ごとに条件が異なります。ヒアリングの際に確認し、対象にならない場合もその旨をお伝えします。</dd></div>
+      </dl>
+    </div>
+  </section>
+
   <section class="contact" id="contact" aria-labelledby="contact-h">
     <div class="in">
       <div class="contact-box">
@@ -1152,6 +1183,7 @@
   mark('.panel .eyebrow, .panel h2, .panel .lead, .fit2, .fit-cap, .fit-points > div, .ex-head h3, .feat > div, .wh-detail, .others', 'rv', .1);
   mark('.dark .eyebrow, .dark .head p, .card, .price-note', 'rv', .12);
   mark('.policy .eyebrow, .shead .lead, .scard, .snote, .letter > *, .c-head > p, .reach', 'rv', .08);
+  mark('.faq .eyebrow, .faq-i, .flow-cta', 'rv', .08);
   mark('.big-en, .contact-box h2', 'rv-mask');
   mark('.rules', 'rv-line');
   var targets = document.querySelectorAll('.rv, .rv-mask, .rv-line');
