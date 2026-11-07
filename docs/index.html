@@ -770,10 +770,20 @@
   .inq-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
   .inq-note{margin:0;font-size:13.5px;line-height:1.9;color:var(--muted)}
   .inq-note a{color:var(--blue)}
+  .inq-agree-w{display:grid;gap:14px}
+  .inq-agree{background:#F5F7FA;border:1px solid #D5DCE6;border-radius:10px;padding:18px 16px}
+  .inq-agree label{display:flex;align-items:flex-start;justify-content:center;gap:12px;font-size:15.5px;font-weight:700;line-height:1.7;cursor:pointer}
+  .inq-agree label span{min-width:0}
+  .inq-agree label b{display:inline-block;font-weight:inherit}
+  .inq .inq-agree input{appearance:auto;-webkit-appearance:checkbox;width:22px;height:22px;min-width:22px;margin:2px 0 0;padding:0;accent-color:var(--blue);cursor:pointer}
+  .inq-agree i{display:inline-block;margin-left:10px;vertical-align:2px;font-style:normal;font-size:11.5px;font-weight:700;letter-spacing:.08em;background:var(--blue);color:#fff;border-radius:5px;padding:2px 10px;line-height:1.7}
+  .inq-agree:has(input[aria-invalid="true"]){border-color:#B3261E;background:#FDF3F2}
+  .inq-agree-w .inq-err{text-align:center}
   .inq-send{border:0;cursor:pointer;font-family:inherit}
   .inq-send[disabled]{opacity:.65;cursor:default;transform:none}
   .inq-fail{margin:0;padding:14px 16px;border-radius:6px;background:#FDF3F2;color:#8C1D18;font-size:14.5px;font-weight:700;line-height:1.8}
   .inq-done{display:grid;gap:14px}
+  .inq [hidden]{display:none!important}
   .inq-done .cta-big{margin-top:16px}
   @media (max-width:700px){.inq-body{padding-top:28px}.inq-f{gap:26px}}
 
@@ -1151,7 +1161,13 @@
           <p class="inq-err" id="inq-message-e" hidden>お問い合わせ内容をご入力ください。</p>
         </div>
         <div class="inq-hp" aria-hidden="true"><label>ホームページ<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
-        <p class="inq-note">いただいた個人情報は、お問い合わせへの対応のために利用します。詳しくは<a href="https://coaxil.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>をご覧ください。</p>
+        <div class="inq-agree-w">
+          <p class="inq-note">いただいた個人情報は、お問い合わせへの対応のために利用します。そのほかの個人情報の扱いは、<a href="https://coaxil.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>をご覧ください。</p>
+          <div class="inq-agree">
+            <label for="inq-agree"><input id="inq-agree" type="checkbox" required aria-describedby="inq-agree-e"><span><b>利用目的と</b><b>プライバシーポリシーに</b><b>同意します<i>必須</i></b></span></label>
+          </div>
+          <p class="inq-err" id="inq-agree-e" hidden>同意の欄にチェックを入れてください。</p>
+        </div>
         <p class="inq-fail" id="inq-fail" role="alert" hidden>送信できませんでした。入力した内容は消えていません。お手数ですが、お電話（070-8598-6566）またはメール（info@coaxil.jp）でご連絡ください。</p>
         <button type="submit" class="cta-big inq-send" id="inq-send">送信する</button>
       </div>
@@ -1510,10 +1526,13 @@
     mark(email, g('inq-email-e'), badMail);
     var noBody = !body.value.trim();
     mark(body, g('inq-message-e'), noBody);
-    var first = noName ? (sei.value.trim() ? mei : sei) : badMail ? email : noBody ? body : null;
+    var agree = g('inq-agree'), noAgree = !agree.checked;
+    mark(agree, g('inq-agree-e'), noAgree);
+    var first = noName ? (sei.value.trim() ? mei : sei) : badMail ? email : noBody ? body : noAgree ? agree : null;
     if (first) first.focus();
     return !first;
   }
+  document.getElementById('inq-agree').addEventListener('change', function(){ if (this.checked) mark(this, document.getElementById('inq-agree-e'), false); });
   form.addEventListener('submit', function(e){
     e.preventDefault();
     fail.hidden = true;
