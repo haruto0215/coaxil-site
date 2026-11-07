@@ -791,12 +791,12 @@
   .inq{background:linear-gradient(165deg,#F2F5FA 0%,#E7EDF5 55%,#DBE5F1 100%);overflow-x:hidden;animation:inqIn .35s ease both}
   .inq::before{content:"";position:fixed;inset:-40%;transform:rotate(-28deg);pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 220px,rgba(255,255,255,.6) 220px 222px,transparent 222px 300px,rgba(255,255,255,.3) 300px 340px)}
   @keyframes inqIn{from{opacity:0}to{opacity:1}}
-  .inq-bar{background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid rgba(44,76,129,.1)}
+  .inq-bar{position:relative;background:transparent;border-bottom:0}
   .inq-name{display:flex;align-items:center;gap:8px}
   .inq-logo{display:grid;place-items:center;flex:none}
   .inq-logo img{display:block;width:30px;height:30px}
-  .inq-close{background:transparent;border-color:#C5CFDC}
-  .inq-close:hover{background:rgba(255,255,255,.7)}
+  .inq-close{background:transparent;border:0;border-radius:6px;padding:10px 4px;min-height:44px}
+  .inq-close:hover{background:transparent;color:var(--blue)}
   .inq-top{position:relative;padding:34px max(20px,env(safe-area-inset-right,0px)) 26px max(20px,env(safe-area-inset-left,0px));text-align:center}
   .inq-en{margin:0;font-family:var(--f-en);font-weight:600;font-size:clamp(46px,8vw,76px);letter-spacing:-.04em;line-height:1.05;color:var(--ink)}
   .inq h2{display:inline-flex;align-items:center;gap:8px;font-size:clamp(15px,1.8vw,17px);letter-spacing:.08em;margin-top:10px}
