@@ -726,6 +726,54 @@
     .dark .body{padding-block:32px 44px}
     .contact{margin-top:14px;padding-block:14px 40px}
   }
+
+  
+  .cta-big{display:flex;align-items:center;justify-content:center;width:100%;min-height:68px;padding:18px 24px;background:var(--blue);color:#fff;border-radius:8px;font-weight:700;font-size:clamp(18px,1.6vw,20px);letter-spacing:.14em;line-height:1.5;text-decoration:none;text-align:center;box-shadow:0 18px 34px -20px rgba(44,76,129,.75);transition:background .2s,transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+  .cta-big:hover{background:var(--dot-deep);transform:translateY(-2px);box-shadow:0 22px 38px -20px rgba(44,76,129,.85)}
+  .cta-big:focus-visible{outline:3px solid var(--dot-light);outline-offset:3px}
+  .cta-big.on-box{box-shadow:none;min-height:76px}
+  .flow-cta{margin:clamp(44px,6vw,72px) auto 0;max-width:460px;display:grid;justify-items:center;gap:14px;text-align:center}
+  .flow-cta p{font-size:clamp(17px,1.7vw,20px);font-weight:700;line-height:1.7;letter-spacing:.06em;color:var(--ink);margin:0}
+  .flow-cta small{font-size:13px;color:var(--muted);letter-spacing:.06em}
+  
+  .tel{border:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:2px 12px}
+  .tel b{font-size:16px;font-weight:600}
+  .tel b span:first-child{font-size:.8em}
+  .tel small{font-size:12.5px;letter-spacing:.06em}
+  .reach .note{text-align:center}
+  .note-line{margin-left:1.2em}
+  .line-qr{justify-content:center}
+  
+  html.inq-on,html.inq-on body{overflow:hidden}
+  .inq{position:fixed;inset:0;z-index:80;background:#fff;color:var(--ink);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+  .inq[hidden]{display:none}
+  .inq-bar{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #E6E8EC;padding:calc(12px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 12px max(20px,env(safe-area-inset-left,0px))}
+  .inq-name{font-family:"Sora",var(--f-en);font-weight:700;font-size:19px;letter-spacing:.04em}
+  .inq-close{appearance:none;border:1px solid #C9CDD5;background:#fff;color:var(--ink);border-radius:999px;font:inherit;font-size:13.5px;font-weight:700;padding:7px 18px;cursor:pointer}
+  .inq-close:hover{background:#F1F3F6}
+  .inq-body{max-width:640px;margin:0 auto;padding:36px max(20px,env(safe-area-inset-right,0px)) calc(56px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+  .inq h2{font-size:clamp(28px,4vw,36px);font-weight:700;line-height:1.4;margin:0;outline:0}
+  .inq-lead{margin:12px 0 0;font-size:15px;line-height:1.9;color:var(--ink-3)}
+  .inq-f{display:grid;gap:30px;margin-top:34px}
+  .inq-row{display:grid;gap:10px;min-width:0}
+  .inq-l{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:.04em;line-height:1.5}
+  .inq-l i{font-style:normal;font-size:11.5px;font-weight:700;letter-spacing:.08em;background:var(--ink-3);color:#fff;border-radius:5px;padding:2px 10px;line-height:1.7}
+  .inq-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .inq input,.inq textarea{width:100%;min-width:0;font:inherit;font-size:16px;letter-spacing:.02em;color:var(--ink);background:#F5F6F8;border:1px solid #D5D9E0;border-radius:6px;padding:13px 14px;line-height:1.6;appearance:none}
+  .inq textarea{min-height:190px;resize:vertical}
+  .inq input::placeholder,.inq textarea::placeholder{color:#8A8D94}
+  .inq input:focus,.inq textarea:focus{outline:2px solid var(--blue);outline-offset:0;background:#fff;border-color:var(--blue)}
+  .inq [aria-invalid="true"]{border-color:#B3261E;background:#FDF3F2}
+  .inq-err{margin:0;font-size:13.5px;font-weight:700;color:#B3261E;line-height:1.6}
+  .inq-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .inq-note{margin:0;font-size:13.5px;line-height:1.9;color:var(--muted)}
+  .inq-note a{color:var(--blue)}
+  .inq-send{border:0;cursor:pointer;font-family:inherit}
+  .inq-send[disabled]{opacity:.65;cursor:default;transform:none}
+  .inq-fail{margin:0;padding:14px 16px;border-radius:6px;background:#FDF3F2;color:#8C1D18;font-size:14.5px;font-weight:700;line-height:1.8}
+  .inq-done{display:grid;gap:14px}
+  .inq-done .cta-big{margin-top:16px}
+  @media (max-width:700px){.inq-body{padding-top:28px}.inq-f{gap:26px}}
 </style>
 </head>
 <body>
@@ -769,7 +817,7 @@
       <div class="tag">
         <p>Focus on your work.<br>Leave the rest to AI.</p>
         <small>中小企業のための、AI業務効率化</small>
-        <a class="hero-cta" href="#contact">お問い合わせ</a>
+        <a class="hero-cta" href="#inquiry">お問い合わせ</a>
       </div>
     </div>
   </section>
@@ -946,11 +994,16 @@
           <ol class="jrows">
           <li style="--c:#47A9B8;--d:0.45s"><b>ヒアリング<small>初回・約60分・無料</small></b><p>約60分のお話と確認シートをもとに、仕事の流れ・社内の言葉・決まりごとを整理</p></li>
           <li style="--c:#4A98D2;--d:0.61s"><b>ご提案<small>1週間以内・無料</small></b><p>整理した内容から、AIで減らせる時間を見積もり、作る仕組み・費用・期間を1枚にまとめてご提案</p></li>
-          <li style="--c:#3F79C8;--d:0.77s"><b>開発<small>ご発注のあと</small></b><p>御社の言葉と決まりごとをAIに組み込み、専用の仕組みを開発。動きはすべて代表が確かめてからお渡し</p></li>
+          <li style="--c:#3F79C8;--d:0.77s"><b>開発<small>ご発注のあと</small></b><p>御社の言葉と決まりごとをAIに組み込み、専用の仕組みを開発。動きはすべて人が確かめてからお渡し</p></li>
           <li style="--c:#3A5DB4;--d:0.93s"><b>導入<small>操作説明・手順書付き</small></b><p>実際の業務で試しながら使いにくい所を直し、操作説明と手順書を添えて本番へ</p></li>
           <li style="--c:#26386F;--d:1.09s"><b>見守り・改善<small>動き出したあと、毎月</small></b><p>使われ方とご感想をもとに、次に減らせる業務を毎月ご提案。ご質問はLINEで随時</p></li>
           </ol>
         </div>
+      </div>
+      <div class="flow-cta">
+        <p>まずは、御社のお話をお聞かせください。</p>
+        <a class="cta-big" href="#inquiry">お問い合わせ</a>
+        <small>ヒアリングとご提案までは無料です</small>
       </div>
     </div>
   </section>
@@ -982,10 +1035,10 @@
         <p>初回のヒアリングは無料です。お気軽にご連絡ください。</p>
         </div>
         <div class="reach">
-          <div class="tel"><b><span>TEL.</span><a href="tel:07085986566" style="color:inherit;text-decoration:none">070-8598-6566</a></b><small>［受付時間］平日 10:00〜18:00</small></div>
-          <a class="mail-btn" href="https://line.me/R/ti/p/@776rdlnr" target="_blank" rel="noopener"><svg viewBox="0 0 26 20" aria-hidden="true"><rect x="1" y="1" width="24" height="18" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 2.5 13 11 24 2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>LINEでお問い合わせ</a>
+          <a class="cta-big on-box" href="#inquiry">お問い合わせ</a>
+          <div class="tel"><b><span>TEL.</span><a href="tel:07085986566" style="color:inherit;text-decoration:none">070-8598-6566</a></b><small>平日 10:00〜18:00</small></div>
           <div class="line-qr"><img src="data:image/png;base64,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" alt="コアシルのLINE友だち追加のコード" width="96" height="96"><span>スマートフォンで読み取ると、LINEの友だち追加ができます</span></div>
-          <p class="note">メール：<a href="mailto:info@coaxil.jp" style="color:inherit">info@coaxil.jp</a></p>
+          <p class="note">メール：<a href="mailto:info@coaxil.jp" style="color:inherit">info@coaxil.jp</a><span class="note-line">LINE：<a href="https://line.me/R/ti/p/@776rdlnr" target="_blank" rel="noopener" style="color:inherit">友だち追加</a></span></p>
         </div>
       </div>
     </div>
@@ -995,6 +1048,52 @@
 <footer>
   <div class="in"><span>© コアシル　事業者向けサービスです　<a href="https://coaxil.jp/privacy/">プライバシーポリシー・運営者情報</a></span><span>このページの見本と実演は、すべて架空のものです。写真：<a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a></span></div>
 </footer>
+
+<div class="inq" id="inquiry" role="dialog" aria-modal="true" aria-labelledby="inq-h" hidden>
+  <div class="inq-bar"><span class="inq-name">COAXIL</span><button type="button" class="inq-close" id="inq-close">閉じる</button></div>
+  <div class="inq-body">
+    <h2 id="inq-h" tabindex="-1">お問い合わせ</h2>
+    <form id="inq-form" novalidate>
+      <p class="inq-lead">内容を確認のうえ、担当者よりご連絡いたします。初回のヒアリングは無料です。</p>
+      <div class="inq-f">
+        <div class="inq-row">
+          <span class="inq-l" id="inq-name-l">氏名<i>必須</i></span>
+          <div class="inq-two" role="group" aria-labelledby="inq-name-l">
+            <input id="inq-sei" name="sei" type="text" placeholder="姓" aria-label="姓" autocomplete="family-name" required maxlength="50">
+            <input id="inq-mei" name="mei" type="text" placeholder="名" aria-label="名" autocomplete="given-name" required maxlength="50">
+          </div>
+          <p class="inq-err" id="inq-sei-e" hidden>氏名をご入力ください。</p>
+        </div>
+        <div class="inq-row">
+          <label class="inq-l" for="inq-company">会社名</label>
+          <input id="inq-company" name="company" type="text" placeholder="会社名" autocomplete="organization" maxlength="100">
+        </div>
+        <div class="inq-row">
+          <label class="inq-l" for="inq-tel">電話番号</label>
+          <input id="inq-tel" name="tel" type="tel" placeholder="電話番号" autocomplete="tel" maxlength="30">
+        </div>
+        <div class="inq-row">
+          <label class="inq-l" for="inq-email">メールアドレス<i>必須</i></label>
+          <input id="inq-email" name="email" type="email" inputmode="email" placeholder="メールアドレス" autocomplete="email" required maxlength="200">
+          <p class="inq-err" id="inq-email-e" hidden>メールアドレスをご確認ください。</p>
+        </div>
+        <div class="inq-row">
+          <label class="inq-l" for="inq-message">お問い合わせ内容<i>必須</i></label>
+          <textarea id="inq-message" name="message" placeholder="お問い合わせ内容" required maxlength="4000"></textarea>
+          <p class="inq-err" id="inq-message-e" hidden>お問い合わせ内容をご入力ください。</p>
+        </div>
+        <div class="inq-hp" aria-hidden="true"><label>ホームページ<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <p class="inq-note">いただいた個人情報は、お問い合わせへの対応のために利用します。詳しくは<a href="https://coaxil.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>をご覧ください。</p>
+        <p class="inq-fail" id="inq-fail" role="alert" hidden>送信できませんでした。入力した内容は消えていません。お手数ですが、お電話（070-8598-6566）またはメール（info@coaxil.jp）でご連絡ください。</p>
+        <button type="submit" class="cta-big inq-send" id="inq-send">送信する</button>
+      </div>
+    </form>
+    <div class="inq-done" id="inq-done" hidden>
+      <p class="inq-lead">お問い合わせを受け付けました。内容を確認のうえ、担当者よりご連絡いたします。</p>
+      <button type="button" class="cta-big inq-send" id="inq-back">ページに戻る</button>
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -1279,6 +1378,87 @@
       o.observe(W);
     } else { W.classList.add('go'); }
   })();
+})();
+</script>
+<script>
+(function(){
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwpoiTm80vCkNCqlz_C0GpU67QvMj31W-aype021uPv2UnDSJAJxok0Bnn1bBnV7dYBSg/exec';
+  var box = document.getElementById('inquiry'), form = document.getElementById('inq-form');
+  var done = document.getElementById('inq-done'), fail = document.getElementById('inq-fail');
+  var send = document.getElementById('inq-send'), title = document.getElementById('inq-h');
+  var pushed = false, lastFocus = null, savedY = 0;
+  function show(){
+    if (!box.hidden) return;
+    lastFocus = document.activeElement; savedY = window.scrollY;
+    box.hidden = false; box.scrollTop = 0;
+    document.documentElement.classList.add('inq-on');
+    try { title.focus({preventScroll:true}); } catch(_){ title.focus(); }
+  }
+  function hide(){
+    if (box.hidden) return;
+    box.hidden = true;
+    document.documentElement.classList.remove('inq-on');
+    window.scrollTo(0, savedY);
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus({preventScroll:true}); } catch(_){} }
+    if (!done.hidden) { done.hidden = true; form.hidden = false; title.textContent = 'お問い合わせ'; form.reset(); }
+  }
+  function close(){
+    if (pushed) { pushed = false; history.back(); return; }
+    try { history.replaceState(null, '', location.pathname + location.search); } catch(_){}
+    hide();
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href="#inquiry"]');
+    if (a) pushed = true;
+  }, true);
+  window.addEventListener('hashchange', function(){ if (location.hash === '#inquiry') show(); else hide(); });
+  if (location.hash === '#inquiry') show();
+  document.getElementById('inq-close').addEventListener('click', close);
+  document.getElementById('inq-back').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if (box.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    var all = [].slice.call(box.querySelectorAll('button,input:not([name="website"]),textarea,a[href]')).filter(function(el){ return el.offsetParent !== null; });
+    if (!all.length) return;
+    var first = all[0], last = all[all.length - 1];
+    if (e.shiftKey && (document.activeElement === first || document.activeElement === title)) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  function mark(el, msg, bad){
+    if (el) el.setAttribute('aria-invalid', bad ? 'true' : 'false');
+    if (msg) msg.hidden = !bad;
+    return bad;
+  }
+  function check(){
+    var g = function(id){ return document.getElementById(id); };
+    var sei = g('inq-sei'), mei = g('inq-mei'), email = g('inq-email'), body = g('inq-message');
+    var noName = !sei.value.trim() || !mei.value.trim();
+    mark(sei, g('inq-sei-e'), noName && !sei.value.trim()); mark(mei, null, noName && !mei.value.trim());
+    g('inq-sei-e').hidden = !noName;
+    var badMail = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    mark(email, g('inq-email-e'), badMail);
+    var noBody = !body.value.trim();
+    mark(body, g('inq-message-e'), noBody);
+    var first = noName ? (sei.value.trim() ? mei : sei) : badMail ? email : noBody ? body : null;
+    if (first) first.focus();
+    return !first;
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    fail.hidden = true;
+    if (!check()) return;
+    send.disabled = true; send.textContent = '送信しています';
+    var data = new URLSearchParams(new FormData(form));
+    var req = ENDPOINT ? fetch(ENDPOINT, {method:'POST', body:data}).then(function(r){ return r.json(); }) : Promise.reject();
+    req.then(function(j){
+      if (!j || !j.ok) throw new Error('not ok');
+      form.hidden = true; done.hidden = false; title.textContent = 'ありがとうございました';
+      box.scrollTop = 0; title.focus();
+    }).catch(function(){ fail.hidden = false; }).then(function(){
+      send.disabled = false; send.textContent = '送信する';
+    });
+  });
 })();
 </script>
 
