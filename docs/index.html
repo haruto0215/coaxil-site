@@ -786,6 +786,30 @@
   
   .site-menu{overflow-y:auto}
   @media (max-height:960px){.site-menu{padding-top:calc(84px + env(safe-area-inset-top,0px));padding-bottom:32px}.site-menu a{padding-block:12px;font-size:clamp(20px,4vw,28px)}}
+
+  
+  .inq{background:linear-gradient(165deg,#F2F5FA 0%,#E7EDF5 55%,#DBE5F1 100%);overflow-x:hidden;animation:inqIn .35s ease both}
+  .inq::before{content:"";position:fixed;inset:-40%;transform:rotate(-28deg);pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 220px,rgba(255,255,255,.6) 220px 222px,transparent 222px 300px,rgba(255,255,255,.3) 300px 340px)}
+  @keyframes inqIn{from{opacity:0}to{opacity:1}}
+  .inq-bar{background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid rgba(44,76,129,.1)}
+  .inq-name{display:flex;align-items:center;gap:8px}
+  .inq-logo{display:grid;place-items:center;flex:none}
+  .inq-logo img{display:block;width:30px;height:30px}
+  .inq-close{background:transparent;border-color:#C5CFDC}
+  .inq-close:hover{background:rgba(255,255,255,.7)}
+  .inq-top{position:relative;padding:34px max(20px,env(safe-area-inset-right,0px)) 26px max(20px,env(safe-area-inset-left,0px));text-align:center}
+  .inq-en{margin:0;font-family:var(--f-en);font-weight:600;font-size:clamp(46px,8vw,76px);letter-spacing:-.04em;line-height:1.05;color:var(--ink)}
+  .inq h2{display:inline-flex;align-items:center;gap:8px;font-size:clamp(15px,1.8vw,17px);letter-spacing:.08em;margin-top:10px}
+  .inq h2::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dot)}
+  .inq-top .inq-lead{max-width:560px;margin:10px auto 0;font-size:14.5px}
+  .inq-body{position:relative;max-width:680px;padding-top:0}
+  .inq-body > form,.inq-done{background:#fff;border-radius:16px;padding:clamp(24px,5vw,44px);box-shadow:0 30px 60px -40px rgba(44,76,129,.4)}
+  .inq-f{margin-top:0}
+  .inq-l i{background:var(--blue)}
+  .inq input,.inq textarea{background:#F5F7FA;border-color:#D5DCE6}
+  .inq-thanks{margin:0;font-size:15.5px;line-height:1.9;color:var(--ink-3)}
+  .inq-done{gap:8px}
+  @media (max-width:700px){.inq-body{padding-top:0}.inq-top{padding-top:26px}}
 </style>
 </head>
 <body>
@@ -1081,11 +1105,14 @@
 </footer>
 
 <div class="inq" id="inquiry" role="dialog" aria-modal="true" aria-labelledby="inq-h" hidden>
-  <div class="inq-bar"><span class="inq-name">COAXIL</span><button type="button" class="inq-close" id="inq-close">閉じる</button></div>
-  <div class="inq-body">
+  <div class="inq-bar"><span class="inq-name"><span class="inq-logo"><img id="inq-logo" alt="" width="26" height="26"></span>COAXIL</span><button type="button" class="inq-close" id="inq-close">閉じる</button></div>
+  <div class="inq-top">
+    <p class="inq-en" aria-hidden="true">Contact</p>
     <h2 id="inq-h" tabindex="-1">お問い合わせ</h2>
+    <p class="inq-lead" id="inq-lead">内容を確認のうえ、担当者よりご連絡いたします。初回のヒアリングは無料です。</p>
+  </div>
+  <div class="inq-body">
     <form id="inq-form" novalidate>
-      <p class="inq-lead">内容を確認のうえ、担当者よりご連絡いたします。初回のヒアリングは無料です。</p>
       <div class="inq-f">
         <div class="inq-row">
           <span class="inq-l" id="inq-name-l">氏名<i>必須</i></span>
@@ -1120,7 +1147,7 @@
       </div>
     </form>
     <div class="inq-done" id="inq-done" hidden>
-      <p class="inq-lead">お問い合わせを受け付けました。内容を確認のうえ、担当者よりご連絡いたします。</p>
+      <p class="inq-thanks">お問い合わせを受け付けました。内容を確認のうえ、担当者よりご連絡いたします。</p>
       <button type="button" class="cta-big inq-send" id="inq-back">ページに戻る</button>
     </div>
   </div>
@@ -1417,7 +1444,8 @@
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwpoiTm80vCkNCqlz_C0GpU67QvMj31W-aype021uPv2UnDSJAJxok0Bnn1bBnV7dYBSg/exec';
   var box = document.getElementById('inquiry'), form = document.getElementById('inq-form');
   var done = document.getElementById('inq-done'), fail = document.getElementById('inq-fail');
-  var send = document.getElementById('inq-send'), title = document.getElementById('inq-h');
+  var send = document.getElementById('inq-send'), title = document.getElementById('inq-h'), lead = document.getElementById('inq-lead');
+  var logo = document.querySelector('.mark img'); if (logo) document.getElementById('inq-logo').src = logo.src;
   var pushed = false, lastFocus = null, savedY = 0;
   function show(){
     if (!box.hidden) return;
@@ -1432,7 +1460,7 @@
     document.documentElement.classList.remove('inq-on');
     window.scrollTo(0, savedY);
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus({preventScroll:true}); } catch(_){} }
-    if (!done.hidden) { done.hidden = true; form.hidden = false; title.textContent = 'お問い合わせ'; form.reset(); }
+    if (!done.hidden) { done.hidden = true; form.hidden = false; title.textContent = 'お問い合わせ'; lead.hidden = false; form.reset(); }
   }
   function close(){
     if (pushed) { pushed = false; history.back(); return; }
@@ -1485,7 +1513,7 @@
     var req = ENDPOINT ? fetch(ENDPOINT, {method:'POST', body:data}).then(function(r){ return r.json(); }) : Promise.reject();
     req.then(function(j){
       if (!j || !j.ok) throw new Error('not ok');
-      form.hidden = true; done.hidden = false; title.textContent = 'ありがとうございました';
+      form.hidden = true; done.hidden = false; title.textContent = 'ありがとうございました'; lead.hidden = true;
       box.scrollTop = 0; title.focus();
     }).catch(function(){ fail.hidden = false; }).then(function(){
       send.disabled = false; send.textContent = '送信する';
