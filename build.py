@@ -36,3 +36,21 @@ os.makedirs('docs/privacy', exist_ok=True)
 PV = os.path.expanduser('~/Library/CloudStorage/OneDrive-個人用/営業資料作成/templates/コアシル_プライバシーポリシー_案.html')
 open('docs/privacy/index.html', 'w', encoding='utf-8').write(open(PV, encoding='utf-8').read())
 print(len(out))
+
+# AI道具のページ（/tools/）：原本に、道具のメニュー（~/dev/ai-support/menu/tools.json）を入れる
+import json
+TP = os.path.expanduser('~/Library/CloudStorage/OneDrive-個人用/営業資料作成/自己紹介ページ/AI道具ページ.html')
+TJ = os.path.expanduser('~/dev/ai-support/menu/tools.json')
+keep = ['name', 'industries', 'job', 'input', 'output', 'kind']
+tools = [{k: t[k] for k in keep} for t in json.load(open(TJ, encoding='utf-8'))]
+tp = open(TP, encoding='utf-8').read()
+assert '/*TOOLS*/[]' in tp
+tp = tp.replace('/*TOOLS*/[]', json.dumps(tools, ensure_ascii=False).replace('</', '<\\/'))
+LAW = os.path.expanduser('~/Library/CloudStorage/OneDrive-個人用/営業資料作成/templates/特定商取引法に基づく表記.html')
+if os.path.exists(LAW):   # 「_案」が取れた正式版ができたら載せる
+    os.makedirs('docs/tools/law', exist_ok=True)
+    open('docs/tools/law/index.html', 'w', encoding='utf-8').write(open(LAW, encoding='utf-8').read())
+    tp = tp.replace('<!--LAW_LINK-->', '<a href="/tools/law/">特定商取引法に基づく表記</a>')
+os.makedirs('docs/tools', exist_ok=True)
+open('docs/tools/index.html', 'w', encoding='utf-8').write(tp)
+print('tools', len(tools))
