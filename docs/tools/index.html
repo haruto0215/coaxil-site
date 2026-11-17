@@ -2,17 +2,20 @@
 <html lang="ja"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>コアシルのAI道具｜お店と会社の事務を、AIの下書きで軽く</title>
-<meta name="description" content="議事録、口コミへの返事、領収書の入力、お知らせの文。いつもの事務を、AIが下書きします。LINEで相談すると、合う道具をご案内します。">
+<title>コアシルのAI道具｜業種ごとの10本を、お店に合わせて</title>
+<meta name="description" content="美容室、工務店、居酒屋、クリニックなど22の業種に、それぞれ10本のAIの道具。お店の情報を一度入れておくと、お店らしい下書きが返ってきます。月額11,800円（税込）。">
 <link rel="canonical" href="https://coaxil.jp/tools/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="コアシル">
-<meta property="og:title" content="コアシルのAI道具｜お店と会社の事務を、AIの下書きで軽く">
-<meta property="og:description" content="いつもの事務を、AIが下書きします。LINEで相談すると、合う道具をご案内します。">
+<meta property="og:title" content="コアシルのAI道具｜業種ごとの10本を、お店に合わせて">
+<meta property="og:description" content="業種ごとに10本のAIの道具。お店の情報を入れるだけで、お店らしい下書きに。月額11,800円（税込）。">
 <meta property="og:url" content="https://coaxil.jp/tools/">
 <meta property="og:image" content="https://coaxil.jp/logo-512.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/icon-48.png">
 <link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&display=swap">
 <style>
 :root{
   --ink:#161616; --ink-2:#2A2A2B; --muted:#5C5F66; --soft:#8A8D94;
@@ -28,9 +31,14 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);font-si
 a{color:var(--blue)}
 .in{max-width:1080px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-left))}
 header.top{position:sticky;top:0;z-index:20;background:rgba(246,247,249,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header.top .in{display:flex;align-items:center;justify-content:space-between;height:58px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:700;letter-spacing:.04em}
-.logo b{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--blue);color:#fff;font-size:15px}
+header.top .in{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+.logo img{display:block;width:34px;height:34px;flex:none;transition:transform .6s var(--ease)}
+.logo:hover img{transform:rotate(-18deg)}
+.logo .wm{display:flex;flex-direction:column;line-height:1}
+.logo .wm b{font-family:"Sora",var(--f);font-weight:700;font-size:21px;letter-spacing:.06em}
+.logo .wm b i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:3px;vertical-align:1px}
+.logo .wm small{font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--muted);margin-top:4px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 22px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer;border:0;transition:transform .2s var(--ease),background .2s}
 .btn:hover{transform:translateY(-1px)}
 .btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
@@ -135,25 +143,52 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
   .row2{grid-template-columns:1fr}
   header.top .btn.small{padding:7px 12px;font-size:13px}
 }
+.pricehero{margin:14px 0 0;font-size:16px;color:var(--ink-2)}
+.pricehero b{font-size:22px;color:var(--ink);letter-spacing:.02em}
+.price .big small{font-size:14px;font-weight:400;color:var(--muted)}
+.flow.fit3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.f select{font:inherit;font-weight:400;font-size:16px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:#fff;width:100%;color:inherit}
+@media (max-width:640px){.flow.fit3{grid-template-columns:1fr}#chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;padding-bottom:6px;margin-right:-16px;padding-right:16px}#chips .chip{flex:0 0 auto;white-space:nowrap;scroll-snap-align:start}}
+.real{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;margin-top:28px;align-items:start}
+.real figure{margin:0;display:grid;gap:8px}
+.real img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line);background:#fff;box-shadow:0 14px 30px -22px rgba(22,22,22,.45)}
+.real figcaption{font-size:13px;color:var(--muted);line-height:1.6}
+.small-note{font-size:13px;margin-top:10px}
+.badges{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.badge{display:flex;gap:10px;align-items:center;background:var(--blue-soft);border-radius:10px;padding:10px 12px;font-size:14px;font-weight:700;line-height:1.5;color:var(--blue-deep)}
+.badge b{font-size:20px;line-height:1}
+.cancel{margin:6px 0 2px;font-weight:700;color:var(--ok)}
+.owner{display:flex;gap:12px;align-items:center;margin:16px 0 4px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.owner img{flex:none;border-radius:50%;background:#fff}
+.owner p{margin:0;font-size:14px;line-height:1.6}
+.stick{display:none}
+@media (max-width:900px){.real{grid-template-columns:1fr 1fr}.real .shot{grid-column:1/-1}}
+@media (max-width:640px){
+  .stick{display:block;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;text-align:center;background:var(--green);color:#fff;font-weight:700;text-decoration:none;border-radius:999px;padding:14px 16px;box-shadow:0 10px 24px -10px rgba(0,0,0,.45);transition:transform .3s var(--ease),opacity .3s}
+  .stick.hide{transform:translateY(140%);opacity:0}
+  body{padding-bottom:76px}
+  .badges{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <header class="top"><div class="in">
-  <a class="logo" href="/"><b>コ</b>コアシル</a>
+  <a class="logo" href="/" aria-label="コアシル（COAXIL）トップへ"><img src="/icon-192.png" alt="" width="34" height="34"><span class="wm"><b>COAXIL<i></i></b><small>業種のAI道具</small></span></a>
   <a class="btn line small" href="https://lin.ee/p5YisUR" data-cta="header">LINEで相談</a>
 </div></header>
 
 <main>
 <section class="hero"><div class="in grid">
   <div>
-    <span class="kicker">お店と会社のための、AIの道具</span>
-    <h1>いつもの事務を、<br>AIが下書きします。</h1>
-    <p class="lead">議事録、口コミへの返事、領収書の入力、お知らせの文。スマホやパソコンで、メモや写真を渡すだけ。あとは仕上げに目を通して、そのまま使えます。</p>
+    <span class="kicker">業種ごとに、10本のAIの道具</span>
+    <h1>お店の仕事に合わせた、<br>AIの道具を10本。</h1>
+    <p class="lead">美容室なら美容室の、工務店なら工務店の10本。メニューや料金、言葉づかいを一度入れておくと、口コミの返事もお知らせも、お店らしい下書きで返ってきます。</p>
+    <p class="pricehero"><b>月額11,800円</b>（税込）で10本ぜんぶ。いつでも解約できます。</p>
     <div class="cta">
       <a class="btn line" href="https://lin.ee/p5YisUR" data-cta="hero">LINEで相談する（無料）</a>
-      <a class="btn ghost" href="#menu">道具のメニューを見る</a>
+      <a class="btn ghost" href="#menu">業種の10本を見る</a>
     </div>
-    <p class="note">LINEで「楽にしたい作業」を伺い、合う道具をご案内します。</p>
+    <p class="note">LINEで業種と「楽にしたい作業」を伺い、使い方をご案内します。</p>
   </div>
   <div class="demo" aria-label="使い方の見本">
     <div class="tabs" role="tablist" id="demoTabs"></div>
@@ -168,75 +203,96 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
 
 <section style="background:var(--panel)"><div class="in">
   <div class="rv"><h2>こんな時間、ありませんか。</h2>
-  <p class="lead">お客様のこと、現場のこと。本当は、そちらに時間を使いたいはずです。</p></div>
+  <p class="lead">お客様のこと、お店のこと。本当は、そちらに時間を使いたいはずです。</p></div>
   <div class="cards">
     <div class="card rv"><div class="em" aria-hidden="true">📝</div><h3>閉店後の、書きもの</h3><p class="muted">会議のメモをまとめる、お知らせを書く、取引先へのメールを考える。</p></div>
     <div class="card rv"><div class="em" aria-hidden="true">💬</div><h3>返事を考える時間</h3><p class="muted">口コミやお問い合わせに、ていねいに返したい。でも、言葉選びに時間がかかる。</p></div>
-    <div class="card rv"><div class="em" aria-hidden="true">🧾</div><h3>数字の入力と整理</h3><p class="muted">領収書の打ち込み、名簿の整理、税理士さんに出す資料のとりまとめ。</p></div>
+    <div class="card rv"><div class="em" aria-hidden="true">📊</div><h3>表づくりと数え直し</h3><p class="muted">シフト表を組む、売上や回数を集計する、月末に数え直す。</p></div>
   </div>
 </div></section>
 
-<section id="menu"><div class="in">
-  <div class="rv"><span class="kicker">道具のメニュー</span>
-  <h2>こんな道具が使えます</h2>
-  <p class="lead">「すぐ使える」は、どの会社・お店でも同じ形で使える道具です。「会社に合わせて作る」は、御社の書式や決まりに合わせて作ります。</p></div>
-  <div class="menu-tools" role="group" aria-label="業種で絞る" id="chips"></div>
-  <div class="menu-tools"><input class="search" id="q" type="search" placeholder="作業の名前で探す（例：シフト、口コミ、見積）" aria-label="道具を探す"></div>
-  <p class="count" id="count" aria-live="polite"></p>
-  <div class="tools" id="tools"></div>
-  <div class="more"><button class="btn ghost" id="moreBtn" type="button">もっと見る</button></div>
+<section id="fit"><div class="in">
+  <div class="rv"><span class="kicker">お店に合わせる</span>
+  <h2>同じAIでも、お店の情報が入ると、答えが変わります。</h2>
+  <p class="lead">道具の中身は、業種ごとに作ってあります。そこへ、お店の情報を入れるだけ。作り込みの手間はかかりません。</p></div>
+  <div class="flow fit3">
+    <div class="step rv"><h3>業種を選ぶ</h3><p class="muted">お店の業種の10本が、そのまま並びます。</p></div>
+    <div class="step rv"><h3>お店の情報を入れる</h3><p class="muted">メニューと料金、休みの日、言葉づかい、スタッフ。見本を見ながら、書ける所だけで大丈夫です。</p></div>
+    <div class="step rv"><h3>お店の言葉で返ってくる</h3><p class="muted">料金や休みはお店の情報のとおり。書いていない事は作らず、【要確認】と印を付けて返します。</p></div>
+  </div>
+  <div class="real rv">
+    <figure class="shot"><img src="img/app.jpg" alt="美容室の10本が並んだ、道具のアプリの画面" width="800" height="600" loading="lazy"><figcaption>実際のアプリの画面。スマホでもパソコンでも使えます</figcaption></figure>
+    <figure class="paper"><img src="img/notice.png" alt="年末年始のお休みの貼り紙。曜日と定休日も入っている" width="636" height="900" loading="lazy"><figcaption>「お知らせ」で作った貼り紙（PDF）。定休日も読んで入れます</figcaption></figure>
+    <figure class="paper"><img src="img/pop.png" alt="店販商品のPOP。A4に2枚" width="636" height="900" loading="lazy"><figcaption>「店販商品のPOP」。A4に2枚で、切ってすぐ貼れます</figcaption></figure>
+  </div>
+  <p class="muted small-note rv">どれも、見本のお店（美容室・架空）の情報を入れて、そのまま作った物です。</p>
 </div></section>
 
-<section style="background:var(--panel)" id="flow"><div class="in">
+<section id="menu" style="background:var(--panel)"><div class="in">
+  <div class="rv"><span class="kicker">業種の10本</span>
+  <h2>お店の業種を選んでください</h2>
+  <p class="lead">選んだ業種の10本が、月額の中でぜんぶ使えます。文章はそのままコピーでき、貼り紙はPDF、表はExcelで返ります。</p></div>
+  <div class="menu-tools" role="group" aria-label="業種を選ぶ" id="chips"></div>
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="tools" id="tools"></div>
+  <p class="muted" style="margin-top:16px;font-size:14px">ここに無い業種の方も、LINEでご相談ください。近い業種の10本が合うことがあります。</p>
+</div></section>
+
+<section id="flow"><div class="in">
   <div class="rv"><span class="kicker">始め方</span><h2>LINEで相談して、その日から</h2></div>
   <div class="flow">
     <div class="step rv"><h3>LINEで友だち追加</h3><p class="muted">下のボタンから。相談は無料です。</p></div>
-    <div class="step rv"><h3>楽にしたい作業を伺う</h3><p class="muted">ボタンを選ぶか、困っていることをそのまま書いてください。</p></div>
-    <div class="step rv"><h3>合う道具をご案内</h3><p class="muted">見本を見ながら、使い方をお伝えします。</p></div>
-    <div class="step rv"><h3>お申し込みのあと、使える</h3><p class="muted">カードでお支払いいただくと、ログインの合言葉をLINEでお送りします。</p></div>
+    <div class="step rv"><h3>業種と作業を伺う</h3><p class="muted">業種と、楽にしたい作業を教えてください。10本の使い方をお伝えします。</p></div>
+    <div class="step rv"><h3>カードでお申し込み</h3><p class="muted">月額11,800円（税込）。用意するのはクレジットカードだけです。お支払いのあと、ログインの合言葉をLINEでお送りします。</p></div>
+    <div class="step rv"><h3>お店の情報を入れて、使う</h3><p class="muted">メニュー表や料金表があれば、それを見ながら書き写すだけ。入れたら、すぐ使えます。</p></div>
   </div>
-  <div class="branch rv"><strong>会社に合わせて作りたい時は</strong><br><span class="muted">30分の実演（無料・オンライン）で、動く見本をお見せしながら伺い、お見積りします（初期費用＋月額）。</span></div>
+  <div class="branch rv"><strong>会社に合わせて作りたい時は</strong><br><span class="muted">御社だけの書式や決まりで作る道具は、別のご契約です。30分の実演（無料・オンライン）で、動く見本をお見せしながら伺い、お見積りします（初期費用＋月額）。</span></div>
 </div></section>
 
-<section id="price"><div class="in">
+<section style="background:var(--panel)" id="price"><div class="in">
   <div class="two">
     <div class="price rv">
       <span class="kicker">料金</span>
-      <div class="big">すぐ使える道具：月額</div>
-      <p class="muted">金額は、LINEでご案内しています。</p>
-      <ul class="ck"><li>最低契約期間なし・違約金なし</li><li>会社やお店で使える回数に上限があります（画面でいつでも確かめられます）</li><li>AIの利用料は月額に含みます</li></ul>
+      <div class="big">業種の10本：月額11,800円<small>（税込）</small></div>
+      <p class="cancel">解約はLINEで一言。最低契約期間も、違約金もありません。</p>
+      <ul class="ck"><li>選んだ業種の10本を、ぜんぶ使えます</li><li>お店ごとに、月300回まで（残りは画面でいつでも確かめられます）</li><li>AIの利用料は月額に含みます</li><li>次のお支払い日の前日までに解約すると、次の回からかかりません</li><li>割引や無料のお試しはありません</li></ul>
       <div class="big" style="margin-top:18px">会社に合わせて作る道具</div>
       <p class="muted">初期費用＋月額。30分の実演のあとにお見積りします。</p>
     </div>
     <div class="price rv">
       <span class="kicker">情報の扱い</span>
-      <div class="big">パスワードは、お預かりしません</div>
-      <ul class="ck">
-        <li>使うAIは、米国Anthropic社の「Claude」を会社向けの契約で使います。入力は学習に使われず、通常30日以内に消えます</li>
-        <li>会話の中身は、コアシルのサーバーに残りません。作ったファイルは7日で消えます</li>
-        <li>送信や投稿など、最後の操作は御社の方が行います</li>
-      </ul>
-      <p class="muted" style="font-size:14px;margin-top:10px">くわしくは <a href="/privacy/">プライバシーポリシー</a> をご覧ください。</p>
+      <div class="big">安心して使えるように</div>
+      <div class="badges">
+        <div class="badge"><b>🔑</b><span>パスワードは<br>お預かりしません</span></div>
+        <div class="badge"><b>🧠</b><span>入力は、AIの<br>学習に使われません</span></div>
+        <div class="badge"><b>🗑️</b><span>作ったファイルは<br>7日で消えます</span></div>
+        <div class="badge"><b>✋</b><span>送る・投稿するのは<br>お店の方です</span></div>
+      </div>
+      <p class="muted" style="font-size:14px;margin-top:12px">使うAIは、米国Anthropic社の「Claude」を会社向けの契約で使います。入力は通常30日以内に消え、会話の中身はコアシルのサーバーに残りません。くわしくは <a href="/privacy/">プライバシーポリシー</a> をご覧ください。</p>
     </div>
   </div>
 </div></section>
 
-<section style="background:var(--panel)" id="faq"><div class="in">
+<section id="faq"><div class="in">
   <div class="rv"><h2>よくあるご質問</h2></div>
   <details class="qa rv"><summary>パソコンが苦手でも使えますか？</summary><p>スマホのブラウザで使えます。メモを貼る、写真を付ける、の2つが分かれば大丈夫です。分からない時は、LINEでいつでも聞いてください。</p></details>
-  <details class="qa rv"><summary>どんな業種でも使えますか？</summary><p>はい。お店でも会社でも、事務の下書きに使えます。メニューの「すぐ使える」道具は業種を問いません。御社だけの書式に合わせたい時は、会社に合わせて作ります。</p></details>
+  <details class="qa rv"><summary>どんな業種でも使えますか？</summary><p>今は22の業種に、それぞれ10本を用意しています。ここに無い業種の方は、LINEでご相談ください。近い業種の10本が合うことがあります。</p></details>
+  <details class="qa rv"><summary>ChatGPTなどと、何が違いますか？</summary><p>お店の情報を一度入れておけば、毎回お店のことを説明し直さなくてよい所です。業種ごとに、何を渡せば何が返るかを決めてあるので、文を考えなくても使えます。貼り紙はPDF、シフト表や集計はExcelの形で、そのまま返ります。</p></details>
+  <details class="qa rv"><summary>「お店に合わせる」とは、どういうことですか？</summary><p>メニューと料金、休みの日、言葉づかい、スタッフなどを、画面の「お店の情報」に入れておくことです。AIはそれを読んで下書きを作るので、料金や休みがお店のとおりになり、言葉づかいもお店らしくなります。あとから何度でも直せます。</p></details>
+  <details class="qa rv"><summary>使わない道具があっても、料金は同じですか？</summary><p>はい、月額11,800円（税込）です。使わない道具は、画面に出さないようにもできます。</p></details>
   <details class="qa rv"><summary>AIの答えは、そのまま使って大丈夫ですか？</summary><p>AIが作るのは下書きです。金額・日付・お名前などは、最後に人の目で確かめてからお使いください。分からない所は【要確認】と印を付けて返します。</p></details>
-  <details class="qa rv"><summary>解約はどうすればいいですか？</summary><p>LINEかお電話でお知らせください。最低契約期間や違約金はありません。</p></details>
-  <details class="qa rv"><summary>無料で試せますか？</summary><p>LINEでのご相談と、30分の実演は無料です。道具を使い始めるのは、お申し込みのあとからです。</p></details>
+  <details class="qa rv"><summary>解約はどうすればいいですか？</summary><p>LINEかお電話でお知らせください。最低契約期間や違約金はありません。次のお支払い日の前日までにお知らせいただくと、次の回から料金はかかりません。お支払い済みの期間の終わりまでは使えます。</p></details>
+  <details class="qa rv"><summary>無料で試せますか？</summary><p>LINEでのご相談と、30分の実演（オンライン）は無料です。実演では、お店の業種の10本が動くところをお見せします。道具を使い始めるのは、お申し込みのあとからです。</p></details>
 </div></section>
 
-<section id="contact"><div class="in formwrap">
+<section style="background:var(--panel)" id="contact"><div class="in formwrap">
   <div class="rv">
     <span class="kicker">ご相談</span>
     <h2>まずは、LINEで気軽に</h2>
-    <p class="lead">「この作業、楽にならない？」の一言で大丈夫です。合う道具をご案内します。</p>
+    <p class="lead">「うちの業種でも使える？」の一言で大丈夫です。10本の使い方をご案内します。</p>
+    <div class="owner"><img src="/icon-192.png" alt="" width="44" height="44"><p><b>コアシル 代表 高橋陽人</b><br><span class="muted">はじめのご案内はAIがします。そのあとは、私がLINEでお返事します。</span></p></div>
     <div class="linebox">
-      <a class="btn line" href="https://lin.ee/p5YisUR" data-cta="contact">LINEで友だち追加</a>
+      <a class="btn line" href="https://lin.ee/p5YisUR" data-cta="contact">LINEで相談する（無料）</a>
       <p class="qr">LINEを使わない方は、こちらのフォームからどうぞ。お返事はメールでお送りします。</p>
     </div>
   </div>
@@ -246,6 +302,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
       <label class="f">名<span class="req">必須</span><input name="mei" autocomplete="given-name" required></label>
     </div>
     <label class="f">会社名・お店の名前<input name="company" autocomplete="organization"></label>
+    <label class="f">業種<select name="industry" id="indSel"><option value="">選んでください</option></select></label>
     <div class="row2">
       <label class="f">メールアドレス<span class="req">必須</span><input name="email" type="email" autocomplete="email" required></label>
       <label class="f">電話番号<input name="tel" type="tel" autocomplete="tel"></label>
@@ -253,7 +310,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
     <fieldset><legend>楽にしたい作業（いくつでも）</legend>
       <div class="opts" id="jobs"></div>
     </fieldset>
-    <label class="f">ご相談の内容<span class="req">必須</span><textarea name="message" required placeholder="例：毎月の領収書の入力に時間がかかっています。スマホで撮るだけにできますか？"></textarea></label>
+    <label class="f">ご相談の内容<span class="req">必須</span><textarea name="message" required placeholder="例：美容室です。口コミへの返事とお知らせを書く時間を減らしたいです。"></textarea></label>
     <div class="hp" aria-hidden="true"><label>空けておく欄<input name="website" tabindex="-1" autocomplete="off"></label></div>
     <label class="agree"><input type="checkbox" id="agree" required> <span><a href="/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に同意して送ります</span></label>
     <button class="btn line" type="submit" id="sendBtn" style="justify-self:start">この内容で送る</button>
@@ -261,6 +318,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
   </form>
 </div></section>
 </main>
+<a class="stick" href="https://lin.ee/p5YisUR" data-cta="sticky">LINEで相談する（無料）</a>
 
 <footer><div class="in">
   <div class="links"><a href="/">コアシルについて</a><a href="/privacy/">プライバシーポリシー</a><!--LAW_LINK--></div>
@@ -269,7 +327,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
 
 <script>
 (function(){
-  var TOOLS = [{"name": "議事録をつくる", "industries": ["共通"], "job": "打ち合わせや会議のあとに、議事録を書く手間が減る", "input": "メモ・録音を文字にした文", "output": "決まったこと・宿題・次の予定を分けた議事録", "kind": "既製"}, {"name": "手書きメモの写真から議事録", "industries": ["共通"], "job": "紙に書いたメモを、あとで打ち直さなくてよくなる", "input": "手書きメモの写真（3枚まで）", "output": "読んだ文・自信がない所・議事録・提案書の下書き", "kind": "既製"}, {"name": "取引先へのメールの下書き", "industries": ["共通"], "job": "ていねいなメールの言い回しを考える時間が減る", "input": "伝えたいことの箇条書き", "output": "そのまま直して送れるメールの下書き", "kind": "既製"}, {"name": "長い書類の要約", "industries": ["共通"], "job": "役所や取引先から届いた長い書類を、全部読まずに要点をつかめる", "input": "PDF・長い文", "output": "要点・期限・こちらがやること", "kind": "既製"}, {"name": "外国語の訳と返事の下書き", "industries": ["共通"], "job": "外国語のメールや、外国人の社員・お客様への案内に困らなくなる", "input": "訳したい文（日本語でも外国語でも）", "output": "訳・確認用の日本語・返事の下書き", "kind": "既製"}, {"name": "契約書の要点と気をつける所", "industries": ["共通"], "job": "届いた契約書のどこを読めばよいかが分かる", "input": "契約書（PDF・写真）", "output": "要約・気をつけたい条項・相手に聞くことの一覧", "kind": "既製"}, {"name": "契約書の前と今の違い", "industries": ["共通"], "job": "更新の時に、去年の契約書と何が変わったかを探す手間が減る", "input": "古い契約書と新しい契約書", "output": "変わった所の比べ表", "kind": "既製"}, {"name": "申込書・FAXの読み取り", "industries": ["共通"], "job": "紙の申込書やFAXを、表に打ち直さなくてよくなる", "input": "申込書・FAXの写真", "output": "台帳の表に入れる1行（読めなかった所に印）", "kind": "御社向け"}, {"name": "名刺の読み取りと名簿", "industries": ["共通"], "job": "もらった名刺を名簿に打ち込む手間が減る", "input": "名刺の写真", "output": "会社名・名前・連絡先の表（CSV）", "kind": "既製"}, {"name": "申請書・稟議の下書き", "industries": ["共通"], "job": "社員が買いたい物や休みの申請を、決まった形で出せる", "input": "社員のひとこと（LINEの文など）", "output": "申請書の下書き（理由・金額・期限）", "kind": "既製"}, {"name": "書類の名前をそろえて仕分け", "industries": ["共通"], "job": "ばらばらの名前のPDFや写真を、日付と相手の名前でそろえられる", "input": "PDF・写真のまとまり", "output": "「日付_相手_書類の種類」にそろえた名前と、仕分けたフォルダ（zip）", "kind": "既製"}, {"name": "名簿の重なりをまとめる", "industries": ["共通"], "job": "同じお客様が何行も入った名簿を、まとめ直す手間が減る", "input": "名簿の Excel・CSV", "output": "重なっていそうな行の組と、まとめた名簿", "kind": "既製"}, {"name": "表から表への写し", "industries": ["共通"], "job": "同じ内容を別の表や書式に写す作業を、ボタン1つにできる", "input": "元の Excel（毎回同じ形）", "output": "写し先の書式に入った Excel", "kind": "御社向け"}, {"name": "AIに渡す前に名前・電話を伏せる", "industries": ["共通"], "job": "お客様の個人情報を、AIや外の人に渡さずに済む", "input": "伏せたい文", "output": "名前・電話・メール・番地を印に置き換えた文", "kind": "既製"}, {"name": "会社の書式で書類をつくる", "industries": ["共通"], "job": "社員がメモを渡すだけで、会社の見た目のPDFやWordになる", "input": "メモ・Word・Excel", "output": "会社の書式・言い回しにそろえたPDFやWord", "kind": "御社向け"}, {"name": "会社の情報を入れたAI（ClaudeやChatGPTに入れる）", "industries": ["共通"], "job": "会社のことを分かったうえで、文章や相談に答えるAIを社員が使える", "input": "社員の頼みごと", "output": "会社の決まり・言葉づかいにそった答えや下書き", "kind": "御社向け"}, {"name": "会社専用AIアプリ", "industries": ["共通"], "job": "議事録・書類・メールの下書きを、会社のことを分かったAIにファイルで頼める", "input": "頼みごとの文と、ファイル（写真・PDF・Excel）", "output": "Word・PDF・Excel などのファイル", "kind": "御社向け"}, {"name": "備品の残りと注文リスト", "industries": ["共通"], "job": "コピー用紙やインクの切らしと、注文の書き出しが減る", "input": "備品の残りの数（スマホで入れる）", "output": "少なくなった物の注文リスト", "kind": "既製"}, {"name": "パソコン・スマホの困りごと相談", "industries": ["共通"], "job": "社員の「プリンタが動かない」などに、社長がいちいち答えなくてよくなる", "input": "困りごとの文と画面の写真", "output": "やってみる順番の案内", "kind": "既製"}, {"name": "電話のメモを担当へ回す", "industries": ["共通"], "job": "受けた電話の伝言が、紙のメモで行方不明にならない", "input": "スマホのフォームに打った伝言", "output": "担当者へのメールと、伝言の一覧表", "kind": "既製"}, {"name": "予約・約束の前の日のお知らせ", "industries": ["共通"], "job": "前の日の確認の連絡を、1件ずつ書かなくてよくなる", "input": "Googleカレンダーの予定", "output": "お客様あてのメールの下書き（または送信）", "kind": "既製"}, {"name": "日程調整（空きから候補3つ）", "industries": ["共通"], "job": "打ち合わせや面接の候補日を探して返信を書く手間が減る", "input": "メールにラベルを付ける", "output": "カレンダーの仮押さえと、候補を書いた返信の下書き", "kind": "既製"}, {"name": "期限の一覧と前のお知らせ", "industries": ["共通"], "job": "更新・申告・支払いなどの期限の見落としが減る", "input": "期限の表（スプレッドシート）", "output": "期限の30日前・7日前に届くメール", "kind": "既製"}, {"name": "ホームページのお問い合わせ受付", "industries": ["共通"], "job": "ホームページからの問い合わせが、メールと表に自動でたまる", "input": "ホームページのフォームの送信", "output": "お店へのメールと、問い合わせの一覧表", "kind": "既製"}, {"name": "よくある質問をつくる", "industries": ["共通"], "job": "過去の問い合わせから、ホームページやLINEに載せる質問と答えができる", "input": "過去の問い合わせの文（伏せた物）", "output": "よくある質問と答えの下書き", "kind": "御社向け"}, {"name": "社長の話から、質問できるマニュアル", "industries": ["共通", "介護"], "job": "新人への同じ説明を、何度もしなくてよくなる", "input": "社長が仕事の決まりを話した文", "output": "章・番号つきのマニュアルと、社員がスマホで質問できる入口", "kind": "御社向け"}, {"name": "会社専用AI（LINE）", "industries": ["共通"], "job": "社員がLINEで、会社の決まりや書き方をAIに聞ける", "input": "社員のLINEの文", "output": "会社の情報にそった答えや下書き", "kind": "御社向け"}, {"name": "問い合わせメールの返信の下書き", "industries": ["共通"], "job": "問い合わせへの返信を一から書かなくてよくなる", "input": "お店の Gmail に届いた問い合わせ", "output": "会社の情報にそった返信の下書きと、急ぎ・苦情の知らせ", "kind": "御社向け"}, {"name": "お客様向けの自動応答（LINE）", "industries": ["共通"], "job": "営業時間や駐車場などのよくある質問に、夜でもLINEで答えられる", "input": "お客様のLINEの文", "output": "よくある質問の答え（それ以外は人に回す）", "kind": "御社向け"}, {"name": "やり取りの経緯のまとめ", "industries": ["共通"], "job": "長いLINEやメールのやり取りを読み返さずに、これまでの流れが分かる", "input": "やり取りの文（貼る）", "output": "日付順の経緯・決まったこと・まだのこと", "kind": "既製"}, {"name": "苦情の要点とおわびの下書き", "industries": ["共通"], "job": "苦情の中身を落ち着いて整理し、社長への引き継ぎとおわびの文を作れる", "input": "お客様からの文", "output": "要点・事実と気持ちの区別・社長への引き継ぎメモ・おわびの下書き", "kind": "既製"}, {"name": "お客様の声のまとめ", "industries": ["共通"], "job": "アンケートや口コミの感想を、話題ごとに分けて読める", "input": "感想の文（アンケート・口コミ）", "output": "話題ごとの件数と、よく出る声", "kind": "既製"}, {"name": "アンケートの集計", "industries": ["共通"], "job": "Googleフォームのアンケートを、手で数えなくてよくなる", "input": "Googleフォームの答えの表", "output": "設問ごとの集計と、自由記述のまとめ", "kind": "既製"}, {"name": "口コミの返事の下書き", "industries": ["共通"], "job": "Googleマップの口コミへの返事を考える時間が減る", "input": "新しい口コミの知らせメール（または貼った文）", "output": "会社の情報にそった返事の下書き（星が低い物は先に知らせる）", "kind": "御社向け"}, {"name": "口コミのお願いカード", "industries": ["共通"], "job": "お客様に口コミを頼む紙とQRを、自分で作れる", "input": "お店の名前と口コミのページのURL", "output": "QRコード入りのカード（印刷用）", "kind": "既製"}, {"name": "お客様だより・ニュースレター", "industries": ["共通"], "job": "毎月のおたよりの文を考える時間が減る", "input": "今月伝えたいことのメモ", "output": "おたよりの文（見出し・本文・季節のひとこと）", "kind": "既製"}, {"name": "お知らせ・貼り紙の文", "industries": ["共通"], "job": "休みや新しいサービスのお知らせを、貼り紙・LINE・インスタの3つの形で作れる", "input": "知らせたいことの走り書き", "output": "貼り紙（画像）・LINEの文・インスタの文", "kind": "既製"}, {"name": "Googleマップの投稿の文", "industries": ["共通"], "job": "Googleマップ（ビジネスプロフィール）に載せる投稿を続けやすくなる", "input": "今週の出来事のメモと写真", "output": "投稿の文の下書き", "kind": "既製"}, {"name": "インスタのコメント・DMの返事の下書き", "industries": ["共通"], "job": "インスタの質問への返事を、店の言い方でそろえられる", "input": "コメント・DMの文（貼る）", "output": "返事の下書き", "kind": "御社向け"}, {"name": "訪問先の下調べ", "industries": ["共通"], "job": "初めて訪ねる会社のことを、出かける前に手短につかめる", "input": "訪問先の会社名と、聞きたいこと", "output": "A4 1枚の訪問前メモ（出どころつき）", "kind": "既製"}, {"name": "営業先のリスト作り", "industries": ["共通"], "job": "手元のメモから、連絡する先の一覧を作れる", "input": "寄せ集めのメモ・名刺の一覧", "output": "営業先のリスト（優先の順と理由）", "kind": "既製"}, {"name": "お礼・催促・展示会のあとのメール", "industries": ["共通"], "job": "あと回しになりがちなお礼や催促のメールを、すぐ出せる", "input": "誰に・何をのメモ", "output": "メールの下書き（言い方を2つ）", "kind": "既製"}, {"name": "近くの同業の調べ", "industries": ["共通"], "job": "近くの同業がどんなサービスと値段を出しているかを、まとめて見られる", "input": "調べたい同業の名前やホームページ", "output": "比べ表と、自分の店との違い", "kind": "既製"}, {"name": "電話の台本と、断られた時の答え", "industries": ["共通"], "job": "電話や商談で何をどう話すかを、社員がそろえられる", "input": "売りたいサービスと、よく言われる断り文句", "output": "電話の台本と、言われた時の答え方", "kind": "御社向け"}, {"name": "営業の練習相手", "industries": ["共通"], "job": "新人が、お客様役のAIを相手に話す練習をできる", "input": "練習したい場面", "output": "AIのお客様役とのやり取りと、振り返り", "kind": "御社向け"}, {"name": "受注・失注の振り返り", "industries": ["共通"], "job": "見積もりの記録から、決まった案件と決まらなかった案件の違いを見られる", "input": "見積もりの記録の表", "output": "決まった・決まらなかった理由の傾向", "kind": "既製"}, {"name": "商談メモから顧客台帳へ", "industries": ["共通"], "job": "手帳の走り書きを、顧客台帳に打ち直さなくてよくなる", "input": "商談メモ（写真か文）", "output": "顧客台帳に入れる1行と、次にやること", "kind": "御社向け"}, {"name": "インスタの投稿の予定表", "industries": ["共通"], "job": "何をいつ投稿するかを、1か月分まとめて決められる", "input": "伝えたいこと・行事・写真の手持ち", "output": "1か月の投稿の予定表と、各回の文の下書き", "kind": "既製"}, {"name": "チラシ・広告・ホームページの文案", "industries": ["共通"], "job": "チラシや広告に入れる文を、一から考えなくてよくなる", "input": "入れたいことのメモ", "output": "見出しと本文の案（2〜3通り）", "kind": "既製"}, {"name": "短い動画の台本", "industries": ["共通"], "job": "インスタやTikTokの短い動画で、何をどの順で撮るかが決まる", "input": "撮れる物・伝えたいこと", "output": "30秒の台本（場面・言葉・字幕）", "kind": "既製"}, {"name": "お客様像の整理", "industries": ["共通"], "job": "どんなお客様に向けて発信するかを、言葉にできる", "input": "問い合わせや来店のメモ", "output": "お客様像と、伝え方の案", "kind": "既製"}, {"name": "プレスリリースの下書き", "industries": ["共通"], "job": "新しいサービスや催しを、新聞やネットに知らせる文が書ける", "input": "決まっていること（いつ・何を・誰に）", "output": "プレスリリースの下書き", "kind": "既製"}, {"name": "ホームページのアクセスのまとめ", "industries": ["共通"], "job": "ホームページがどれくらい見られたかを、毎月メールで読める", "input": "Googleアナリティクスの数字（自動で読む）", "output": "毎月2日に届く先月のまとめのメール", "kind": "既製"}, {"name": "使えそうな補助金の下調べ", "industries": ["共通"], "job": "自分の会社に使えそうな補助金・助成金の候補を、先に絞れる", "input": "会社のあらまし（業種・人数・やりたいこと）", "output": "候補の一覧と、確かめることの表", "kind": "既製"}, {"name": "求人の原稿", "industries": ["共通"], "job": "求人を出す時の原稿を、話すだけで作れる", "input": "「こんな人がほしい」と話した文", "output": "求人の原稿と、決めていない所の一覧", "kind": "御社向け"}, {"name": "スカウトの文", "industries": ["共通"], "job": "求人サイトで候補者に送るスカウトを、1人ずつ考えなくてよくなる", "input": "求人の内容と、候補者の公開プロフィール（貼る）", "output": "その人に合わせたスカウトの下書き", "kind": "既製"}, {"name": "応募書類の要約", "industries": ["共通"], "job": "履歴書や職務経歴書から、仕事に関わる所だけを先に読める", "input": "応募書類（PDF）", "output": "仕事に関わることだけの要約と、面接で聞くこと", "kind": "既製"}, {"name": "研修資料と確認テスト", "industries": ["共通"], "job": "新人研修の資料と、覚えたかを見る問題が作れる", "input": "社長の手書きメモや手順", "output": "研修資料と確認テスト（答えつき）", "kind": "御社向け"}, {"name": "社員アンケートのまとめ", "industries": ["共通"], "job": "社員の声を、名前を出さずにまとめて読める", "input": "無記名アンケートの答え", "output": "話題ごとのまとめ", "kind": "既製"}, {"name": "面談のメモと目標の下書き", "industries": ["共通"], "job": "社員との面談の記録と、次の目標の下書きが残せる", "input": "面談の走り書き", "output": "整えたメモと、目標の下書き", "kind": "既製"}, {"name": "出勤・退勤の記録", "industries": ["共通", "夜のお店", "美容室", "飲食店"], "job": "紙のタイムカードを集計し直す手間が減る", "input": "スマホのボタン（出勤・退勤）", "output": "日ごと・人ごとの勤務時間の表", "kind": "既製"}, {"name": "シフト表のたたき台", "industries": ["共通", "飲食店", "美容室", "介護", "小売", "夜のお店"], "job": "出られる日の希望から、シフト表を組む時間が減る", "input": "スタッフの希望（フォームか表）と、店の決まり（人数・時間）", "output": "シフト表の案と、足りない日の印", "kind": "御社向け"}, {"name": "給与計算の下書き", "industries": ["共通"], "job": "勤務時間の表から、支給額の下書きを手で計算しなくてよくなる", "input": "勤務時間の表と、時給・手当の決まり", "output": "人ごとの支給額の下書き", "kind": "御社向け"}, {"name": "領収書を撮るだけ", "industries": ["共通"], "job": "レシートや領収書を、月末に手で打ち込まなくてよくなる", "input": "領収書の写真", "output": "店名・日付・税率ごとの金額の表と、科目の候補（CSV）", "kind": "既製"}, {"name": "Excelから請求書", "industries": ["共通"], "job": "請求の明細から、インボイス対応の請求書を1件ずつ作らなくてよくなる", "input": "いつもの請求の明細の Excel", "output": "1件1枚の請求書（印刷・PDF）", "kind": "御社向け"}, {"name": "経費精算のチェック", "industries": ["共通"], "job": "経費精算書が会社の決まりに合っているかを、先に見られる", "input": "経費精算書と、会社の経費の決まり", "output": "決まりと合わない所の一覧", "kind": "御社向け"}, {"name": "入金の照らし合わせと未入金リスト", "industries": ["共通", "不動産"], "job": "通帳と請求の一覧を見比べる手間が減る", "input": "銀行の明細のCSVと、請求の一覧", "output": "入金済み・未入金・名前が合わない入金の一覧", "kind": "御社向け"}, {"name": "月の予算と実績の差のコメント", "industries": ["共通"], "job": "毎月の数字の振り返りを、言葉にしやすくなる", "input": "予算と実績の表、社長のメモ", "output": "差が大きい所と、その理由の候補", "kind": "既製"}, {"name": "資金繰り表のたたき台", "industries": ["共通"], "job": "数か月先のお金の出入りを、表で見られる", "input": "入る予定・出る予定のメモ", "output": "3か月の資金繰り表", "kind": "既製"}, {"name": "税理士に出す資料の整理", "industries": ["共通"], "job": "月末に税理士へ渡す資料の、そろっている物と足りない物が分かる", "input": "税理士からの頼みのメールと、手元のファイル一覧", "output": "そろっている物・足りない物の一覧", "kind": "既製"}, {"name": "見積書の下書き", "industries": ["工務店"], "job": "下見の帰りに話すだけで、見積書の下書きができる", "input": "下見のあとに話した文と、お店の単価表", "output": "単価表から引いた見積書（A4）と、決めることの一覧", "kind": "御社向け"}, {"name": "打ち合わせメモ（ボタン付き）", "industries": ["工務店"], "job": "打ち合わせ中にボタンで埋めたメモが、そのまま議事録と提案書になる", "input": "スマホのボタンと短い言葉", "output": "議事録と提案書の下書き", "kind": "御社向け"}, {"name": "事前アンケートから提案書のたたき台", "industries": ["工務店"], "job": "打ち合わせの前に、お施主様の希望をつかんでおける", "input": "お施主様がスマホで答えたアンケート", "output": "提案書のたたき台・聞くこと・持っていく物", "kind": "御社向け"}, {"name": "工事のお知らせの下書き", "industries": ["工務店"], "job": "仕事終わりに話すだけで、お施主様への今日の報告ができる", "input": "今日の現場のことを話した文（LINE）", "output": "お施主様へのお知らせの下書きと、送る前に見ること", "kind": "御社向け"}, {"name": "工事のあとのお付き合いの下書き", "industries": ["工務店"], "job": "お礼・点検の案内・季節の手入れの連絡を、忘れずに出せる", "input": "工事の記録（完了日・内容・保証）", "output": "送る日の一覧と、その日の下書き", "kind": "御社向け"}, {"name": "現場写真をわける", "industries": ["工務店"], "job": "たまった現場写真を、現場ごと・施工前後ごとに分ける手間が減る", "input": "現場の写真のまとまり", "output": "現場ごと・施工前後に分けたフォルダ（zip）と施工事例の材料", "kind": "既製"}, {"name": "施工事例の文章", "industries": ["工務店"], "job": "工事のメモと写真の説明から、ホームページに載せる事例の文ができる", "input": "工事のメモ・写真の説明・お客様の声", "output": "施工事例の文の下書き", "kind": "御社向け"}, {"name": "補助金の案内文", "industries": ["工務店"], "job": "お施主様に使えそうな補助金の案内を、まとめて書ける", "input": "その年の補助金の要点と、お施主様の状況", "output": "社長向けのメモと案内文の下書き", "kind": "御社向け"}, {"name": "工程表のたたき台", "industries": ["工務店"], "job": "工事の順番と日にちの表を、一から組まなくてよくなる", "input": "工事の内容と着工日・休みの日", "output": "日ごとの工程表（職人さん・業者ごと）", "kind": "御社向け"}, {"name": "見積書から材料の注文リスト", "industries": ["工務店"], "job": "見積書の行から、材料の注文の一覧を書き出さなくてよくなる", "input": "見積書の Excel", "output": "業者ごとの材料の注文リスト", "kind": "御社向け"}, {"name": "発注の目安", "industries": ["飲食店", "小売", "夜のお店"], "job": "来週の発注の量を、勘に頼らずに決めやすくなる", "input": "売上と品目の Excel", "output": "品目ごとの発注の目安と、その出し方", "kind": "既製"}, {"name": "メニューの紹介文", "industries": ["飲食店"], "job": "新メニューや季節のメニューの紹介文を、すぐ作れる", "input": "店長のメモ（材料・味・値段）", "output": "メニュー表用とSNS用の紹介文", "kind": "既製"}, {"name": "外国語のメニュー・POP", "industries": ["飲食店", "小売"], "job": "外国のお客様向けのメニューや案内を作れる", "input": "いまのメニューの文", "output": "英語・中国語などの指さしメニュー", "kind": "既製"}, {"name": "売上日報のまとめと売れ筋", "industries": ["飲食店", "小売"], "job": "毎日の売上から、よく出た物と曜日の傾向が読める", "input": "レジから出した日報（CSV）", "output": "週のまとめと売れ筋", "kind": "既製"}, {"name": "予約の一覧と当日の段取り", "industries": ["飲食店"], "job": "予約サイトと電話の予約を1つにまとめ、当日の席と準備が分かる", "input": "予約サイトの画面の文（貼る）と、電話の予約", "output": "当日の予約の一覧・席の割り当ての案・準備の数", "kind": "御社向け"}, {"name": "原価の計算", "industries": ["飲食店"], "job": "メニューごとの原価と原価率を、仕入れの値段が変わっても出し直せる", "input": "レシピ（材料・量）と仕入れの値段", "output": "メニューごとの原価・原価率の表", "kind": "既製"}, {"name": "アレルギーの一覧表", "industries": ["飲食店"], "job": "メニューごとのアレルギーの表を、作り直す手間が減る", "input": "メニューごとの材料の一覧", "output": "特定原材料などの一覧表（下書き）", "kind": "既製"}, {"name": "衛生管理の記録", "industries": ["飲食店"], "job": "冷蔵庫の温度などの毎日の記録を、紙で書かなくてよくなる", "input": "スマホで入れる温度とチェック", "output": "日ごとの記録の表と、基準を外れた日の印", "kind": "既製"}, {"name": "仕込みの量の目安", "industries": ["飲食店"], "job": "予約の数と曜日から、今日の仕込みの量を決めやすくなる", "input": "予約の数と、過去の出数の表", "output": "品目ごとの仕込みの量の目安", "kind": "御社向け"}, {"name": "お客様カルテのまとめ", "industries": ["美容室"], "job": "来店前に、前回の施術や好みをすぐ思い出せる", "input": "カルテの記録（表）", "output": "次の来店の前に見る、1人1枚のまとめ", "kind": "御社向け"}, {"name": "来店のお礼と次のご案内の下書き", "industries": ["美容室"], "job": "来店のお礼や、次に来るとよい時期の案内を1人ずつ書かなくてよくなる", "input": "施術の内容と来店日", "output": "お礼と次のご案内の下書き（LINEに貼る）", "kind": "既製"}, {"name": "スタイル写真の投稿文", "industries": ["美容室"], "job": "スタイル写真に付ける文とハッシュタグを考える時間が減る", "input": "スタイルの写真と、施術のメモ", "output": "インスタ・予約サイト向けの文", "kind": "既製"}, {"name": "予約サイトのブログの下書き", "industries": ["美容室"], "job": "予約サイトのブログを続けやすくなる", "input": "書きたいことのメモ", "output": "ブログの下書き", "kind": "既製"}, {"name": "店販商品のPOP", "industries": ["美容室", "小売"], "job": "店で売る商品の手書きPOPを、毎回書かなくてよくなる", "input": "商品名と、伝えたいこと", "output": "印刷できるPOP", "kind": "既製"}, {"name": "担当者ごとの売上集計", "industries": ["美容室"], "job": "スタッフごとの売上や指名の数を、手で数えなくてよくなる", "input": "レジや予約サイトから出したCSV", "output": "担当者ごと・月ごとの集計表", "kind": "御社向け"}, {"name": "出勤予定の表", "industries": ["夜のお店"], "job": "キャストの出勤の連絡を、週の表にまとめる手間が減る", "input": "キャストがフォームで入れた出勤予定", "output": "週の出勤表と、人が足りない日の印", "kind": "御社向け"}, {"name": "給与計算の下書き（時給・バック）", "industries": ["夜のお店"], "job": "時給・指名・ドリンクなどのバックの計算を、手で足さなくてよくなる", "input": "日ごとの勤務と売上の表、店の給与の決まり", "output": "人ごとの支給額の下書き", "kind": "御社向け"}, {"name": "お礼のメッセージの下書き", "industries": ["夜のお店"], "job": "来店のお礼の文を、1人ずつ考える時間が減る", "input": "その日の様子の短いメモ", "output": "お礼の文の下書き（言い方を2つ）", "kind": "既製"}, {"name": "日ごとの売上と指名の集計", "industries": ["夜のお店"], "job": "日ごとの売上・指名・本数を、閉店後に計算し直さなくてよくなる", "input": "日報の表（スマホで入れる）", "output": "日・週・月の売上と指名の集計", "kind": "御社向け"}, {"name": "お客様メモと記念日の一覧", "industries": ["夜のお店", "飲食店"], "job": "お客様の好みや記念日を、店の中で見られる形に残せる", "input": "お客様メモ（表）", "output": "記念日の近い順の一覧", "kind": "御社向け"}, {"name": "商品の説明文", "industries": ["小売"], "job": "ネットショップに載せる商品の説明文を、すぐ作れる", "input": "商品の名前・大きさ・素材のメモ", "output": "商品の説明文の下書き", "kind": "既製"}, {"name": "棚卸しの数え表", "industries": ["小売"], "job": "棚卸しの数と、帳簿の数の違いを探す手間が減る", "input": "数えた数（スマホで入れる）と、帳簿の数", "output": "違いのある品目の一覧", "kind": "既製"}, {"name": "ネットショップの注文から発送の一覧", "industries": ["小売"], "job": "注文の一覧から、発送の表と納品書を作る手間が減る", "input": "ネットショップから出した注文のCSV", "output": "発送の一覧と納品書（印刷）", "kind": "御社向け"}, {"name": "値札・棚札の印刷", "industries": ["小売"], "job": "値札や棚札を、1枚ずつ作らなくてよくなる", "input": "商品の表（名前・値段）", "output": "印刷できる値札（A4に並べた物）", "kind": "既製"}, {"name": "相談の受付票の要点", "industries": ["士業"], "job": "初回相談のメモから、論点と必要な書類を先に整理できる", "input": "初回相談のメモ", "output": "論点・聞き足すこと・必要書類の一覧", "kind": "御社向け"}, {"name": "必要書類の案内と集まり具合", "industries": ["士業"], "job": "顧問先から書類が集まったかを、1件ずつ確かめなくてよくなる", "input": "顧問先ごとの必要書類の表", "output": "まだの書類の一覧と、お願いの文の下書き", "kind": "御社向け"}, {"name": "法改正のお知らせの文", "industries": ["士業"], "job": "顧問先へのお知らせの文を、やさしい言葉で書ける", "input": "公式の発表の文", "output": "顧問先向けのお知らせの下書き", "kind": "既製"}, {"name": "通帳の明細に科目の候補", "industries": ["士業"], "job": "記帳の仕事で、明細ごとの科目の候補を先に付けられる", "input": "銀行の明細のCSV", "output": "明細ごとの科目の候補と、迷う行の印", "kind": "御社向け"}, {"name": "記録と連絡帳（ボタン付き）", "industries": ["介護"], "job": "利用者さんごとの記録とご家族への連絡帳を、一度に書ける", "input": "バイタルの数字とボタン", "output": "事業所の記録と、ご家族への連絡帳の文", "kind": "御社向け"}, {"name": "ヒヤリハットの報告書の下書き", "industries": ["介護"], "job": "ヒヤリハットの報告書を、決まった形で早く書ける", "input": "職員の短いメモ", "output": "報告書の下書き（いつ・どこで・何が・次の対策）", "kind": "既製"}, {"name": "ご家族へのおたより", "industries": ["介護"], "job": "行事や毎月のおたよりの文を考える時間が減る", "input": "今月の行事のメモ", "output": "おたよりの文の下書き", "kind": "既製"}, {"name": "月の記録から報告の下書き", "industries": ["介護"], "job": "1か月の記録を読み返して報告書を書く手間が減る", "input": "伏せた1か月の記録", "output": "様子の変化と、報告の下書き", "kind": "御社向け"}, {"name": "送迎の順番表", "industries": ["介護"], "job": "送迎の順番と時間の表を、毎朝組み直さなくてよくなる", "input": "その日の利用者さんと住所の表", "output": "車ごとの送迎の順番と時間の案", "kind": "御社向け"}, {"name": "問診のまとめ", "industries": ["クリニック"], "job": "スマホで答えてもらった問診を、先に読みやすくまとめられる", "input": "患者さんがフォームで答えた問診", "output": "受付と医師が見る要点のまとめ", "kind": "御社向け"}, {"name": "患者さん向けの説明をやさしい言葉に", "industries": ["クリニック"], "job": "検査や治療の説明の紙を、分かりやすい言葉に書き直せる", "input": "今の説明の文", "output": "やさしい言葉にした説明の下書き", "kind": "既製"}, {"name": "休診・予防接種のお知らせ", "industries": ["クリニック"], "job": "休診や予防接種の受付のお知らせを、貼り紙・ホームページ用に作れる", "input": "日にちと伝えたいこと", "output": "貼り紙とホームページ用の文", "kind": "既製"}, {"name": "物件の紹介文", "industries": ["不動産"], "job": "物件ごとの紹介文を、図面と条件から作れる", "input": "物件の条件（広さ・駅からの分・設備）", "output": "ポータルサイト・チラシ用の紹介文", "kind": "既製"}, {"name": "入居者の問い合わせの返事の下書き", "industries": ["不動産"], "job": "設備の不具合などの連絡に、決まった流れで返事を出せる", "input": "入居者からの文", "output": "返事の下書きと、業者への連絡のメモ", "kind": "御社向け"}, {"name": "契約更新のお知らせと一覧", "industries": ["不動産"], "job": "更新の時期が近い契約を見落とさず、お知らせを出せる", "input": "契約の一覧の表", "output": "近い順の一覧と、お知らせの文の下書き", "kind": "既製"}, {"name": "退去の立ち会いメモから精算の下書き", "industries": ["不動産"], "job": "立ち会いのメモと写真から、精算の下書きを作れる", "input": "立ち会いのメモと写真", "output": "直す所の一覧と、精算の下書き", "kind": "御社向け"}, {"name": "見積もりの原価計算", "industries": ["製造"], "job": "材料・加工の時間から、見積もりの原価を出す手間が減る", "input": "材料・加工の条件の表", "output": "原価と見積もりの金額の表", "kind": "御社向け"}, {"name": "写真つきの作業手順書", "industries": ["製造"], "job": "ベテランのやり方を、写真つきの手順書に残せる", "input": "作業の写真と、話した説明", "output": "番号つきの作業手順書", "kind": "御社向け"}, {"name": "不良の記録と集計", "industries": ["製造"], "job": "不良の記録を紙からなくし、多い不良がすぐ分かる", "input": "スマホで入れる不良の種類と数", "output": "日・週ごとの集計と、多い順の表", "kind": "既製"}, {"name": "生産日報の集計", "industries": ["製造"], "job": "日報の数字を、週や月の表に打ち直さなくてよくなる", "input": "スマホで入れる生産の数と時間", "output": "ライン・製品ごとの集計表", "kind": "御社向け"}, {"name": "注文書・図面の読み取り", "industries": ["製造"], "job": "届いた注文書の品番・数・納期を、手で打ち直さなくてよくなる", "input": "注文書（PDF・FAXの写真）", "output": "受注の一覧に入れる行", "kind": "御社向け"}, {"name": "設備の点検の記録と期限", "industries": ["製造"], "job": "設備の点検を忘れず、記録を紙で残さなくてよくなる", "input": "点検の表（スマホで入れる）", "output": "点検の記録と、期限の近い設備のメール", "kind": "既製"}, {"name": "朝礼の安全の話題", "industries": ["製造", "工務店"], "job": "毎朝の安全の話を考える手間が減る", "input": "その日の作業の内容", "output": "危ない所の話題と、声かけの案", "kind": "既製"}, {"name": "口コミへの返事の下書き（貼って使う）", "industries": ["共通"], "job": "口コミへの返事の言葉を考える時間が減る", "input": "口コミの文（貼る）と、伝えたいひとこと", "output": "ていねいな返事の下書き（言い方を2つ）", "kind": "既製"}, {"name": "お問い合わせへの返事の下書き（貼って使う）", "industries": ["共通"], "job": "メールやLINEのお問い合わせに、返事を一から書かなくてよくなる", "input": "届いたお問い合わせの文（貼る）と、答えたい中身のメモ", "output": "返事の下書きと、確かめてほしい所の一覧", "kind": "既製"}, {"name": "シフト表の下書き（希望を貼って使う）", "industries": ["共通", "飲食店", "美容室", "介護", "小売", "夜のお店"], "job": "出られる日の希望から、シフト表のたたき台を作る時間が減る", "input": "スタッフの出られる日のメモと、日ごとに要る人数", "output": "シフト表の下書き（Excel）と、人が足りない日の印", "kind": "既製"}];
+  var PACKS = [{"id":"biyou","name":"美容室","tools":[{"n":"お客様カルテのまとめ","s":"来店前に、前回の施術や好みをすぐ思い出せる","o":"表・PDF"},{"n":"来店のお礼と次のご案内","s":"お礼と「次はこの頃に」の案内を、1人ずつ書かなくてよい","o":"LINEの文"},{"n":"スタイル写真の投稿文","s":"写真に付ける文とハッシュタグを考える時間が減る","o":"インスタの文・タグ"},{"n":"予約サイトのブログの下書き","s":"予約サイトのブログを続けやすくなる","o":"ブログの文"},{"n":"インスタのコメント・DMの返事","s":"質問への返事を、店の言い方でそろえられる","o":"返事の文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"担当者ごとの売上集計","s":"スタッフごとの売上や指名を、手で数えなくてよい","o":"Excel"},{"n":"店販商品のPOP","s":"店で売る商品のPOPを、毎回書かなくてよい","o":"PDF"},{"n":"お知らせ（休み・新メニュー）","s":"貼り紙・LINE・インスタの3つの形で、一度に作れる","o":"貼り紙PDF・LINE・インスタ"}]},{"id":"yoru","name":"夜のお店","tools":[{"n":"出勤予定の表","s":"キャストの出勤の連絡を、週の表にまとめる手間が減る","o":"Excel"},{"n":"給与計算の下書き（時給・バック）","s":"時給・指名・ドリンクのバックを、手で足さなくてよい","o":"Excel"},{"n":"日ごとの売上と指名の集計","s":"閉店後に、売上・指名・本数を計算し直さなくてよい","o":"Excel"},{"n":"お客様メモと記念日の一覧","s":"お客様の好みや記念日を、店の中で見られる形に残せる","o":"Excel"},{"n":"来店のお礼メッセージの下書き","s":"お礼の文を、1人ずつ考える時間が減る","o":"LINEの文"},{"n":"出勤・退勤の記録の集計","s":"紙のタイムカードを、集計し直す手間が減る","o":"Excel"},{"n":"発注の目安（お酒・消耗品）","s":"来週の発注の量を、勘に頼らずに決めやすくなる","o":"発注の表"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"},{"n":"イベントのお知らせ","s":"イベントの告知を、LINE・SNS・店内用に一度に作れる","o":"店内用PDF・LINE・SNS"},{"n":"店の決まりに答えるAI","s":"新人のキャスト・スタッフへの同じ説明が減る","o":"答え"}]},{"id":"nail","name":"ネイル・まつげサロン","tools":[{"n":"カウンセリングシートのまとめ","s":"来店前に、前回のデザインや注意点をすぐ思い出せる","o":"準備メモ（表）"},{"n":"来店のお礼と付け替えのご案内","s":"お礼と「次の付け替えはこの頃に」を、1人ずつ書かなくてよい","o":"LINEの文"},{"n":"デザイン写真の投稿文とタグ","s":"写真に付ける文とハッシュタグを考える時間が減る","o":"インスタの文・タグ"},{"n":"予約・DMの返事","s":"予約や質問への返事を、店の言い方でそろえられる","o":"返事の文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"新作デザイン・キャンペーンのお知らせ","s":"新作やキャンペーンを、貼り紙・LINE・インスタで一度に","o":"貼り紙PDF・LINE・SNS"},{"n":"店販・ケア用品のPOP","s":"オイルやケア用品のPOPを、毎回書かなくてよい","o":"PDF"},{"n":"売上・指名の集計","s":"スタッフごとの売上や指名を、手で数えなくてよい","o":"Excel"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"}]},{"id":"esthe","name":"エステ・リラクゼーションサロン","tools":[{"n":"カウンセリングのまとめ","s":"来店前に、前回の内容や気をつける事をすぐ思い出せる","o":"準備メモ（表）"},{"n":"施術のお礼と次のご案内","s":"お礼と「次はこの頃に」の案内を、1人ずつ書かなくてよい","o":"LINEの文"},{"n":"メニューの投稿文（インスタ・ブログ）","s":"決まりに気をつけた投稿文を、すぐ作れる","o":"インスタの文・ブログ"},{"n":"広告の言葉の見直し","s":"投稿やチラシの言い過ぎに、出す前に気づける","o":"直す所の表・直した文"},{"n":"予約・お問い合わせへの返事","s":"予約や質問への返事を、店の言い方でそろえられる","o":"返事の文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"お知らせ（休み・新メニュー）","s":"貼り紙・LINE・SNSの3つの形で、一度に作れる","o":"貼り紙PDF・LINE・SNS"},{"n":"回数券・コースの残りの一覧","s":"残りの回数と期限を、紙のカードで数えなくてよい","o":"Excel"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"}]},{"id":"gym","name":"フィットネス・ヨガ・ピラティス・パーソナルジム","tools":[{"n":"体験の問い合わせへの返事","s":"体験の問い合わせに、すぐ同じ形で返せる","o":"返事の文"},{"n":"入会のご案内","s":"体験のあとの入会の案内を、毎回書かなくてよい","o":"LINEの文・入会の流れ"},{"n":"レッスンの予定表","s":"月のレッスン表を、カレンダーに手で書き込まなくてよい","o":"Excel・LINEの文"},{"n":"会員さんへのお知らせ（休館・変更）","s":"休館や変更を、貼り紙・LINE・SNSで一度に伝えられる","o":"貼り紙PDF・LINE・SNS"},{"n":"トレーニング記録への一言","s":"記録を見て、会員さん1人ずつへの一言を考えなくてよい","o":"LINEの文"},{"n":"退会・休会の連絡への返事","s":"退会や休会の連絡に、気持ちよく手続きを案内できる","o":"返事の文"},{"n":"月の入会・退会・出席の集計","s":"月の会員の動きを、手で数えなくてよい","o":"Excel"},{"n":"インストラクターのシフト","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"}]},{"id":"pet","name":"ペットサロン・ペットホテル","tools":[{"n":"カルテのまとめ","s":"来店前に、その子の注意点と前回のカットをすぐ思い出せる","o":"準備メモ（表）"},{"n":"お迎えの時のご報告","s":"今日の様子のご報告を、1頭ずつ書かなくてよい","o":"ご報告の文（LINE・紙）"},{"n":"予約・お問い合わせへの返事","s":"料金や条件の質問に、店の決まりどおりに返せる","o":"返事の文"},{"n":"次のトリミングのご案内","s":"そろそろの子への案内を、1人ずつ書かなくてよい","o":"LINEの文・一覧"},{"n":"ホテルの預かり表","s":"ごはんとお薬の時間を、手書きの表にまとめなくてよい","o":"Excel"},{"n":"写真の投稿文","s":"トリミング後の写真に付ける文とタグを考えなくてよい","o":"インスタの文・タグ"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"お知らせ（休み・ホテルの受付）","s":"貼り紙・LINE・SNSの3つの形で、一度に作れる","o":"貼り紙PDF・LINE・SNS"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"}]},{"id":"koumuten","name":"工務店・リフォーム","tools":[{"n":"見積書の下書き","s":"下見のメモから、見積書の形にする手間が減る","o":"PDF"},{"n":"打ち合わせの議事録と提案","s":"打ち合わせのあと、議事録と次の提案をすぐ出せる","o":"PDF"},{"n":"事前アンケートから提案書","s":"アンケートを読んで、提案の骨組みを考える時間が減る","o":"提案書の文"},{"n":"今日の工事のご報告","s":"お施主様への毎日の報告を、短い時間で送れる","o":"LINE・メールの文"},{"n":"工事のあとのお便り","s":"お礼・点検・季節の手入れの連絡を、忘れずに送れる","o":"LINE・手紙の文"},{"n":"施工事例の文章","s":"ホームページやインスタの事例を、続けて出しやすくなる","o":"事例の文・インスタの文"},{"n":"補助金の案内文","s":"補助金のご案内を、まちがえにくい形で書ける","o":"案内の文"},{"n":"工程表のたたき台","s":"工事の段取りを、Excelの工程表にする手間が減る","o":"Excel"},{"n":"見積書から材料の注文リスト","s":"見積りの内訳から、注文する材料を数え直さなくてよい","o":"Excel"},{"n":"ご近所へのあいさつ文","s":"工事のお知らせの紙とあいさつの文が、一度にできる","o":"貼り紙PDF・あいさつの文"}]},{"id":"fudousan","name":"不動産（仲介・管理）","tools":[{"n":"物件の紹介文","s":"物件の紹介文を、決まりに合わせて早く書ける","o":"紹介文"},{"n":"不具合の連絡への返事","s":"入居者からの不具合の連絡に、流れどおりの返事ができる","o":"返事の文・業者への連絡"},{"n":"内見の日程の返事","s":"内見の希望に、日程の返事をすぐ出せる","o":"返事の文"},{"n":"契約更新のお知らせと一覧","s":"更新が近い部屋を探して、お知らせを1つずつ書かなくてよい","o":"Excel・お知らせの文"},{"n":"退去の精算の下書き","s":"立ち会いのメモから、精算の表を作る手間が減る","o":"Excel"},{"n":"家賃の入金の照らし合わせ","s":"通帳と家賃の一覧を、1行ずつ見比べなくてよい","o":"Excel"},{"n":"契約書の要点と気をつける所","s":"長い契約書の要点を、すぐつかめる","o":"要点の表"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"お問い合わせへの返事の下書き","s":"お問い合わせに、返事を一から書かなくてよい","o":"返事の文"},{"n":"商談メモから顧客台帳へ","s":"お客様の希望を、台帳の形にそろえる手間が減る","o":"Excel"}]},{"id":"cleaning","name":"ハウスクリーニング・清掃","tools":[{"n":"見積りの下書き","s":"場所・広さ・汚れから、見積りの金額をすぐ出せる","o":"見積りの文・表"},{"n":"作業の報告書（写真つき）","s":"作業の報告書を、写真があれば写真つきですぐ渡せる","o":"PDF"},{"n":"予約の問い合わせへの返事","s":"予約の問い合わせに、料金と日程の返事をすぐ出せる","o":"返事の文"},{"n":"作業の段取り・回る順番の表","s":"その日の予約から、回る順番と時間割ができる","o":"Excel"},{"n":"前日のご案内","s":"前の日の確認の連絡を、1件ずつ書かなくてよい","o":"LINEの文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"季節のお知らせ","s":"季節の掃除のお知らせを、貼り紙・LINE・SNSで一度に","o":"貼り紙PDF・LINE・SNS"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"},{"n":"スタッフの手順書（決まりに答えるAI）","s":"作業の手順の同じ説明を、何度もしなくてよい","o":"答え"},{"n":"月の売上・件数のまとめ","s":"月の売上と件数を、手で数えなくてよい","o":"Excel"}]},{"id":"car","name":"自動車整備・販売","tools":[{"n":"車検・点検の時期のご案内","s":"時期の来たお客様を探して、ご案内を1件ずつ書かなくてよい","o":"Excel・ご案内の文"},{"n":"整備の見積りの説明文","s":"見積りの中身を、お客様に分かる言葉で伝えられる","o":"説明の文・表"},{"n":"作業のご報告","s":"何をしたかの報告を、お客様に分かる形ですぐ渡せる","o":"報告の文"},{"n":"中古車の紹介文","s":"中古車の紹介文を、決まりに合わせて早く書ける","o":"紹介文"},{"n":"お問い合わせへの返事の下書き","s":"お問い合わせに、返事を一から書かなくてよい","o":"返事の文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"代車・入庫の予定表","s":"入庫と代車の予定を、Excelで一目で分かるようにする","o":"Excel"},{"n":"部品の発注リスト","s":"見積りや指示書から、注文する部品を書き出さなくてよい","o":"Excel"},{"n":"お知らせ（休み・新しいサービス）","s":"貼り紙・LINE・SNSの3つの形で、一度に作れる","o":"貼り紙PDF・LINE・SNS"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"}]},{"id":"izakaya","name":"居酒屋・飲食店","tools":[{"n":"発注の目安","s":"明日・来週の発注の量を、勘に頼らず決めやすくなる","o":"発注の表"},{"n":"仕込みの量の目安","s":"今日どれだけ仕込むかを、毎回数えなくてよい","o":"仕込みの表"},{"n":"原価の計算","s":"メニューごとの原価と原価率を、電卓で出さなくてよい","o":"Excel"},{"n":"売上日報のまとめと売れ筋","s":"レジの数字から、日報と売れ筋がすぐ分かる","o":"Excel"},{"n":"予約の一覧と当日の段取り","s":"その日の予約と、準備する事が1枚で分かる","o":"予約の表・段取り"},{"n":"宴会・予約の問い合わせへの返事","s":"宴会の問い合わせに、コースや人数の答えを一から書かなくてよい","o":"返事の文"},{"n":"おすすめ・季節のメニューの紹介文","s":"黒板・メニュー表・インスタの文を、一度に作れる","o":"黒板・メニュー・インスタの文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"アレルギーの一覧表","s":"メニューごとのアレルギーの表を、手で作らなくてよい","o":"Excel"}]},{"id":"cafe","name":"カフェ・パン屋・洋菓子店","tools":[{"n":"焼き上がり・新商品のお知らせ","s":"焼き上がりや新商品の知らせを、毎回考えなくてよい","o":"インスタ・LINE・店頭の文"},{"n":"商品のPOP","s":"ショーケースや棚のPOPを、手で書かなくてよい","o":"PDF"},{"n":"予約（ケーキ・パン）の受付の一覧","s":"予約のメモから、受け取り日ごとの一覧と作る数が分かる","o":"Excel"},{"n":"原価の計算","s":"パン・ケーキ1個の原価と原価率を、電卓で出さなくてよい","o":"Excel"},{"n":"売れ残り・作る数の目安","s":"売れ残りを見て、明日作る数を決めやすくなる","o":"作る数の表"},{"n":"アレルギー表示の一覧","s":"商品ごとのアレルギーの表と札を、手で作らなくてよい","o":"Excel"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"インスタの投稿文","s":"写真に付ける文とハッシュタグを考える時間が減る","o":"インスタの文・タグ"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"}]},{"id":"kouri","name":"小売・ネットショップ","tools":[{"n":"商品の説明文","s":"ネットショップの説明文を、1点ずつ考えなくてよい","o":"説明文"},{"n":"店頭POP","s":"売り場のPOPを、手で書かなくてよい","o":"PDF"},{"n":"値札・棚札","s":"値札を1枚ずつ書かずに、まとめて印刷できる","o":"印刷用Excel"},{"n":"棚卸しの数え表","s":"棚卸しの数え表と、ずれの一覧が一度にできる","o":"Excel"},{"n":"注文から発送の一覧と納品書","s":"今日送る物の一覧と納品書を、手で写さなくてよい","o":"Excel・納品書PDF"},{"n":"発注の目安","s":"次に何をどれだけ頼むか、決めやすくなる","o":"発注の表"},{"n":"売上のまとめと売れ筋","s":"レジとネットの売上から、売れ筋がすぐ分かる","o":"Excel"},{"n":"外国語の案内・POP","s":"英語・中国語・韓国語の案内を、自分で訳さなくてよい","o":"外国語の文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"配送・返品の問い合わせへの返事","s":"「いつ届く？」「返品できる？」に、一から書かなくてよい","o":"返事の文"}]},{"id":"yado","name":"旅館・民泊・ゲストハウス","tools":[{"n":"予約の問い合わせへの返事（日本語・英語）","s":"日本語・英語の問い合わせに、一から書かなくてよい","o":"返事の文（日本語・英語）"},{"n":"外国語の館内案内・ハウスルール","s":"館内の案内とハウスルールを、何か国語でも作れる","o":"PDF"},{"n":"チェックイン前のご案内メール","s":"来る前の案内（行き方・時間・入り方）を、毎回書かなくてよい","o":"メールの文"},{"n":"予約サイトの口コミへの返事","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"清掃・部屋割りの表","s":"その日の清掃の順番と部屋割りが、1枚で分かる","o":"Excel"},{"n":"宿泊台帳のまとめ","s":"名簿をそろえて、書き漏れをすぐ見つけられる","o":"Excel"},{"n":"お知らせ（休み・料金・工事）","s":"貼り紙・LINE・SNSの3つの形で、一度に作れる","o":"貼り紙PDF・LINE・SNS"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"},{"n":"周りの案内文（書いてある物だけ）","s":"「近くにごはんは？」の答えを、毎回考えなくてよい","o":"案内の文（日本語・外国語）"},{"n":"稼働・売上のまとめ","s":"予約サイトごとの売上と、部屋の埋まり方がすぐ分かる","o":"Excel"}]},{"id":"kaigo","name":"介護（デイ・訪問・施設）","tools":[{"n":"記録と連絡帳の下書き","s":"今日の様子のメモから、記録と連絡帳を一度に書ける","o":"記録・連絡帳の文"},{"n":"ヒヤリハット報告書の下書き","s":"見た事を話すだけで、報告書の形にそろう","o":"PDF"},{"n":"月の記録から報告の下書き","s":"1か月の記録を読み返さずに、月の報告の下書きができる","o":"Excel・報告の文"},{"n":"ご家族へのおたより","s":"毎月のおたよりの文を、一から考えなくてよい","o":"おたよりの文"},{"n":"送迎の順番表","s":"曜日ごとの送迎の順番と車の割り振りを、手で組まなくてよい","o":"Excel"},{"n":"研修資料と確認テスト","s":"研修の資料とテストを、毎回一から作らなくてよい","o":"資料・テストの文"},{"n":"施設の決まりに答えるAI","s":"新人さんへの同じ説明を、何度もしなくてよい","o":"答え"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"},{"n":"会議の議事録","s":"会議のメモから、議事録の形にすぐそろう","o":"PDF"}]},{"id":"clinic","name":"クリニック（医院・診療所）","tools":[{"n":"問診のまとめ","s":"問診票を、院長が読みやすい順にそろえられる","o":"まとめ"},{"n":"説明をやさしい言葉に","s":"院長が書いた説明を、患者さんに渡せる言葉に直せる","o":"説明の文"},{"n":"休診・予防接種のお知らせ","s":"貼り紙・ホームページ・LINEの文を一度に作れる","o":"貼り紙PDF・ホームページ・LINE"},{"n":"予約・問い合わせへの返事","s":"予約や問い合わせの返事を、一から書かなくてよい","o":"返事の文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"},{"n":"院内の決まりに答えるAI","s":"新人スタッフへの同じ説明を、何度もしなくてよい","o":"答え"},{"n":"会議の議事録","s":"会議のメモから、議事録の形にすぐそろう","o":"PDF"},{"n":"院内の掲示物","s":"感染対策や待合のお願いの貼り紙を、すぐ作れる","o":"貼り紙PDF"}]},{"id":"shika","name":"歯科医院","tools":[{"n":"定期健診のご案内","s":"健診のお知らせを、1人ずつ考えなくてよい","o":"LINE・はがきの文"},{"n":"治療の説明をやさしい言葉に","s":"院長が書いた説明を、患者さんに渡せる言葉に直せる","o":"説明の文"},{"n":"予約変更・問い合わせへの返事","s":"予約の変更や問い合わせの返事を、一から書かなくてよい","o":"返事の文"},{"n":"休診のお知らせ","s":"貼り紙・ホームページ・LINEの文を一度に作れる","o":"貼り紙PDF・ホームページ・LINE"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"院内の掲示物","s":"待合のお願いや予約の決まりの貼り紙を、すぐ作れる","o":"貼り紙PDF"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"求人の原稿（衛生士・助手）","s":"話すだけで、求人の原稿ができる","o":"求人の文"},{"n":"院内の決まりに答えるAI","s":"新人スタッフへの同じ説明を、何度もしなくてよい","o":"答え"},{"n":"予約とキャンセルの集計","s":"月のキャンセルや健診の数を、手で数えなくてよい","o":"Excel"}]},{"id":"seitai","name":"整体・整骨院・鍼灸院","tools":[{"n":"施術後のお礼と次のご案内","s":"お礼と次のご案内を、1人ずつ考えなくてよい","o":"LINEの文"},{"n":"家でできる体操の紙","s":"院長が書いた体操のメモを、渡せる紙に整えられる","o":"PDF"},{"n":"予約の問い合わせへの返事","s":"予約や問い合わせの返事を、一から書かなくてよい","o":"返事の文"},{"n":"ブログの下書き","s":"広告の決まりに気をつけたブログを、続けやすくなる","o":"ブログの文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"お知らせ（休み・受付時間）","s":"貼り紙・LINE・SNSの3つの形で、一度に作れる","o":"貼り紙PDF・LINE・SNS"},{"n":"回数券と来院の集計","s":"回数券の残りや来院の数を、手で数えなくてよい","o":"Excel"},{"n":"求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"},{"n":"院内の決まりに答えるAI","s":"新人スタッフへの同じ説明を、何度もしなくてよい","o":"答え"},{"n":"シフト表の下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"}]},{"id":"shigyou","name":"士業の事務所","tools":[{"n":"相談の受付票の要点","s":"相談の論点と要る書類が、先生に渡す前に整う","o":"受付票"},{"n":"必要書類の案内と集まり具合","s":"書類の催促と「何が足りないか」の表が一度にできる","o":"Excel・お願いの文"},{"n":"法改正のお知らせの文","s":"改正の知らせを、顧問先にやさしい言葉で出せる","o":"メール・LINEの文"},{"n":"通帳の明細に科目の候補","s":"通帳の明細の1行ずつに、科目の候補が付く","o":"Excel"},{"n":"期限の一覧と前のお知らせ","s":"顧問先ごとの期限と、前もってのお知らせ文がそろう","o":"Excel・お知らせの文"},{"n":"長い書類の要約","s":"長い通知や資料を、読む前に要点だけつかめる","o":"要約"},{"n":"契約書の要点と気をつける所","s":"契約書を読む前に、要点と見るべき所が分かる","o":"要点の表"},{"n":"面談の議事録","s":"面談のメモから、顧問先に渡せる議事録ができる","o":"議事録PDF"},{"n":"日程調整の返事","s":"面談の候補日を出す返事を、すぐ書ける","o":"返事の文"},{"n":"名前・電話を伏せる","s":"外に渡す前に、名前や電話を記号に置きかえられる","o":"伏せた文・対応表"}]},{"id":"seizou","name":"製造（町工場）","tools":[{"n":"見積もりの原価計算","s":"材料・加工・段取りの原価が、表で一度に出る","o":"Excel"},{"n":"写真つきの作業手順書","s":"写真とメモから、現場に貼れる手順書ができる","o":"手順書PDF"},{"n":"不良の記録と集計","s":"不良の数と多い種類が、表とグラフで分かる","o":"Excel"},{"n":"生産日報の集計","s":"日報の数を、月末に手で足さなくてよい","o":"Excel"},{"n":"注文書・図面の読み取り","s":"注文書の品番・数・納期を、手で写さなくてよい","o":"注文の表"},{"n":"設備の点検の記録と期限","s":"どの機械の点検が近いか・過ぎているかがすぐ分かる","o":"点検の表"},{"n":"朝礼の安全の話題","s":"毎朝の安全の一言を、考える時間が減る","o":"朝礼の話"},{"n":"外国人の社員への訳","s":"指示や連絡を、やさしい日本語と母国語で伝えられる","o":"訳の文"},{"n":"会議の議事録","s":"会議のメモから、決まった事と担当がすぐまとまる","o":"議事録の文"},{"n":"会社の書式で書類","s":"メモから、会社の形のPDF・Word・Excelができる","o":"PDF・Word・Excel"}]},{"id":"juku","name":"学習塾","tools":[{"n":"保護者への報告・連絡の文","s":"面談の報告や連絡を、保護者に伝わる文にできる","o":"LINE・メールの文"},{"n":"授業の報告（今日やった事）","s":"講師のメモから、保護者への授業の報告ができる","o":"報告の文"},{"n":"季節講習のお知らせ","s":"講習の貼り紙・LINE・SNSの文が、一度にできる","o":"貼り紙PDF・LINE・SNS"},{"n":"体験授業の問い合わせへの返事","s":"体験授業の問い合わせに、すぐ返事ができる","o":"返事の文"},{"n":"成績・テストの点のまとめ","s":"テストの点を、生徒ごと・科目ごとの表に直さなくてよい","o":"Excel"},{"n":"小テストの問題づくり","s":"渡した範囲から、小テストと答えがすぐできる","o":"問題と答え"},{"n":"振替・欠席の連絡への返事","s":"欠席や振替の連絡に、決まりどおりの返事をすぐ返せる","o":"返事の文"},{"n":"講師のシフトの下書き","s":"出られる日の希望から、シフトのたたき台ができる","o":"Excel"},{"n":"講師の決まりに答えるAI","s":"新しい講師への同じ説明を、何度もしなくてよい","o":"答え"},{"n":"講師の求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"}]},{"id":"naraigoto","name":"習いごと教室","tools":[{"n":"体験の問い合わせへの返事","s":"体験レッスンの問い合わせに、すぐ返事ができる","o":"返事の文"},{"n":"発表会・イベントのお知らせ","s":"発表会の貼り紙・LINE・SNSの文が一度にできる","o":"貼り紙PDF・LINE・SNS"},{"n":"月謝・入金の照らし合わせ","s":"だれの月謝が入っていないかが、すぐ分かる","o":"Excel・お願いの文"},{"n":"振替レッスンの表","s":"振替の希望を、空いている枠に当てはめた表ができる","o":"Excel・ご案内の文"},{"n":"保護者への連絡の文","s":"大事な連絡を、やわらかく伝わる文にできる","o":"LINE・メールの文"},{"n":"レッスンの記録から一言コメント","s":"生徒ごとの一言コメントを、考える時間が減る","o":"連絡帳の文"},{"n":"教室だより","s":"月の教室だよりが、メモから1枚の紙になる","o":"PDF・LINEの文"},{"n":"口コミへの返事の下書き","s":"口コミの返事を考える時間が減る","o":"返事の文"},{"n":"講師の決まりに答えるAI","s":"新しい講師への同じ説明を、何度もしなくてよい","o":"答え"},{"n":"講師の求人の原稿","s":"話すだけで、求人の原稿ができる","o":"求人の文"}]}];
   var ENDPOINT = "https://script.google.com/macros/s/AKfycbwpoiTm80vCkNCqlz_C0GpU67QvMj31W-aype021uPv2UnDSJAJxok0Bnn1bBnV7dYBSg/exec";
   var $ = function(id){ return document.getElementById(id); };
   function el(t,c,x){ var e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e; }
@@ -278,13 +336,13 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
   // ---- 動く見本（中身は架空） ----
   var DEMOS = [
     {t:"口コミへの返事", src:"★5「カットの仕上がりがとても気に入りました。また来ます！」",
-     out:"うれしいお言葉をありがとうございます。仕上がりを気に入っていただけて、スタッフ一同とても励みになります。\nまたのご来店を、心よりお待ちしております。"},
-    {t:"議事録", src:"11/15 朝礼メモ\n・年末の予約 12/1から受付\n・POPは店長が作る（20日まで？）\n・大掃除の日 未定",
-     out:"■ 決まったこと\n・年末の予約は12月1日から受け付ける\n■ 担当と期限\n・店長：POPを作る【要確認：20日まででよいか】\n■ 次に確かめること\n・大掃除の日"},
-    {t:"領収書の入力", src:"（領収書の写真）\nホームセンター／11月10日／2,980円",
-     out:"日付　　　店名　　　　　金額　　税率　科目の候補\n11/10　ホームセンター　2,980円　10%　消耗品費\n\n※科目は候補です。税理士さんの決まりに合わせてください。"},
-    {t:"お知らせの文", src:"年末年始のお休み 12/30〜1/3\n1/4から通常どおり",
-     out:"【年末年始のお休みのお知らせ】\n誠に勝手ながら、12月30日（火）〜1月3日（土）はお休みをいただきます。\n1月4日（日）より通常どおり営業いたします。\n本年も大変お世話になりました。"}
+     out:"うれしいお言葉をありがとうございます。仕上がりを気に入っていただけて、スタッフ一同とても励みになります。\nまたのご来店を、心よりお待ちしております。\nヘアサロン○○ スタッフ一同"},
+    {t:"お礼と次のご案内", src:"鈴木様 カット＋カラー 初めて。明るめが気に入っていた",
+     out:"■ 鈴木様\n本日は初めてのご来店、ありがとうございました。\n明るめのカラー、気に入っていただけてうれしいです。\n次は1月の中ごろが、色の入れ替えの目安です。\nまたお会いできるのを楽しみにしています。"},
+    {t:"お知らせ", src:"年末年始のお休み 12/30〜1/3\n1/4から通常どおり",
+     out:"【年末年始のお休みのお知らせ】\n12月30日（水）〜1月3日（日）はお休みをいただきます。\n1月4日（月）より通常どおり営業いたします。\n本年も大変お世話になりました。\n\n※ 貼り紙のPDFも一緒にお作りします。"},
+    {t:"シフト表", src:"12月のシフト。田中 24日休み希望、佐藤 土日出られる",
+     out:"12月_シフト表_下書き.xlsx を作りました。\n・人数が足りない日：12月24日（木）【要確認】\n・守れなかった希望：ありません\n\n※ シフトは下書きです。決めるのはお店です。"}
   ];
   var tabs=$("demoTabs"), cur=0, timer=null, auto=null;
   DEMOS.forEach(function(d,i){
@@ -305,36 +363,35 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
   show(0);
   if(!reduce) auto=setInterval(function(){ show((cur+1)%DEMOS.length); },7000);
 
-  // ---- メニュー ----
-  var IND = ["すべて"]; TOOLS.forEach(function(t){ t.industries.forEach(function(x){ if(IND.indexOf(x)<0) IND.push(x); }); });
-  var filter="すべて", shown=12;
-  IND.forEach(function(name){
-    var b=el("button","chip",name==="共通"?"どの業種でも":name); b.type="button"; b.setAttribute("aria-pressed",String(name===filter));
-    b.addEventListener("click",function(){ filter=name; shown=12; Array.prototype.forEach.call($("chips").children,function(x){ x.setAttribute("aria-pressed",String(x===b)); }); render(); });
+  // ---- 業種の10本 ----
+  var sel=0;
+  try { var h=(location.hash||"").replace("#",""); PACKS.forEach(function(p,i){ if(p.id===h) sel=i; }); } catch(e){}
+  PACKS.forEach(function(p,i){
+    var b=el("button","chip",p.name); b.type="button"; b.setAttribute("aria-pressed",String(i===sel));
+    b.addEventListener("click",function(){ sel=i; Array.prototype.forEach.call($("chips").children,function(x){ x.setAttribute("aria-pressed",String(x===b)); }); render(true); if(b.scrollIntoView && $("chips").scrollWidth>$("chips").clientWidth) b.scrollIntoView({block:"nearest",inline:"center",behavior:reduce?"auto":"smooth"}); });
     $("chips").appendChild(b);
+    var o=document.createElement("option"); o.value=p.name; o.textContent=p.name; $("indSel").appendChild(o);
   });
-  $("q").addEventListener("input",function(){ shown=12; render(); });
-  $("moreBtn").addEventListener("click",function(){ shown+=24; render(); });
-  function match(t){
-    if(filter!=="すべて" && t.industries.indexOf(filter)<0) return false;
-    var q=$("q").value.trim(); if(!q) return true;
-    return (t.name+t.job+t.input+t.output).indexOf(q)>=0;
-  }
-  function render(){
-    var list=TOOLS.filter(match).sort(function(a,b){ return (a.kind===b.kind?0:(a.kind==="既製"?-1:1)); });
-    $("count").textContent=list.length+"個の道具";
+  (function(){ var o=document.createElement("option"); o.value="その他"; o.textContent="その他・まだ分からない"; $("indSel").appendChild(o); })();
+  function outTag(o){ return /Excel/.test(o)?"Excel":(/PDF/.test(o)?"PDF":(/表/.test(o)?"表":"文章")); }
+  window.addEventListener("hashchange",function(){ var h=location.hash.replace("#",""); PACKS.forEach(function(p,i){ if(p.id===h){ sel=i; Array.prototype.forEach.call($("chips").children,function(x,j){ x.setAttribute("aria-pressed",String(j===i)); }); render(true); } }); });
+  function render(anim){
+    var p=PACKS[sel]; if(!p) return;
+    $("count").textContent=p.name+"の道具　"+p.tools.length+"本";
     var box=$("tools"); box.textContent="";
-    list.slice(0,shown).forEach(function(t){
+    p.tools.forEach(function(t,k){
       var c=el("article","tool"); var tg=el("div","tg");
-      tg.appendChild(el("span","tag "+(t.kind==="既製"?"ready":"fit"),t.kind==="既製"?"すぐ使える":"会社に合わせて作る"));
-      t.industries.filter(function(x){return x!=="共通";}).slice(0,2).forEach(function(x){ tg.appendChild(el("span","tag ind",x)); });
-      c.appendChild(tg); c.appendChild(el("div","nm",t.name)); c.appendChild(el("div","jb",t.job));
-      c.appendChild(el("div","io",t.input+" → "+t.output));
+      tg.appendChild(el("span","tag ready",String(k+1)));
+      tg.appendChild(el("span","tag "+(outTag(t.o)==="文章"?"ind":"fit"),outTag(t.o)));
+      c.appendChild(tg); c.appendChild(el("div","nm",t.n)); c.appendChild(el("div","jb",t.s));
+      c.appendChild(el("div","io","返るもの："+t.o));
+      if(anim && !reduce){ c.style.opacity="0"; c.style.transform="translateY(8px)"; setTimeout(function(){ c.style.transition="opacity .35s, transform .35s"; c.style.opacity="1"; c.style.transform="none"; }, 30*k); }
       box.appendChild(c);
     });
-    $("moreBtn").parentNode.hidden = list.length<=shown;
+    var ind=$("indSel"); if(ind && !ind.dataset.touched) ind.value=p.name;
   }
-  render();
+  $("indSel").addEventListener("change",function(){ this.dataset.touched="1"; });
+  render(false);
 
   // ---- フォーム ----
   var JOBS=["書類・議事録","お客様への返事","お知らせ・SNSの文","お金の入力・計算","予定・シフト","名簿・データの整理","まだ分からない"];
@@ -349,7 +406,7 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
     var jobs=Array.prototype.filter.call($("jobs").querySelectorAll("input"),function(i){return i.checked;}).map(function(i){return i.value;});
     var body=new URLSearchParams();
     ["sei","mei","company","email","tel","website"].forEach(function(n){ body.append(n,f[n].value.trim()); });
-    body.append("message","【AI道具のページから】\n楽にしたい作業："+(jobs.join("、")||"（未選択）")+"\n\n"+f.message.value.trim());
+    body.append("message","【AI道具のページから】\n業種："+(f.industry.value||"（未選択）")+"\n楽にしたい作業："+(jobs.join("、")||"（未選択）")+"\n\n"+f.message.value.trim());
     $("sendBtn").disabled=true; msg.textContent="送っています…";
     fetch(ENDPOINT,{method:"POST",body:body}).then(function(r){return r.json();}).then(function(j){
       if(j && j.ok){
@@ -362,6 +419,14 @@ footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
       msg.textContent="うまく送れませんでした。時間をおいてもう一度お試しいただくか、LINE・メール（info@coaxil.jp）でご連絡ください。";
     });
   });
+
+  // ---- スマホの下のボタン：上のボタンや相談の欄が見えている間は隠す ----
+  (function(){
+    var st=document.querySelector(".stick"); if(!st || !("IntersectionObserver" in window)) return;
+    var seen=new Set();
+    var ob=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) seen.add(e.target); else seen.delete(e.target); }); st.classList.toggle("hide", seen.size>0); });
+    [document.querySelector(".hero .cta"), document.getElementById("contact")].forEach(function(x){ if(x) ob.observe(x); });
+  })();
 
   // ---- 出てくる動き ----
   var rv=document.querySelectorAll(".rv");
