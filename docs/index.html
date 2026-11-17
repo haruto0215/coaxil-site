@@ -2,19 +2,40 @@
 <html lang="ja"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>コアシル｜中小企業のAI活用</title>
-<meta name="description" content="中小企業のための、AI業務効率化。御社の仕事を伺い、御社のやり方に合わせた専用のAIの仕組みをつくります。初回のヒアリングは無料です。">
+<title>コアシル｜業種のAI道具と、御社専用のAI</title>
+<meta name="description" content="業種ごとのAIの道具10本を、お店の情報に合わせて月額11,800円（税込）で。御社専用のAIづくりもご相談いただけます。30分の実演は無料です。">
 <link rel="canonical" href="https://coaxil.jp/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="コアシル">
 <meta property="og:title" content="コアシル｜中小企業のAI活用">
-<meta property="og:description" content="中小企業のための、AI業務効率化。御社の仕事を伺い、御社のやり方に合わせた専用のAIの仕組みをつくります。初回のヒアリングは無料です。">
+<meta property="og:description" content="業種ごとのAIの道具10本を、お店の情報に合わせて月額11,800円（税込）で。御社専用のAIづくりもご相談いただけます。30分の実演は無料です。">
 <meta property="og:url" content="https://coaxil.jp/">
 <meta property="og:image" content="https://coaxil.jp/logo-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" type="image/png" sizes="48x48" href="/icon-48.png">
 <link rel="apple-touch-icon" href="/icon-192.png">
-<style>body{margin:0;padding:0}</style>
+<style>body{margin:0;padding:0}  /* 業種のAI道具（2026-11-18） */
+  .tl-box{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:22px;margin-top:48px}
+  .tl-price{background:var(--blue);color:#fff;border-radius:14px;padding:34px 34px 30px}
+  .tl-inds{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 30px 26px}
+  .tl-k{font-size:14px;font-weight:700;letter-spacing:.08em}
+  .tl-price .tl-k{color:rgba(255,255,255,.8)}
+  .tl-inds .tl-k b{font-family:var(--f-en);font-size:22px;color:var(--blue);margin-left:2px}
+  .tl-yen{margin-top:10px;font-weight:700;font-size:16px}
+  .tl-yen b{font-family:var(--f-en);font-weight:600;font-size:clamp(40px,5vw,56px);letter-spacing:-.03em;margin:0 4px}
+  .tl-yen small{font-size:13px;margin-left:2px}
+  .tl-ck{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:8px;font-size:14px;line-height:1.7}
+  .tl-ck li{padding-left:22px;position:relative}
+  .tl-ck li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
+  .tl-chips{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .tl-chips li{font-size:13.5px;font-weight:700;background:var(--grey);border-radius:999px;padding:5px 13px}
+  .tl-note{margin-top:16px;font-size:13px;color:var(--muted);line-height:1.8}
+  .tl-card{margin-bottom:26px;border:1px solid var(--blue)}
+  .tl-card .tl-more{justify-self:start;color:#fff;font-size:14px;font-weight:700;text-underline-offset:5px}
+  .tl-sub{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--on-dark-2);margin-bottom:12px}
+  @media (max-width:860px){ .hero-cta .hp{display:none} }
+  @media (max-width:860px){ .tl-box{grid-template-columns:1fr;margin-top:36px} .tl-price,.tl-inds{padding:26px 22px} .tl-chips{gap:6px} .tl-chips li{font-size:12.5px;padding:4px 10px} }
+</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@700&family=Klee+One:wght@600&display=swap">
@@ -832,6 +853,7 @@
 <header class="top">
   <div class="bar">
     <nav class="nav" aria-label="ページ内の移動">
+      <a href="/tools/"><small>Tools</small><span>業種のAI道具</span></a>
       <a href="#menu"><small>Service</small><span>御社専用のAI</span></a>
       <a href="#demo"><small>Demo</small><span>動く見本</span></a>
       <a href="#about"><small>About</small><span>私たちについて</span></a>
@@ -847,6 +869,7 @@
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="メニューを開く"><span></span><span></span><span></span></button>
 <nav class="site-menu" id="site-menu" aria-label="メニュー" hidden>
   <ul>
+    <li><a href="/tools/"><small>Tools</small>業種のAI道具</a></li>
     <li><a href="#menu"><small>Service</small>御社専用のAI</a></li>
     <li><a href="#demo"><small>Demo</small>動く見本</a></li>
     <li><a href="#security"><small>Security</small>情報の扱い</a></li>
@@ -865,8 +888,8 @@
       <h1 id="hero-h" class="word" aria-label="コアシルプロダクト"><span class="chars" aria-hidden="true"><span class="ch" style="--i:0">C</span><span class="ch" style="--i:1">O</span><span class="ch" style="--i:2">A</span><span class="ch" style="--i:3">X</span><span class="ch" style="--i:4">I</span><span class="ch" style="--i:5">L</span><span class="gap"></span><span class="ch" style="--i:6">P</span><span class="ch" style="--i:7">R</span><span class="ch" style="--i:8">O</span><span class="ch" style="--i:9">D</span><span class="ch" style="--i:10">U</span><span class="ch" style="--i:11">C</span><span class="ch" style="--i:12">T</span><span class="pt"></span></span></h1>
       <div class="tag">
         <p>Focus on your work.<br>Leave the rest to AI.</p>
-        <small>中小企業のための、AI業務効率化</small>
-        <a class="hero-cta" href="#inquiry">お問い合わせ</a>
+        <small>業種ごとのAI道具10本を、お店に合わせて</small>
+        <a class="hero-cta" href="/tools/"><span class="hp">業種の</span>10本を見る</a>
       </div>
     </div>
   </section>
@@ -909,12 +932,44 @@
   </div>
 
   <div class="sec" style="padding-bottom:0">
+    <section class="panel" id="tools" aria-labelledby="tools-h">
+      <div class="side" aria-hidden="true"><span>Tools</span></div>
+      <div class="inner">
+        <p class="eyebrow">業種のAI道具</p>
+        <h2 id="tools-h">まずは、業種ごとの<br>AIの道具10本から。</h2>
+        <p class="lead">美容室なら美容室の、工務店なら工務店の10本。メニューや料金、言葉づかいを一度入れておくと、口コミの返事もお知らせも、お店らしい下書きで返ってきます。</p>
+        <div class="tl-box">
+          <div class="tl-price">
+            <p class="tl-k">業種の10本</p>
+            <p class="tl-yen">月額<b>11,800</b>円<small>（税込）</small></p>
+            <ul class="tl-ck"><li>選んだ業種の10本を、ぜんぶ使えます</li><li>お店ごとに月300回まで。AIの利用料も込み</li><li>最低契約期間なし。いつでも解約できます</li></ul>
+          </div>
+          <div class="tl-inds">
+            <p class="tl-k">用意している業種　<b>22</b></p>
+            <ul class="tl-chips"><li>美容室</li><li>ネイル・まつげ</li><li>エステ・リラク</li><li>ジム・ヨガ</li><li>ペットサロン</li><li>工務店・リフォーム</li><li>不動産</li><li>ハウスクリーニング</li><li>自動車整備・販売</li><li>居酒屋・飲食店</li><li>カフェ・パン・洋菓子</li><li>小売・ネットショップ</li><li>旅館・民泊</li><li>介護</li><li>クリニック</li><li>歯科</li><li>整体・整骨院</li><li>士業</li><li>製造</li><li>学習塾</li><li>習いごと教室</li><li>夜のお店</li></ul>
+            <p class="tl-note">美容室・ネイル・カフェ・小売は9本です。ここに無い業種も、近い業種の10本が合うことがあります。</p>
+          </div>
+        </div>
+        <div class="fit-points">
+          <div><h3>業種を選ぶ</h3><p>お店の業種の10本が、そのまま並びます。何をどう頼むかは、道具ごとに決めてあります。</p></div>
+          <div><h3>お店の情報を入れる</h3><p>メニューと料金、休みの日、言葉づかい、スタッフ。メニュー表を見ながら、書ける所だけで大丈夫です。</p></div>
+          <div><h3>お店の言葉で返ってくる</h3><p>料金や休みはお店の情報のとおり。書いていない事は作らず、【要確認】と印を付けて返します。</p></div>
+        </div>
+        <div class="flow-cta">
+          <p>御社の業種の10本を、<br class="sp">ご覧ください。</p>
+          <a class="cta-big" href="/tools/">業種の10本を見る</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="sec" style="padding-bottom:0">
     <section class="panel" id="menu" aria-labelledby="menu-h">
       <div class="side" aria-hidden="true"><span>Service</span></div>
       <div class="inner">
-        <p class="eyebrow">御社専用のAIづくり</p>
+        <p class="eyebrow">もっと御社に合わせる時は：御社専用のAIづくり</p>
         <h2 id="menu-h">御社の業務に合わせて、<br>専用のAIの仕組みを開発します。</h2>
-        <p class="lead">確認シートで御社の仕事を伺い、その中からAIに任せられる作業を見つけて、御社のやり方に合わせた仕組みとして開発します。</p>
+        <p class="lead">業種の10本では合わない仕事や、御社だけの書式・決まりごとがある時は、専用に作ります。確認シートで御社の仕事を伺い、その中からAIに任せられる作業を見つけて、御社のやり方に合わせた仕組みとして開発します。</p>
 
         <div class="fit2">
           <div class="fit2-fig"><svg viewBox="10 20 740 420" role="img" aria-label="確認シートで御社の仕事を伺い、問い合わせの返事・議事録・見積書・請求書の入力・SNSの投稿・社内の質問対応などAIに任せられる作業を見つけ、御社のやり方に合わせた仕組みにして、その作業にかかる時間を減らす様子"><g class="f-sheet"><rect x="22" y="124" width="160" height="200" rx="8"/><text x="102" y="158" text-anchor="middle">確認シート</text><path class="ln" d="M70 186 H160"/><path class="ck" pathLength="1" style="--kd:0.50s" d="M42 186 l7 7 l13 -15"/><path class="ln" d="M70 222 H160"/><path class="ck" pathLength="1" style="--kd:0.95s" d="M42 222 l7 7 l13 -15"/><path class="ln" d="M70 258 H160"/><path class="ck" pathLength="1" style="--kd:1.40s" d="M42 258 l7 7 l13 -15"/><path class="ln" d="M70 294 H160"/><path class="ck" pathLength="1" style="--kd:1.85s" d="M42 294 l7 7 l13 -15"/></g><path class="f-arrow" pathLength="1" d="M194 224 H244 M234 214 l10 10 l-10 10"/><rect class="f-board" x="254" y="36" width="486" height="398" rx="14"/><text x="290" y="80" class="f-ttl">御社の仕事<tspan class="f-set" dx="14">例 1〜3</tspan></text><text class="f-lg" x="720" y="84" text-anchor="end">かかる時間</text><g class="f-row ai" style="--rd:0.50s;--td:0.00s;--bd:0.00s"><rect class="bg" x="270" y="100" width="455" height="54" rx="10"/><text class="no" x="286" y="135">1</text><text class="lb" x="310" y="135">問い合わせの返事</text><g class="tg"><circle cx="496" cy="127" r="17"/><text x="496" y="133" text-anchor="middle">AI</text></g><rect class="bar" x="524" y="120" width="190" height="14" rx="7" style="--s:0.242"/><text class="nt" x="582" y="133">AIが下書き</text></g><g class="f-row ai" style="--rd:0.95s;--td:0.15s;--bd:0.20s"><rect class="bg" x="270" y="166" width="455" height="54" rx="10"/><text class="no" x="286" y="201">2</text><text class="lb" x="310" y="201">議事録づくり</text><g class="tg"><circle cx="496" cy="193" r="17"/><text x="496" y="199" text-anchor="middle">AI</text></g><rect class="bar" x="524" y="186" width="170" height="14" rx="7" style="--s:0.235"/><text class="nt" x="576" y="199">AIがまとめる</text></g><g class="f-row ai" style="--rd:1.40s;--td:0.30s;--bd:0.40s"><rect class="bg" x="270" y="232" width="455" height="54" rx="10"/><text class="no" x="286" y="267">3</text><text class="lb" x="310" y="267">見積書の作成</text><g class="tg"><circle cx="496" cy="259" r="17"/><text x="496" y="265" text-anchor="middle">AI</text></g><rect class="bar" x="524" y="252" width="180" height="14" rx="7" style="--s:0.289"/><text class="nt" x="588" y="265">AIが下書き</text></g><g class="f-row hm" style="--rd:1.85s;--td:0.45s;--bd:0.60s"><rect class="bg" x="270" y="298" width="455" height="54" rx="10"/><text class="lb" x="310" y="333">現場での作業</text><g class="tg"><circle cx="496" cy="325" r="17"/><text x="496" y="331" text-anchor="middle">人</text></g><rect class="bar" x="524" y="318" width="196" height="14" rx="7" style="--s:1.000"/></g><g class="f-chip" style="--cd:.6s"><rect x="270" y="376" width="214" height="40" rx="8"/><text x="377" y="403" text-anchor="middle">社内の言葉・書式で</text></g><g class="f-chip" style="--cd:.8s"><rect x="496" y="376" width="229" height="40" rx="8"/><text x="610" y="403" text-anchor="middle">社内ルールに沿って</text></g></svg></div>
@@ -1071,9 +1126,11 @@
       <div class="head">
         <p class="eyebrow">料金</p>
         <h2 id="price-h" class="en big-en">Price</h2>
-        <p>まず無料のヒアリングで伺い、内容と費用の目安をご提案します。</p>
+        <p>業種のAI道具は、月額11,800円（税込）です。御社専用に作る時は、まず無料のヒアリングで伺い、内容と費用の目安をご提案します。</p>
       </div>
       <div class="body">
+        <div class="card tl-card"><span class="meta">Tools <span class="chip">月額</span></span><h3>業種のAI道具（10本）</h3><p class="yen">11,800<small>円（税込）</small></p><p>選んだ業種の10本をぜんぶ。お店ごとに月300回まで、AIの利用料も込みです。最低契約期間・違約金はなく、いつでも解約できます。</p><a class="tl-more" href="/tools/">業種の10本を見る</a></div>
+        <p class="tl-sub">御社専用に作る時</p>
         <div class="cards">
           <div class="card"><span class="meta">Step 01 <span class="chip free">無料</span></span><h3>業務ヒアリング<br>「御社の仕事の地図」</h3><p class="yen">0<small>円</small></p><p>約60分のヒアリングをもとに、1週間以内に1枚にまとめてお渡しします。業務ごとの時間と、AIで減らせる所がわかります。</p></div>
           <div class="card"><span class="meta">Step 02 <span class="chip">初期費用</span></span><h3>仕組みの構築</h3><p>仕組みごとに、規模に応じてお見積りします。操作説明・手順書・1か月の無償修正付き。</p></div>
@@ -1094,6 +1151,7 @@
         <p class="lead">ご相談の前に確かめておきたい点を、まとめました。</p>
       </div>
       <dl class="faq-list">
+        <div class="faq-i"><dt>業種のAI道具と、御社専用のAIは何が違いますか。</dt><dd>業種のAI道具は、業種ごとに用意した10本に、お店の情報を入れて使う形です。月額11,800円（税込）で、お申し込みの日から使えます。御社専用のAIは、御社の書式・言葉・決まりごとを組み込んで作る形で、初期費用と月額がかかります。まず道具で始めて、合わない所だけ専用に作ることもできます。</dd></div>
         <div class="faq-i"><dt>契約期間の縛りはありますか。</dt><dd>最低契約期間はなく、いつでも解約いただけます。解約の違約金もありません。月額の見守りは仕組みごとに解約でき、前月末日までにお知らせいただくと、翌月から費用はかかりません。</dd></div>
         <div class="faq-i"><dt>お預けする情報は安全ですか。</dt><dd>入力した内容はAIの学習に使われず、お預かりした資料は終了後30日以内に削除します。パスワードはお預かりしません。詳しい決まりは「お客様の情報の扱いについて」にまとめ、ご契約の前にお渡しします。</dd></div>
         <div class="faq-i"><dt>パソコンが苦手でも使えますか。</dt><dd>操作説明と手順書をお渡しし、導入後のご質問はLINEで随時お受けします。使いにくい所があれば、導入後1か月は無償で修正します。</dd></div>
@@ -1237,7 +1295,8 @@
   mark('.p-head > *, .turn-k, .turn h2, .turn .lines p', 'rv', .12);
   mark('.flow .eyebrow, .flow h2, .flow .lead, .flow .free', 'rv', .12);
   mark('.panel .eyebrow, .panel h2, .panel .lead, .fit2, .fit-cap, .fit-points > div, .ex-head h3, .feat > div, .wh-detail, .others', 'rv', .1);
-  mark('.dark .eyebrow, .dark .head p, .card, .price-note', 'rv', .12);
+  mark('.dark .eyebrow, .dark .head p, .card, .tl-sub, .price-note', 'rv', .12);
+  mark('.tl-price, .tl-inds', 'rv', .12);
   mark('.policy .eyebrow, .shead .lead, .scard, .snote, .letter > *, .c-head > p, .reach', 'rv', .08);
   mark('.faq .eyebrow, .faq-i, .flow-cta', 'rv', .08);
   mark('.big-en, .contact-box h2', 'rv-mask');
