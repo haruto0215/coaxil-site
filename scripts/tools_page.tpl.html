@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>コアシルのAI道具｜業種ごとの10本を、お店に合わせて</title>
+<meta name="description" content="美容室、工務店、居酒屋、クリニックなど22の業種に、それぞれ10本のAIの道具。お店の情報を一度入れておくと、お店らしい下書きが返ってきます。月額9,800円（税込）。">
+<link rel="canonical" href="https://coaxil.jp/tools/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="コアシル">
+<meta property="og:title" content="コアシルのAI道具｜業種ごとの10本を、お店に合わせて">
+<meta property="og:description" content="業種ごとに10本のAIの道具。お店の情報を入れるだけで、お店らしい下書きに。月額9,800円（税込）。">
+<meta property="og:url" content="https://coaxil.jp/tools/">
+<meta property="og:image" content="https://coaxil.jp/logo-512.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/icon-48.png">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<style>
+/* 2026-11-20 動きの型（営業資料作成/drafts/20261120_動きの型/型メモ.md）に合わせた。生成りの地・黒の文字と丸いボタン・英字は Arial・青は大事な一言だけ */
+:root{
+  --cream:#F1EFE6; --dusk:#D9D9D3; --paper:#FFFFFF; --ink:#1B1C19; --mid:#6F706C; --grey:#7A7B77; --grey2:#8A8B87; --soft:#A9AAA6; --lab:#5A5B56;
+  --line:#DFDFDA; --line2:#D0D0CB; --hair:rgba(27,28,25,.07); --shadow:rgba(27,28,25,.30); --glass:rgba(255,255,255,.62); --barbg:rgba(255,255,255,.9); --ring:rgba(255,255,255,.55);
+  --steel:#4B7191; --blue:#1A5FD0; --sky:#DFE7EE; --pane:#DDE4EA; --mist:#C6D3DC; --sage:#A9C58B; --memo:#F3E3A4; --card1:#FAFAF7; --card2:#EEEEEA; --line-green:#06C755;
+  --f:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic","Noto Sans JP",sans-serif;
+  --en:Arial,"Helvetica Neue",Helvetica,"Hiragino Kaku Gothic ProN","Hiragino Sans",sans-serif;
+  --ease:cubic-bezier(.2,.7,.3,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.8;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--cream)}
+a{color:inherit}
+img{max-width:100%;display:block}
+.in{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.k{display:inline-block;font-family:var(--en);font-weight:700;font-size:12px;letter-spacing:.04em;color:var(--steel);text-transform:uppercase;line-height:1}
+.lab{font-family:var(--en);font-weight:700;font-size:11px;letter-spacing:.03em;color:var(--lab);text-transform:uppercase;line-height:1;white-space:nowrap}
+h1,h2,h3{margin:0;text-wrap:balance}
+h2{font-size:clamp(24px,3.2vw,34px);line-height:1.35;font-weight:700;letter-spacing:.01em;margin-top:14px}
+.lead{color:var(--grey);font-size:clamp(15px,1.6vw,17px);margin:14px 0 0;max-width:40em}
+.muted{color:var(--grey)}
+section{padding-block:clamp(64px,9vw,112px)}
+.band{background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0))}
+
+/* ===== 丸いボタン ===== */
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:700;font-size:15px;text-decoration:none;border:0;border-radius:999px;padding:14px 24px;cursor:pointer;line-height:1.2;transition:transform .25s var(--ease),background .25s,box-shadow .25s}
+.pill.dark{background:var(--ink);color:var(--paper);box-shadow:0 12px 24px -16px var(--shadow)}
+.pill.dark:hover{transform:translateY(-1px);background:#000}
+.pill.light{background:var(--barbg);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
+.pill.light:hover{background:var(--paper)}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--line-green);flex:none}
+.pill:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* ===== 上の帯 ===== */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(241,239,230,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+header.top .in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:30px;height:30px}
+.brand b{font-family:var(--en);font-weight:700;font-size:22px;letter-spacing:-.005em;line-height:1}
+.topmid{display:flex;align-items:center;gap:22px}
+.topmid a{font-size:13px;font-weight:700;color:var(--grey);text-decoration:none}
+.topmid a:hover{color:var(--ink)}
+header .pill{padding:10px 18px;font-size:13px}
+
+/* ===== 表紙 ===== */
+.hero{position:relative;overflow:hidden;padding-block:28px clamp(56px,8vw,96px)}
+.hero::before{content:"";position:absolute;left:-30vw;top:-10%;width:110vw;height:110vw;max-width:1500px;max-height:1500px;border-radius:50%;background:repeating-radial-gradient(circle,rgba(255,255,255,0) 0 64px,var(--ring) 64px 66px);opacity:.35;pointer-events:none}
+.hero::after{content:"";position:absolute;left:-12vw;top:30%;width:46vw;height:46vw;border-radius:50%;background:radial-gradient(circle,var(--sky) 0%,rgba(223,231,238,0) 70%);pointer-events:none}
+.hero .in{position:relative;z-index:1}
+.sbar{display:flex;align-items:center;height:56px;border-radius:28px;background:var(--barbg);padding:0 16px 0 8px;box-shadow:0 16px 30px -24px var(--shadow);text-decoration:none;color:var(--soft)}
+.sbar .chip{background:var(--ink);color:var(--paper);border-radius:22px;font-size:13px;font-weight:700;height:40px;display:flex;align-items:center;padding:0 18px;white-space:nowrap;flex:none}
+.sbar .plus{font-size:20px;font-weight:300;margin:0 12px 0 16px;line-height:1}
+.sbar .q{flex:1;min-width:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbar .cnt{font-family:var(--en);font-size:11px;color:var(--grey);margin:0 22px 0 12px;white-space:nowrap}
+.sbar .bdot{width:28px;height:28px;border-radius:50%;background:var(--ink);flex:none}
+.sbar:hover .q{color:var(--ink)}
+.hhead{margin-top:clamp(48px,7vw,84px)}
+.htitle{display:flex;align-items:center;gap:clamp(14px,2.4vw,28px);margin-top:18px}
+.htitle img{width:clamp(48px,7.4vw,84px);height:auto}
+.htitle h1{font-family:var(--en);font-weight:700;font-size:clamp(64px,11vw,128px);line-height:.95;letter-spacing:-.01em}
+.hsub{font-family:var(--en);font-weight:400;font-size:clamp(34px,6.8vw,80px);color:var(--soft);line-height:1.05;letter-spacing:-.01em;margin-top:.12em}
+.hjp{font-size:clamp(16px,2.2vw,26px);font-weight:300;color:var(--mid);line-height:1.5;margin:.5em 0 0}
+.hprice{margin:28px 0 0;font-size:16px;color:var(--mid)}
+.hprice b{font-family:var(--en);font-size:clamp(26px,3vw,32px);color:var(--ink);letter-spacing:.01em;margin-right:4px}
+.hcta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.hnote{font-size:13px;color:var(--grey);margin:14px 0 0}
+
+/* ===== 仕組みを見る（図） ===== */
+#tools{padding-top:clamp(40px,6vw,72px)}
+.view{position:relative;margin-top:36px}
+.vin{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:start;transition:opacity .4s var(--ease),filter .4s var(--ease),transform .4s var(--ease)}
+.vin.all{grid-template-columns:1fr}
+.vin.out{opacity:0;filter:blur(8px);transform:translateY(-6px)}
+.vin.pre{opacity:0;filter:blur(12px);transform:translateY(14px);transition:none}
+.panel{background:var(--paper);border-radius:22px;padding:14px;box-shadow:0 40px 70px -46px var(--shadow),0 0 0 1px var(--hair)}
+.pane{position:relative;border-radius:12px;background:var(--pane);aspect-ratio:250/262;overflow:hidden}
+.pane .ph{position:absolute;left:5.5%;right:5.5%;top:5%;display:flex;justify-content:space-between;align-items:center;z-index:1;gap:10px}
+.pane .ph b{font-size:clamp(13px,1.5vw,16px);line-height:1.2}
+.pane .ph .lab{font-weight:400;color:var(--grey);font-size:10px}
+.pane svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:var(--ink);stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+.pane svg text{stroke:none;fill:var(--grey);font-family:var(--f);font-size:8.5px}
+.pane svg text.tg{fill:var(--ink);font-weight:600;font-size:8px}
+.pane svg text.tx{fill:var(--ink);font-size:8.6px}
+.pane svg text.tb{fill:var(--ink);font-size:11px;font-weight:700}
+.pane svg text.tw{fill:var(--paper);font-size:8.6px}
+.pane svg text.tt{fill:var(--ink);font-size:7.6px}
+.pane svg text.st{fill:var(--ink);font-size:11px;letter-spacing:1.5px}
+.fs{fill:var(--sage);stroke:none}.fk{fill:var(--ink);stroke:none}.fp{fill:var(--mist);stroke:none}.fy{fill:var(--memo);stroke:none}.fw{fill:var(--paper);stroke:none}
+.wl{stroke:var(--paper)}
+.dr{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .6s var(--ease) var(--d,0s)}
+.fd{opacity:0;transition:opacity .55s var(--ease) var(--d,0s)}
+.play .dr{stroke-dashoffset:0}.play .fd{opacity:1}
+.vtext{padding-top:clamp(4px,1vw,14px);min-width:0}
+.vtext h3{font-size:clamp(28px,3.6vw,40px);line-height:1.2;margin-top:12px;letter-spacing:-.01em}
+.vtext .desc{font-size:clamp(16px,1.8vw,20px);color:var(--grey2);line-height:1.6;margin:12px 0 0}
+.rows{margin-top:clamp(22px,3vw,36px);display:grid;gap:clamp(18px,2.4vw,26px)}
+.row span{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--grey);line-height:1}
+.row span b{font-weight:400}
+.row span b + b{opacity:0;transition:opacity .3s var(--d2,0s)}
+.row i{display:block;height:1px;background:var(--line2);margin-top:12px;position:relative}
+.row i b{position:absolute;left:0;top:-1px;height:2px;background:var(--ink);width:0;transition:width 1.1s var(--ease) var(--d,0s)}
+.row i u{position:absolute;top:-4px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--paper);border:1.5px solid var(--ink);left:0;transition:left 1.1s var(--ease) var(--d,0s)}
+.play .row i b{width:100%}.play .row i u{left:100%}.play .row span b + b{opacity:1}
+.say{grid-column:1/-1;background:var(--barbg);border-radius:20px;padding:16px 22px 18px;box-shadow:0 36px 60px -46px var(--shadow),0 0 0 1px var(--hair)}
+.say .who{display:flex;align-items:center;gap:10px;font-family:var(--en);font-weight:700;font-size:15px}
+.say .who img{width:22px;height:22px}
+.say .who .lab{margin-left:auto;font-weight:400;color:var(--grey);font-size:10px}
+.blue{margin:12px 0 0 clamp(0px,4vw,46px);background:var(--blue);color:var(--paper);border-radius:6px;min-height:52px;display:flex;align-items:center;padding:10px 18px}
+.blue span{font-size:clamp(15px,1.9vw,21px);font-weight:500;line-height:1.4}
+.blue em{display:inline-block;width:2px;height:1.1em;background:var(--paper);margin-left:3px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.say .note{margin:12px 0 0 clamp(0px,4vw,46px);font-size:12.5px;color:var(--grey);opacity:0;transition:opacity .5s 3.1s}
+.play .say .note{opacity:1}
+.allg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 12px}
+.gc{background:linear-gradient(180deg,var(--card1),var(--card2));border:0;border-radius:14px;box-shadow:inset 0 0 0 1px var(--paper),0 18px 30px -26px var(--shadow);display:flex;align-items:center;gap:14px;padding:16px 18px;font:inherit;text-align:left;cursor:pointer;color:var(--ink);transition:transform .25s var(--ease)}
+.gc:hover{transform:translateY(-2px)}
+.gc .lab{color:var(--grey);font-size:10px}
+.gc b{font-size:16px;line-height:1.35}
+.gc small{display:block;font-size:12.5px;color:var(--grey);font-weight:400;margin-top:3px}
+.allfoot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--ink);color:var(--paper);border-radius:999px;padding:14px 24px}
+.allfoot b{font-size:16px}.allfoot span{font-family:var(--en);font-size:13px;opacity:.75}
+.footrow{display:flex;justify-content:space-between;margin-top:clamp(28px,4vw,44px)}
+.footrow .lab{font-weight:400;color:var(--grey);font-size:10.5px}
+.ttabs{position:relative;margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:4px;background:rgba(255,255,255,.5);border-radius:999px;padding:6px;overflow-x:auto;scrollbar-width:none}
+.ttabs::-webkit-scrollbar{display:none}
+.ttabs button{position:relative;z-index:1;flex:1 0 auto;font:inherit;font-size:15px;font-weight:500;color:var(--grey2);background:transparent;border:0;border-radius:999px;padding:11px 18px;cursor:pointer;white-space:nowrap;transition:color .3s}
+.ttabs button[aria-selected="true"]{color:var(--paper)}
+.ttabs .tp{position:absolute;top:6px;bottom:6px;left:0;width:0;border-radius:999px;background:var(--ink);transition:left .55s var(--ease),width .55s var(--ease)}
+
+/* ===== 業種の10本 ===== */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+.chip{font:inherit;font-size:14px;font-weight:500;border:0;background:var(--barbg);box-shadow:0 0 0 1px var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;color:var(--mid);transition:background .25s,color .25s}
+.chip:hover{color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);box-shadow:none}
+.count{margin:26px 0 14px}
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tool{background:linear-gradient(180deg,var(--card1),var(--card2));border-radius:16px;box-shadow:inset 0 0 0 1px var(--paper),0 20px 34px -30px var(--shadow);padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px}
+.tool .tg{display:flex;justify-content:space-between;align-items:center}
+.tool .tg .lab{color:var(--grey);font-size:10.5px}
+.tag{font-size:11px;font-weight:700;border-radius:999px;padding:3px 10px;line-height:1.3;background:var(--sky);color:var(--steel)}
+.tool .nm{font-weight:700;font-size:17px;line-height:1.4;margin-top:4px}
+.tool .jb{font-size:14px;color:var(--grey);line-height:1.6}
+.tool .io{font-size:12.5px;color:var(--grey);margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
+
+/* ===== お店に合わせる・始め方 ===== */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:34px}
+.steps.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.step{background:linear-gradient(180deg,var(--card1),var(--card2));border-radius:18px;box-shadow:inset 0 0 0 1px var(--paper),0 20px 34px -30px var(--shadow);padding:22px 20px}
+.step .lab{color:var(--steel)}
+.step h3{font-size:18px;line-height:1.4;margin-top:14px}
+.step p{font-size:14px;color:var(--grey);margin:8px 0 0;line-height:1.7}
+.real{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:30px;align-items:start}
+.real figure{margin:0;display:grid;gap:10px}
+.real img{width:100%;height:auto;border-radius:14px;background:var(--paper);box-shadow:0 30px 50px -38px var(--shadow),0 0 0 1px var(--hair)}
+.real figcaption{font-size:13px;color:var(--grey)}
+.small-note{font-size:13px;margin-top:12px}
+.branch{margin-top:16px;border-radius:18px;padding:18px 20px;background:var(--glass);box-shadow:0 0 0 1px var(--line);font-size:14.5px}
+
+/* ===== 料金・情報の扱い ===== */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:34px}
+.box{background:var(--paper);border-radius:22px;padding:clamp(22px,3vw,34px);box-shadow:0 40px 70px -50px var(--shadow),0 0 0 1px var(--hair)}
+.price-en{font-family:var(--en);font-weight:700;font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.01em;margin-top:16px}
+.price-en small{font-family:var(--f);font-size:15px;font-weight:400;color:var(--grey);margin-left:6px;letter-spacing:0}
+.price-jp{font-size:15px;color:var(--grey);margin:8px 0 0}
+.cancel{margin:18px 0 0;font-weight:700;font-size:15px}
+.ck{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px;font-size:14.5px;color:var(--mid)}
+.ck li{display:flex;gap:10px;align-items:flex-start;line-height:1.6}
+.ck li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--ink);margin-top:.65em}
+.sub2{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
+.sub2 b{font-size:16px}.sub2 p{margin:4px 0 0;font-size:14px;color:var(--grey)}
+.badges{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.badge{border-radius:14px;background:var(--cream);padding:14px 16px;font-size:14px;font-weight:700;line-height:1.5}
+.badge .lab{display:block;color:var(--steel);margin-bottom:8px;font-size:10px}
+.box .fine{font-size:13.5px;color:var(--grey);margin:16px 0 0}
+
+/* ===== よくある質問 ===== */
+.qas{margin-top:30px;display:grid;gap:10px;max-width:820px}
+.qa{background:var(--barbg);border-radius:16px;box-shadow:0 0 0 1px var(--hair)}
+.qa summary{list-style:none;cursor:pointer;padding:18px 54px 18px 20px;font-weight:700;font-size:15.5px;position:relative}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-family:var(--en);font-weight:300;font-size:22px;color:var(--grey);transition:transform .3s var(--ease)}
+.qa[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.qa p{margin:0;padding:0 20px 18px;color:var(--mid);font-size:14.5px}
+
+/* ===== ご相談 ===== */
+.formwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.owner{display:flex;gap:14px;align-items:center;margin:22px 0 0;background:var(--paper);border-radius:16px;padding:14px 16px;box-shadow:0 0 0 1px var(--hair)}
+.owner img{width:40px;height:40px;flex:none}
+.owner p{margin:0;font-size:14px;line-height:1.6}
+.linebox{margin-top:20px;display:grid;gap:12px;justify-items:start}
+.linebox p{margin:0;font-size:13.5px;color:var(--grey)}
+.inq{background:var(--paper);border-radius:22px;padding:clamp(20px,3vw,30px);box-shadow:0 40px 70px -50px var(--shadow),0 0 0 1px var(--hair);display:grid;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label.f{display:flex;flex-wrap:wrap;align-items:center;gap:6px 0;font-size:13.5px;font-weight:700}
+.req{font-size:10.5px;color:var(--paper);background:var(--ink);border-radius:999px;padding:1px 7px;margin-left:6px;font-weight:700;vertical-align:1px}
+.f input,.f textarea,.f select{flex:1 0 100%;font:inherit;font-weight:400;font-size:16px;border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:var(--cream);width:100%;color:inherit}
+.f input:focus,.f textarea:focus,.f select:focus{outline:2px solid var(--blue);outline-offset:1px;background:var(--paper)}
+.f textarea{min-height:110px;resize:vertical}
+fieldset{border:0;padding:0;margin:0}
+legend{font-size:13.5px;font-weight:700;margin-bottom:8px;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;background:var(--cream);border-radius:999px;padding:7px 13px;cursor:pointer}
+.agree{display:flex;gap:8px;align-items:flex-start;font-size:13.5px}
+.agree input{margin-top:5px}
+.hp{position:absolute;left:-9999px}
+#formMsg{font-size:14px}
+#formMsg.err{color:#B3261E}
+.done{display:grid;gap:10px}
+.done p{margin:0;color:var(--mid)}
+
+footer{padding-block:34px 44px;font-size:13px;color:var(--grey)}
+footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer .links{display:flex;gap:18px}
+footer a{text-decoration:none}footer a:hover{color:var(--ink)}
+.stick{display:none}
+
+/* 出てくる動き：ぼやけた所から、ゆっくりはっきり（最初の画面の中は、はじめから見えている） */
+.rv{transition:opacity .9s var(--ease),filter .9s var(--ease),transform .9s var(--ease)}
+.rv.wait{opacity:0;filter:blur(10px);transform:translateY(14px)}
+
+@media (max-width:900px){
+  .vin{grid-template-columns:1fr}
+  .tools,.allg{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .formwrap,.two{grid-template-columns:1fr}
+  .topmid a{display:none}
+}
+@media (max-width:640px){
+  .sbar .cnt{display:none}
+  .sbar .q{font-size:14px}
+  .tools,.allg,.steps,.steps.four,.real{grid-template-columns:1fr}
+  .row2,.badges{grid-template-columns:1fr}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin-right:-20px;padding-right:20px;padding-bottom:4px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;white-space:nowrap}
+  .ttabs button{flex:0 0 auto;font-size:14px;padding:10px 16px}
+  header .pill{padding:9px 14px}
+  .stick{display:flex;position:fixed;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;justify-content:center;transition:transform .35s var(--ease),opacity .35s}
+  .stick.hide{transform:translateY(150%);opacity:0}
+  body{padding-bottom:84px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="brand" href="/" aria-label="コアシル（Coaxil）トップへ"><img src="img/mark.png" alt="" width="30" height="30"><b>Coaxil</b></a>
+  <nav class="topmid" aria-label="ページの中"><a href="#tools">仕組み</a><a href="#menu">業種の10本</a><a href="#price">料金</a><a href="#faq">よくある質問</a></nav>
+  <a class="pill dark" href="https://lin.ee/p5YisUR" data-cta="header"><span class="dot" aria-hidden="true"></span>LINEで相談</a>
+</div></header>
+
+<main>
+<section class="hero"><div class="in">
+  <a class="sbar rv" href="#menu" aria-label="業種の10本を見る"><span class="chip">業種の10本 ↗</span><span class="plus" aria-hidden="true">+</span><span class="q">お店の業種は？　美容室・居酒屋・工務店・歯科…</span><span class="cnt">22 INDUSTRIES</span><span class="bdot" aria-hidden="true"></span></a>
+  <div class="hhead">
+    <span class="k rv">10 tools. For your shop.</span>
+    <div class="htitle rv"><img src="img/mark.png" alt="" width="84" height="84"><h1>Coaxil</h1></div>
+    <div class="hsub rv" aria-hidden="true">AI tools for your shop</div>
+    <p class="hjp rv">業種ごとに10本。お店の事務を軽くする、AIの道具。</p>
+    <p class="hprice rv"><b>月額9,800円</b>（税込）で10本ぜんぶ。いつでも解約できます。</p>
+    <div class="hcta rv">
+      <a class="pill dark" href="https://lin.ee/p5YisUR" data-cta="hero"><span class="dot" aria-hidden="true"></span>LINEで相談する（無料）</a>
+      <a class="pill light" href="#tools">仕組みを見る</a>
+    </div>
+    <p class="hnote rv">LINEで業種と「楽にしたい作業」を伺い、使い方をご案内します。</p>
+  </div>
+</div></section>
+
+<section id="tools"><div class="in">
+  <span class="k rv">Tools — 仕組み</span>
+  <h2 class="rv">押すと、何を渡して何が返るかが、図で分かります。</h2>
+  <div class="view rv" id="view" aria-live="polite"></div>
+  <div class="footrow"><span class="lab">Paste / Check / Use</span><span class="lab">10 tools per industry</span></div>
+  <div class="ttabs" role="tablist" aria-label="仕組みを選ぶ" id="ttabs"><i class="tp" id="tp"></i></div>
+</div></section>
+
+<section class="band"><div class="in">
+  <span class="k rv">Why — こんな時間</span>
+  <h2 class="rv">こんな時間、ありませんか。</h2>
+  <p class="lead rv">お客様のこと、お店のこと。本当は、そちらに時間を使いたいはずです。</p>
+  <div class="steps">
+    <div class="step rv"><span class="lab">01 / Writing</span><h3>閉店後の、書きもの</h3><p>会議のメモをまとめる、お知らせを書く、取引先へのメールを考える。</p></div>
+    <div class="step rv"><span class="lab">02 / Replies</span><h3>返事を考える時間</h3><p>口コミやお問い合わせに、ていねいに返したい。でも、言葉選びに時間がかかる。</p></div>
+    <div class="step rv"><span class="lab">03 / Numbers</span><h3>表づくりと数え直し</h3><p>シフト表を組む、売上や回数を集計する、月末に数え直す。</p></div>
+  </div>
+</div></section>
+
+<section id="fit"><div class="in">
+  <span class="k rv">Fit — お店に合わせる</span>
+  <h2 class="rv">同じAIでも、お店の情報が入ると、答えが変わります。</h2>
+  <p class="lead rv">道具の中身は、業種ごとに作ってあります。そこへ、お店の情報を入れるだけ。作り込みの手間はかかりません。</p>
+  <div class="steps">
+    <div class="step rv"><span class="lab">Step 01</span><h3>業種を選ぶ</h3><p>お店の業種の10本が、そのまま並びます。</p></div>
+    <div class="step rv"><span class="lab">Step 02</span><h3>お店の情報を入れる</h3><p>メニューと料金、休みの日、言葉づかい、スタッフ。見本を見ながら、書ける所だけで大丈夫です。</p></div>
+    <div class="step rv"><span class="lab">Step 03</span><h3>お店の言葉で返ってくる</h3><p>料金や休みはお店の情報のとおり。書いていない事は作らず、【要確認】と印を付けて返します。</p></div>
+  </div>
+  <div class="real rv">
+    <figure><img src="img/app.jpg" alt="美容室の道具が並んだ、道具のアプリの画面" width="800" height="600" loading="lazy"><figcaption>実際のアプリの画面。スマホでもパソコンでも使えます</figcaption></figure>
+    <figure><img src="img/notice.png" alt="年末年始のお休みの貼り紙。曜日と定休日も入っている" width="636" height="900" loading="lazy"><figcaption>「お知らせ」で作った貼り紙（PDF）。定休日も読んで入れます</figcaption></figure>
+  </div>
+  <p class="muted small-note rv">どれも、見本のお店（美容室・架空）の情報を入れて、そのまま作った物です。</p>
+</div></section>
+
+<section id="menu" class="band"><div class="in">
+  <span class="k rv">Industries — 業種の10本</span>
+  <h2 class="rv">お店の業種を選んでください</h2>
+  <p class="lead rv">選んだ業種の10本が、月額の中でぜんぶ使えます。文章はそのままコピーでき、貼り紙はPDF、表はExcelで返ります。</p>
+  <div class="chips rv" role="group" aria-label="業種を選ぶ" id="chips"></div>
+  <p class="count lab" id="count" aria-live="polite"></p>
+  <div class="tools" id="list"></div>
+  <p class="muted" style="margin-top:18px;font-size:14px">ここに無い業種の方も、LINEでご相談ください。近い業種の10本が合うことがあります。</p>
+</div></section>
+
+<section id="flow"><div class="in">
+  <span class="k rv">Start — 始め方</span>
+  <h2 class="rv">LINEで相談して、その日から</h2>
+  <div class="steps four">
+    <div class="step rv"><span class="lab">01</span><h3>LINEで友だち追加</h3><p>下のボタンから。相談は無料です。</p></div>
+    <div class="step rv"><span class="lab">02</span><h3>業種と作業を伺う</h3><p>業種と、楽にしたい作業を教えてください。10本の使い方をお伝えします。</p></div>
+    <div class="step rv"><span class="lab">03</span><h3>カードでお申し込み</h3><p>月額9,800円（税込）。用意するのはクレジットカードだけです。お支払いのあと、ログインの合言葉をLINEでお送りします。</p></div>
+    <div class="step rv"><span class="lab">04</span><h3>お店の情報を入れて、使う</h3><p>メニュー表や料金表があれば、それを見ながら書き写すだけ。入れたら、すぐ使えます。</p></div>
+  </div>
+  <div class="branch rv"><strong>会社に合わせて作りたい時は</strong><br><span class="muted">御社だけの書式や決まりで作る道具は、別のご契約です。30分の実演（無料・オンライン）で、動く見本をお見せしながら伺い、お見積りします（初期費用＋月額）。</span></div>
+</div></section>
+
+<section id="price" class="band"><div class="in">
+  <span class="k rv">Price — 料金</span>
+  <h2 class="rv">10本ぜんぶで、月額9,800円。</h2>
+  <div class="two">
+    <div class="box rv">
+      <span class="lab">Industry pack / 10 tools</span>
+      <div class="price-en">¥9,800<small>／月（税込）</small></div>
+      <p class="price-jp">業種の10本：月額9,800円（税込）</p>
+      <p class="cancel">解約はLINEで一言。最低契約期間も、違約金もありません。</p>
+      <ul class="ck"><li>選んだ業種の10本を、ぜんぶ使えます</li><li>お店ごとに、月300回まで（残りは画面でいつでも確かめられます）</li><li>AIの利用料は月額に含みます</li><li>次のお支払い日の前日までに解約すると、次の回からかかりません</li><li>割引や無料のお試しはありません</li></ul>
+      <div class="sub2"><b>会社に合わせて作る道具</b><p>初期費用＋月額。30分の実演のあとにお見積りします。</p></div>
+    </div>
+    <div class="box rv">
+      <span class="lab">Privacy / 情報の扱い</span>
+      <h3 style="font-size:22px;margin-top:16px">安心して使えるように</h3>
+      <div class="badges">
+        <div class="badge"><span class="lab">Password</span>パスワードは、お預かりしません</div>
+        <div class="badge"><span class="lab">Training</span>入力は、AIの学習に使われません</div>
+        <div class="badge"><span class="lab">Files</span>作ったファイルは、7日で消えます</div>
+        <div class="badge"><span class="lab">Send</span>送る・投稿するのは、お店の方です</div>
+      </div>
+      <p class="fine">使うAIは、米国Anthropic社の「Claude」を会社向けの契約で使います。入力は通常30日以内に消え、会話の中身はコアシルのサーバーに残りません。くわしくは <a href="/privacy/">プライバシーポリシー</a> をご覧ください。</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="in">
+  <span class="k rv">FAQ — よくあるご質問</span>
+  <h2 class="rv">よくあるご質問</h2>
+  <div class="qas">
+  <details class="qa rv"><summary>パソコンが苦手でも使えますか？</summary><p>スマホのブラウザで使えます。メモを貼る、写真を付ける、の2つが分かれば大丈夫です。分からない時は、LINEでいつでも聞いてください。</p></details>
+  <details class="qa rv"><summary>どんな業種でも使えますか？</summary><p>今は22の業種に、それぞれ10本を用意しています（美容室・ネイル・カフェ・小売は9本）。ここに無い業種の方は、LINEでご相談ください。近い業種の10本が合うことがあります。</p></details>
+  <details class="qa rv"><summary>ChatGPTなどと、何が違いますか？</summary><p>お店の情報を一度入れておけば、毎回お店のことを説明し直さなくてよい所です。業種ごとに、何を渡せば何が返るかを決めてあるので、文を考えなくても使えます。貼り紙はPDF、シフト表や集計はExcelの形で、そのまま返ります。</p></details>
+  <details class="qa rv"><summary>「お店に合わせる」とは、どういうことですか？</summary><p>メニューと料金、休みの日、言葉づかい、スタッフなどを、画面の「お店の情報」に入れておくことです。AIはそれを読んで下書きを作るので、料金や休みがお店のとおりになり、言葉づかいもお店らしくなります。あとから何度でも直せます。</p></details>
+  <details class="qa rv"><summary>使わない道具があっても、料金は同じですか？</summary><p>はい、月額9,800円（税込）です。使わない道具は、画面に出さないようにもできます。</p></details>
+  <details class="qa rv"><summary>AIの答えは、そのまま使って大丈夫ですか？</summary><p>AIが作るのは下書きです。金額・日付・お名前などは、最後に人の目で確かめてからお使いください。分からない所は【要確認】と印を付けて返します。</p></details>
+  <details class="qa rv"><summary>解約はどうすればいいですか？</summary><p>LINEかお電話でお知らせください。最低契約期間や違約金はありません。次のお支払い日の前日までにお知らせいただくと、次の回から料金はかかりません。お支払い済みの期間の終わりまでは使えます。</p></details>
+  <details class="qa rv"><summary>無料で試せますか？</summary><p>LINEでのご相談と、30分の実演（オンライン）は無料です。実演では、お店の業種の10本が動くところをお見せします。道具を使い始めるのは、お申し込みのあとからです。</p></details>
+  </div>
+</div></section>
+
+<section id="contact" class="band"><div class="in formwrap">
+  <div>
+    <span class="k rv">Contact — ご相談</span>
+    <h2 class="rv">まずは、LINEで気軽に</h2>
+    <p class="lead rv">「うちの業種でも使える？」の一言で大丈夫です。10本の使い方をご案内します。</p>
+    <div class="owner rv"><img src="img/mark.png" alt="" width="40" height="40"><p><b>コアシル 代表 高橋陽人</b><br><span class="muted">はじめのご案内はAIがします。そのあとは、私がLINEでお返事します。</span></p></div>
+    <div class="linebox rv">
+      <a class="pill dark" href="https://lin.ee/p5YisUR" data-cta="contact"><span class="dot" aria-hidden="true"></span>LINEで相談する（無料）</a>
+      <p>LINEを使わない方は、こちらのフォームからどうぞ。お返事はメールでお送りします。</p>
+    </div>
+  </div>
+  <form class="inq rv" id="inq" novalidate>
+    <div class="row2">
+      <label class="f">姓<span class="req">必須</span><input name="sei" id="sei" autocomplete="family-name" required></label>
+      <label class="f">名<span class="req">必須</span><input name="mei" id="mei" autocomplete="given-name" required></label>
+    </div>
+    <label class="f">会社名・お店の名前<input name="company" id="company" autocomplete="organization"></label>
+    <label class="f">業種<select name="industry" id="indSel"><option value="">選んでください</option></select></label>
+    <div class="row2">
+      <label class="f">メールアドレス<span class="req">必須</span><input name="email" id="email" type="email" autocomplete="email" required></label>
+      <label class="f">電話番号<input name="tel" id="tel" type="tel" autocomplete="tel"></label>
+    </div>
+    <fieldset><legend>楽にしたい作業（いくつでも）</legend>
+      <div class="opts" id="jobs"></div>
+    </fieldset>
+    <label class="f">ご相談の内容<span class="req">必須</span><textarea name="message" id="message" required placeholder="例：美容室です。口コミへの返事とお知らせを書く時間を減らしたいです。"></textarea></label>
+    <div class="hp" aria-hidden="true"><label>空けておく欄<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <label class="agree"><input type="checkbox" id="agree" required> <span><a href="/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に同意して送ります</span></label>
+    <button class="pill dark" type="submit" id="sendBtn" style="justify-self:start">この内容で送る</button>
+    <div id="formMsg" role="status"></div>
+  </form>
+</div></section>
+</main>
+<a class="stick pill dark" href="https://lin.ee/p5YisUR" data-cta="sticky"><span class="dot" aria-hidden="true"></span>LINEで相談する（無料）</a>
+
+<footer><div class="in">
+  <div class="links"><a href="/">コアシルについて</a><a href="/privacy/">プライバシーポリシー</a><!--LAW_LINK--></div>
+  <div>コアシル（Coaxil）　info@coaxil.jp　070-8598-6566（平日 10:00〜18:00）</div>
+</div></footer>
+
+<script>
+(function(){
+__PACKS_LINE__
+  var ENDPOINT = "https://script.google.com/macros/s/AKfycbwpoiTm80vCkNCqlz_C0GpU67QvMj31W-aype021uPv2UnDSJAJxok0Bnn1bBnV7dYBSg/exec";
+  var $ = function(id){ return document.getElementById(id); };
+  function el(t,c,x){ var e=document.createElement(t); if(c) e.className=c; if(x!=null) e.textContent=x; return e; }
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var MARK = "img/mark.png";
+
+  // ===== 仕組みの図（中身は見本・架空） =====
+  function shiftGrid(o){
+    var s="", pat=o.pat;
+    for (var r=0;r<pat.length;r++){
+      s += '<circle class="fd fp" data-o="'+(r*.6)+'" cx="'+(o.x0-o.av)+'" cy="'+(o.y0+r*(o.ch+o.gy)+o.ch/2)+'" r="'+(o.ch*.32)+'"/>';
+      for (var c=0;c<pat[r].length;c++){
+        var x=o.x0+c*(o.cw+o.gx), y=o.y0+r*(o.ch+o.gy), k=pat[r][c], ord=(r+c)*o.st+1;
+        if (k===".") s += '<rect class="dr" pathLength="1" data-o="'+ord+'" x="'+x+'" y="'+y+'" width="'+o.cw+'" height="'+o.ch+'" rx="'+o.rx+'" stroke-width=".7"/>';
+        else s += '<rect class="fd '+(k==="k"?"fk":"fs")+'" data-o="'+ord+'" x="'+x+'" y="'+y+'" width="'+o.cw+'" height="'+o.ch+'" rx="'+o.rx+'"/>';
+      }
+    }
+    return s;
+  }
+  var SHIFT = (function(){
+    var days="月火水木金土日", s='<rect class="fd fy" data-o="15" x="152.5" y="34" width="29" height="180" rx="6"/>';
+    for (var c=0;c<7;c++) s += '<text class="fd" data-o="'+(c*.4)+'" x="'+(59+c*27)+'" y="46" text-anchor="middle">'+days[c]+'</text>';
+    s += shiftGrid({pat:["sks.ss.","s.sk.ss","ks.s.sk","ss.sks.","s.ss.ks"], x0:48, y0:56, cw:22, ch:24, gx:5, gy:8, rx:5, av:18, st:.75});
+    s += '<rect class="fd fw" data-o="18" x="92" y="224" width="140" height="22" rx="11"/><text class="fd tg" data-o="18.5" x="162" y="238" text-anchor="middle">【要確認】金曜は、人が足りません</text>';
+    return s; })();
+  var REVIEW =
+    '<rect class="fd fw" data-o="0" x="18" y="38" width="214" height="78" rx="10"/>'+
+    '<text class="fd" data-o=".5" x="30" y="56">届いた口コミ</text><text class="fd st" data-o="1" x="220" y="57" text-anchor="end">★★★★★</text>'+
+    '<text class="fd tx" data-o="1.6" x="30" y="80">カットの仕上がりが、とても気に入りました。</text>'+
+    '<text class="fd tx" data-o="2.2" x="30" y="98">また来ます！</text>'+
+    '<path class="dr" pathLength="1" data-o="3.2" d="M125 124V148M117 140 125 148 133 140" stroke-width="1.3"/>'+
+    '<rect class="fd fk" data-o="4.5" x="18" y="156" width="214" height="80" rx="10"/>'+
+    '<text class="fd tw" data-o="6" x="32" y="180">うれしいお言葉を、ありがとうございます。</text>'+
+    '<text class="fd tw" data-o="7" x="32" y="198">仕上がりを気に入っていただけて、</text>'+
+    '<text class="fd tw" data-o="8" x="32" y="216">スタッフ一同、とても励みになります。</text>'+
+    '<rect class="fd fs" data-o="9.5" x="148" y="243" width="84" height="15" rx="7.5"/><text class="fd tg" data-o="10" x="190" y="253.5" text-anchor="middle">お店の言葉づかい</text>';
+  var NOTICE =
+    '<g transform="rotate(-4 56 96)"><rect class="fd fy" data-o="0" x="16" y="62" width="80" height="68" rx="4"/>'+
+    '<text class="fd" data-o=".6" x="26" y="78">メモ</text><text class="fd tx" data-o="1.2" x="26" y="96">年末年始</text><text class="fd tx" data-o="1.8" x="26" y="112">12/30〜1/3 休み</text></g>'+
+    '<path class="dr" pathLength="1" data-o="3" d="M100 92C118 92 120 70 136 66"/><path class="dr" pathLength="1" data-o="3.3" d="M100 98C120 100 120 168 136 172"/><path class="dr" pathLength="1" data-o="3.6" d="M100 104C116 110 116 220 136 224"/>'+
+    '<rect class="fd fw" data-o="4.5" x="140" y="34" width="66" height="94" rx="4"/><rect class="dr" pathLength="1" data-o="4.7" x="140" y="34" width="66" height="94" rx="4" stroke-width=".7"/>'+
+    '<path class="dr" pathLength="1" data-o="5.6" d="M150 50H196" stroke-width="2.2"/><path class="dr" pathLength="1" data-o="6.2" d="M150 64H196" stroke-width=".7"/>'+
+    '<circle class="fd fk" data-o="6.6" cx="152" cy="80" r="1.8"/><path class="dr" pathLength="1" data-o="6.7" d="M158 80H194" stroke-width=".8"/><circle class="fd fk" data-o="7" cx="152" cy="93" r="1.8"/><path class="dr" pathLength="1" data-o="7.1" d="M158 93H190" stroke-width=".8"/><circle class="fd fk" data-o="7.4" cx="152" cy="106" r="1.8"/><path class="dr" pathLength="1" data-o="7.5" d="M158 106H186" stroke-width=".8"/>'+
+    '<text class="fd tg" data-o="7" x="212" y="84">貼り紙</text>'+
+    '<rect class="fd fs" data-o="8.2" x="140" y="158" width="62" height="28" rx="12"/><path class="dr wl" pathLength="1" data-o="8.8" d="M151 168H190M151 176H178" stroke-width=".9"/><text class="fd tg" data-o="9" x="208" y="176">LINE</text>'+
+    '<rect class="fd fp" data-o="9.6" x="140" y="204" width="42" height="42" rx="6"/><circle class="fd fw" data-o="10.2" cx="161" cy="220" r="7"/><path class="dr wl" pathLength="1" data-o="10.4" d="M150 238H172" stroke-width=".9"/><text class="fd tg" data-o="10.5" x="188" y="229">SNS</text>';
+  var ESTIMATE =
+    '<g transform="rotate(-6 48 110)"><rect class="fd fy" data-o="0" x="12" y="70" width="74" height="82" rx="4"/>'+
+    '<text class="fd" data-o=".6" x="22" y="86">下見のメモ</text><text class="fd tt" data-o="1.2" x="22" y="104">床の張替え 8畳</text><text class="fd tt" data-o="1.7" x="22" y="120">クロス 2部屋</text><text class="fd tt" data-o="2.2" x="22" y="136">処分費 ？</text></g>'+
+    '<path class="dr" pathLength="1" data-o="3" d="M92 110H106M100 104 106 110 100 116" stroke-width="1.3"/>'+
+    '<rect class="fd fw" data-o="3.8" x="112" y="34" width="124" height="214" rx="5"/><rect class="dr" pathLength="1" data-o="4" x="112" y="34" width="124" height="214" rx="5" stroke-width=".7"/>'+
+    '<text class="fd tb" data-o="4.8" x="124" y="58">御見積書</text><text class="fd" data-o="5.2" x="124" y="73">○○様</text>'+
+    '<path class="dr" pathLength="1" data-o="5.6" d="M122 88H226" stroke-width="1.1"/>'+
+    '<text class="fd tt" data-o="6.2" x="124" y="106">床の張替え</text><text class="fd tt" data-o="6.4" x="224" y="106" text-anchor="end">96,000</text><path class="dr" pathLength="1" data-o="6.6" d="M122 114H226" stroke-width=".5"/>'+
+    '<text class="fd tt" data-o="7" x="124" y="132">クロスの張替え</text><text class="fd tt" data-o="7.2" x="224" y="132" text-anchor="end">64,000</text><path class="dr" pathLength="1" data-o="7.4" d="M122 140H226" stroke-width=".5"/>'+
+    '<text class="fd tt" data-o="7.8" x="124" y="158">処分費</text><rect class="fd fy" data-o="8" x="174" y="148" width="52" height="14" rx="7"/><text class="fd tg" data-o="8.2" x="200" y="158" text-anchor="middle">【要確認】</text><path class="dr" pathLength="1" data-o="8.4" d="M122 166H226" stroke-width=".5"/>'+
+    '<rect class="fd fk" data-o="9.2" x="122" y="184" width="104" height="24" rx="4"/><text class="fd tw" data-o="9.8" x="130" y="199.5">小計</text><text class="fd tw" data-o="10" x="218" y="199.5" text-anchor="end">160,000</text>'+
+    '<text class="fd" data-o="10.6" x="124" y="232">見本（架空）</text>';
+  var ORDER =
+    '<text class="fd" data-o="0" x="22" y="50">先週の売上</text><text class="fd" data-o="0" x="228" y="50" text-anchor="end">月〜日</text>'+
+    (function(){ var h=[22,26,24,30,44,50,34], d="月火水木金土日", s=""; for (var i=0;i<7;i++){ var x=26+i*29, y=112-h[i];
+      s += '<rect class="fd '+(i===4||i===5?"fs":"fp")+'" data-o="'+(.6+i*.35)+'" x="'+x+'" y="'+y+'" width="17" height="'+h[i]+'" rx="2.5"/>';
+      s += '<text class="fd" data-o="'+(.6+i*.35)+'" x="'+(x+8.5)+'" y="124" text-anchor="middle">'+d[i]+'</text>'; } return s; })()+
+    '<path class="dr" pathLength="1" data-o=".2" d="M20 113H230" stroke-width=".7"/>'+
+    '<path class="dr" pathLength="1" data-o="3.4" d="M125 131V149M117 141 125 149 133 141" stroke-width="1.3"/>'+
+    '<rect class="fd fw" data-o="4.2" x="18" y="156" width="214" height="80" rx="8"/>'+
+    '<text class="fd" data-o="4.8" x="30" y="173">品目</text><text class="fd" data-o="4.8" x="150" y="173" text-anchor="end">残り</text><text class="fd" data-o="4.8" x="220" y="173" text-anchor="end">発注の目安</text>'+
+    '<path class="dr" pathLength="1" data-o="5" d="M28 179H222" stroke-width=".6"/>'+
+    '<text class="fd tt" data-o="5.6" x="30" y="194">生ビール（樽）</text><text class="fd tt" data-o="5.8" x="150" y="194" text-anchor="end">2</text><text class="fd tb" data-o="6.2" x="220" y="195" text-anchor="end">4</text>'+
+    '<text class="fd tt" data-o="6.6" x="30" y="211">鶏もも</text><text class="fd tt" data-o="6.8" x="150" y="211" text-anchor="end">3kg</text><text class="fd tb" data-o="7.2" x="220" y="212" text-anchor="end">8kg</text>'+
+    '<text class="fd tt" data-o="7.6" x="30" y="228">キャベツ</text><text class="fd tt" data-o="7.8" x="150" y="228" text-anchor="end">5玉</text><text class="fd tb" data-o="8.2" x="220" y="229" text-anchor="end">10玉</text>'+
+    '<rect class="fd fy" data-o="9.4" x="72" y="242" width="160" height="15" rx="7.5"/><text class="fd tg" data-o="9.8" x="152" y="252.5" text-anchor="middle">【要確認】23日は宴会30名。少し多めに</text>';
+  var MINUTES =
+    '<g transform="rotate(-5 50 120)"><rect class="fd fy" data-o="0" x="12" y="60" width="78" height="112" rx="4"/>'+
+    '<text class="fd" data-o=".6" x="21" y="77">11/15 朝礼メモ</text><text class="fd tt" data-o="1.2" x="21" y="96">・予約 12/1〜</text><text class="fd tt" data-o="1.7" x="21" y="113">・POP 店長</text><text class="fd tt" data-o="2" x="27" y="128">（20日？）</text><text class="fd tt" data-o="2.4" x="21" y="145">・大掃除 未定</text></g>'+
+    '<path class="dr" pathLength="1" data-o="3" d="M94 118H106M100 112 106 118 100 124" stroke-width="1.3"/>'+
+    '<rect class="fd fw" data-o="3.8" x="112" y="34" width="124" height="214" rx="5"/><rect class="dr" pathLength="1" data-o="4" x="112" y="34" width="124" height="214" rx="5" stroke-width=".7"/>'+
+    '<text class="fd tb" data-o="4.8" x="122" y="58">議事録</text><text class="fd" data-o="5.2" x="122" y="73">11月15日 朝礼</text>'+
+    '<path class="dr" pathLength="1" data-o="5.6" d="M122 84H226" stroke-width="1.1"/>'+
+    '<text class="fd tg" data-o="6" x="122" y="102">■ 決まったこと</text><text class="fd tt" data-o="6.4" x="128" y="118">年末の予約は12月1日から</text>'+
+    '<text class="fd tg" data-o="7" x="122" y="142">■ 担当と期限</text><text class="fd tt" data-o="7.4" x="128" y="158">店長：POPを作る</text>'+
+    '<rect class="fd fy" data-o="7.8" x="128" y="165" width="78" height="14" rx="7"/><text class="fd tg" data-o="8.1" x="167" y="175" text-anchor="middle">【要確認】20日まで？</text>'+
+    '<text class="fd tg" data-o="8.8" x="122" y="202">■ 次に確かめること</text><text class="fd tt" data-o="9.2" x="128" y="218">大掃除の日</text>'+
+    '<text class="fd" data-o="10" x="122" y="238">見本（架空）</text>';
+  var BIG = [
+    {tab:"シフト", kick:"01 / シフト表の下書き", pt:"12月のシフト（下書き）", pl:"Excel", svg:SHIFT, st:.1, h:"シフト表の下書き", p:"出られる日の希望から、シフトのたたき台ができる",
+     rows:["スタッフの希望","1日に要る人数","お店の休み"], ty:"希望を貼るだけ。シフトのたたき台ができる。", xl:"Shift / Excel", note:"✦ Excelで返ります。最後は、お店の方が確かめて決めます"},
+    {tab:"口コミ", kick:"02 / 口コミへの返事", pt:"口コミへの返事（下書き）", pl:"Text", svg:REVIEW, st:.16, h:"口コミへの返事", p:"口コミの文と星を貼ると、お店の言葉づかいで返事の下書きが返る",
+     rows:["口コミの文","星の数","お店の言葉づかい"], ty:"貼るだけ。お店らしい返事の下書きが返る。", xl:"Review / Text", note:"✦ 送る前に、お店の方が読んで直せます"},
+    {tab:"お知らせ", kick:"03 / お知らせ", pt:"年末年始のお知らせ", pl:"PDF・LINE・SNS", svg:NOTICE, st:.15, h:"お知らせ", p:"一言書くと、貼り紙・LINE・SNSの3つの形が一度にできる",
+     rows:["お知らせしたい事","お店の休みの日","言葉づかい"], ty:"一言書くだけ。貼り紙もLINEも、一度にできる。", xl:"Notice / PDF", note:"✦ 曜日と定休日は、お店の情報から確かめます"},
+    {tab:"見積書", kick:"04 / 見積書の下書き", pt:"見積書（下書き）", pl:"PDF", svg:ESTIMATE, st:.15, h:"見積書の下書き", p:"下見のメモから、見積書の形にする手間が減る",
+     rows:["下見のメモ","単価表","会社の名前と署名"], ty:"メモを渡すだけ。見積書の形で返る。", xl:"Estimate / PDF", note:"✦ 分からない金額は【要確認】のまま返します"},
+    {tab:"発注", kick:"05 / 発注の目安", pt:"来週の発注の目安", pl:"Table", svg:ORDER, st:.15, h:"発注の目安", p:"売上と残りの数から、来週の発注の量が分かる",
+     rows:["先週の売上","今の残りの数","予約と宴会"], ty:"数字を貼るだけ。発注の目安が表で返る。", xl:"Order / Table", note:"✦ 発注するのは、お店の方です"},
+    {tab:"議事録", kick:"06 / 会議の議事録", pt:"朝礼の議事録（下書き）", pl:"PDF", svg:MINUTES, st:.15, h:"会議の議事録", p:"会議のメモから、決まった事と担当がすぐまとまる",
+     rows:["会議のメモ","スタッフの名前","お店の決まり"], ty:"メモを貼るだけ。議事録の形にまとまる。", xl:"Minutes / PDF", note:"✦ あいまいな所は【要確認】で返します"}
+  ];
+  var ALL = [["シフト表の下書き","希望から、たたき台",0],["口コミへの返事","お店の言葉づかいで",1],["お知らせ","貼り紙・LINE・SNS",2],["見積書の下書き","下見のメモから",3],["発注の目安","売上と残りの数から",4],["会議の議事録","メモから、決まった事",5],
+             ["求人の原稿","話すだけで原稿に",-1],["問い合わせの返事","お店の情報で答える",-1],["お礼と次のご案内","1人ずつ書かなくてよい",-1]];
+
+  var view=$("view"), ttabs=$("ttabs"), tp=$("tp"), cur=-1, typeT=null, auto=null, seen=false, userPicked=false;
+  var tabsEls=[];
+  ["すべて"].concat(BIG.map(function(b){ return b.tab; })).forEach(function(n,i){
+    var b=el("button",null,n); b.type="button"; b.setAttribute("role","tab"); b.setAttribute("aria-selected","false"); b.id="tt"+i;
+    b.addEventListener("click",function(){ userPicked=true; stopAuto(); pick(i); });
+    ttabs.appendChild(b); tabsEls.push(b);
+  });
+  function movePill(i, instant){
+    var b=tabsEls[i]; if(!b) return;
+    if(instant){ tp.style.transition="none"; }
+    tp.style.left=b.offsetLeft+"px"; tp.style.width=b.offsetWidth+"px";
+    if(instant){ tp.offsetWidth; tp.style.transition=""; }
+    tabsEls.forEach(function(x,j){ x.setAttribute("aria-selected",String(j===i)); });
+    if(ttabs.scrollWidth>ttabs.clientWidth){ ttabs.scrollTo({left:Math.max(0,b.offsetLeft-ttabs.clientWidth/2+b.offsetWidth/2),behavior:reduce?"auto":"smooth"}); }
+  }
+  function scene(i){
+    if(i===0){
+      return '<div class="vin all"><div class="allg">'+ALL.map(function(a,k){ return '<button type="button" class="gc" data-go="'+(a[2]+1)+'"><span class="lab">'+("0"+(k+1)).slice(-2)+'</span><span><b>'+esc(a[0])+'</b><small>'+esc(a[1])+'</small></span></button>'; }).join("")+
+        '<div class="allfoot"><b>業種ごとに10本、選んで使う。月額9,800円（税込）</b><span>22 industries × 10 tools</span></div></div></div>';
+    }
+    var b=BIG[i-1];
+    return '<div class="vin">'+
+      '<div><span class="k">'+esc(b.kick)+'</span><div class="panel" style="margin-top:14px"><div class="pane"><div class="ph"><b>'+esc(b.pt)+'</b><span class="lab">'+esc(b.pl)+'</span></div><svg viewBox="0 0 250 262" aria-hidden="true">'+b.svg+'</svg></div></div></div>'+
+      '<div class="vtext"><span class="k">The tool</span><h3>'+esc(b.h)+'</h3><p class="desc">'+esc(b.p)+'</p><div class="rows">'+
+        b.rows.map(function(r,k){ return '<div class="row" style="--d:'+(1.1+k*.45)+'s;--d2:'+(2.1+k*.45)+'s"><span><b>'+esc(r)+'</b><b>読みました</b></span><i><b></b><u></u></i></div>'; }).join("")+'</div></div>'+
+      '<div class="say"><div class="who"><img src="'+MARK+'" alt="" width="22" height="22">Coaxil<span class="lab">'+esc(b.xl)+'</span></div><div class="blue"><span class="ty"></span><em aria-hidden="true"></em></div><p class="note">'+esc(b.note)+'</p></div>'+
+    '</div>';
+  }
+  function play(vin, i){
+    if(i>0){ var b=BIG[i-1]; [].forEach.call(vin.querySelectorAll(".dr,.fd"),function(n){ n.style.setProperty("--d",(.7+(parseFloat(n.getAttribute("data-o"))||0)*b.st)+"s"); }); }
+    vin.classList.add("pre"); vin.offsetWidth;
+    requestAnimationFrame(function(){ vin.classList.remove("pre"); requestAnimationFrame(function(){ vin.classList.add("play"); }); });
+    clearInterval(typeT);
+    var ty=vin.querySelector(".ty"); if(!ty) return;
+    var txt=BIG[i-1].ty;
+    if(reduce){ ty.textContent=txt; return; }
+    var n=0; ty.textContent="";
+    setTimeout(function(){ typeT=setInterval(function(){ n++; ty.textContent=txt.slice(0,n); if(n>=txt.length) clearInterval(typeT); },70); },1300);
+  }
+  function pick(i, instant){
+    if(i===cur) return;
+    var first=(cur<0); cur=i; movePill(i, first||instant);
+    var old=view.firstChild;
+    function put(){
+      view.innerHTML=scene(i);
+      var vin=view.firstChild;
+      [].forEach.call(vin.querySelectorAll("[data-go]"),function(g){ g.addEventListener("click",function(){ var k=+g.getAttribute("data-go"); if(k>0){ userPicked=true; stopAuto(); pick(k); } else { location.hash="menu"; } }); });
+      if(reduce || (first && !seen)){ vin.classList.add("play"); if(i>0){ var ty=vin.querySelector(".ty"); if(ty) ty.textContent=BIG[i-1].ty; } }
+      else play(vin, i);
+    }
+    if(old && !reduce && !first){ old.classList.add("out"); setTimeout(put,380); } else put();
+  }
+  function stopAuto(){ clearInterval(auto); auto=null; }
+  function startAuto(){ if(reduce || userPicked || auto) return; auto=setInterval(function(){ pick(cur>=BIG.length ? 0 : cur+1); },7200); }
+  pick(1, true);
+  if("IntersectionObserver" in window){
+    var vo=new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting){ if(!seen){ seen=true; if(!reduce){ play(view.firstChild, cur); } } startAuto(); }
+      else stopAuto(); }); },{threshold:.35});
+    vo.observe(view);
+  }
+  window.addEventListener("resize",function(){ movePill(cur<0?1:cur,true); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ movePill(cur,true); });
+
+  // ===== 業種の10本 =====
+  var sel=0;
+  try { var h=(location.hash||"").replace("#",""); PACKS.forEach(function(p,i){ if(p.id===h) sel=i; }); } catch(e){}
+  PACKS.forEach(function(p,i){
+    var b=el("button","chip",p.name); b.type="button"; b.setAttribute("aria-pressed",String(i===sel));
+    b.addEventListener("click",function(){ sel=i; Array.prototype.forEach.call($("chips").children,function(x){ x.setAttribute("aria-pressed",String(x===b)); }); render(true); if(b.scrollIntoView && $("chips").scrollWidth>$("chips").clientWidth) b.scrollIntoView({block:"nearest",inline:"center",behavior:reduce?"auto":"smooth"}); });
+    $("chips").appendChild(b);
+    var o=document.createElement("option"); o.value=p.name; o.textContent=p.name; $("indSel").appendChild(o);
+  });
+  (function(){ var o=document.createElement("option"); o.value="その他"; o.textContent="その他・まだ分からない"; $("indSel").appendChild(o); })();
+  function outTag(o){ return /Excel/.test(o)?"Excel":(/PDF/.test(o)?"PDF":(/表/.test(o)?"表":"文章")); }
+  window.addEventListener("hashchange",function(){ var h=location.hash.replace("#",""); PACKS.forEach(function(p,i){ if(p.id===h){ sel=i; Array.prototype.forEach.call($("chips").children,function(x,j){ x.setAttribute("aria-pressed",String(j===i)); }); render(true); } }); });
+  function render(anim){
+    var p=PACKS[sel]; if(!p) return;
+    $("count").textContent=p.name+" — "+p.tools.length+" tools";
+    var box=$("list"); box.textContent="";
+    p.tools.forEach(function(t,k){
+      var c=el("article","tool"); var tg=el("div","tg");
+      tg.appendChild(el("span","lab",("0"+(k+1)).slice(-2)+" / Tool"));
+      tg.appendChild(el("span","tag",outTag(t.o)));
+      c.appendChild(tg); c.appendChild(el("div","nm",t.n)); c.appendChild(el("div","jb",t.s));
+      c.appendChild(el("div","io","返るもの："+t.o));
+      if(anim && !reduce){ c.style.opacity="0"; c.style.filter="blur(6px)"; c.style.transform="translateY(8px)"; setTimeout(function(){ c.style.transition="opacity .5s, filter .5s, transform .5s"; c.style.opacity="1"; c.style.filter="none"; c.style.transform="none"; }, 40*k); }
+      box.appendChild(c);
+    });
+    var ind=$("indSel"); if(ind && !ind.dataset.touched) ind.value=p.name;
+  }
+  $("indSel").addEventListener("change",function(){ this.dataset.touched="1"; });
+  render(false);
+
+  // ===== フォーム =====
+  var JOBS=["書類・議事録","お客様への返事","お知らせ・SNSの文","お金の入力・計算","予定・シフト","名簿・データの整理","まだ分からない"];
+  JOBS.forEach(function(j,k){ var l=el("label"); var i=document.createElement("input"); i.type="checkbox"; i.value=j; i.id="job"+k; l.appendChild(i); l.appendChild(document.createTextNode(j)); $("jobs").appendChild(l); });
+  $("inq").addEventListener("submit",function(e){
+    e.preventDefault();
+    var f=e.target, msg=$("formMsg"); msg.className=""; msg.textContent="";
+    var need=["sei","mei","email","message"].filter(function(n){ return !f[n].value.trim(); });
+    if(need.length){ msg.className="err"; msg.textContent="お名前・メールアドレス・ご相談の内容を入れてください。"; f[need[0]].focus(); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())){ msg.className="err"; msg.textContent="メールアドレスの形を確かめてください。"; f.email.focus(); return; }
+    if(!$("agree").checked){ msg.className="err"; msg.textContent="プライバシーポリシーへの同意にチェックを入れてください。"; return; }
+    var jobs=Array.prototype.filter.call($("jobs").querySelectorAll("input"),function(i){return i.checked;}).map(function(i){return i.value;});
+    var body=new URLSearchParams();
+    ["sei","mei","company","email","tel","website"].forEach(function(n){ body.append(n,f[n].value.trim()); });
+    body.append("message","【AI道具のページから】\n業種："+(f.industry.value||"（未選択）")+"\n楽にしたい作業："+(jobs.join("、")||"（未選択）")+"\n\n"+f.message.value.trim());
+    $("sendBtn").disabled=true; msg.textContent="送っています…";
+    fetch(ENDPOINT,{method:"POST",body:body}).then(function(r){return r.json();}).then(function(j){
+      if(j && j.ok){
+        f.innerHTML=""; var d=el("div","done"); d.appendChild(el("strong",null,"送りました。ありがとうございます。"));
+        d.appendChild(el("p",null,"内容を確かめて、メールでお返事します（平日 10:00〜18:00）。急ぎの時は、LINEの方が早くお返事できます。"));
+        var a=el("a","pill dark","LINEで友だち追加"); a.href="https://lin.ee/p5YisUR"; d.appendChild(a); f.appendChild(d);
+      } else { throw new Error(j && j.error); }
+    }).catch(function(){
+      $("sendBtn").disabled=false; msg.className="err";
+      msg.textContent="うまく送れませんでした。時間をおいてもう一度お試しいただくか、LINE・メール（info@coaxil.jp）でご連絡ください。";
+    });
+  });
+
+  // ===== スマホの下のボタン：上のボタンや相談の欄が見えている間は隠す =====
+  (function(){
+    var st=document.querySelector(".stick"); if(!st || !("IntersectionObserver" in window)) return;
+    var seenSet=new Set();
+    var ob=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) seenSet.add(e.target); else seenSet.delete(e.target); }); st.classList.toggle("hide", seenSet.size>0); });
+    [document.querySelector(".hcta"), document.getElementById("contact")].forEach(function(x){ if(x) ob.observe(x); });
+  })();
+
+  // ===== 出てくる動き（最初の画面の外にある物だけ、ぼやけた所から出す） =====
+  (function(){
+    if(reduce || !("IntersectionObserver" in window)) return;
+    var rv=[].filter.call(document.querySelectorAll(".rv"),function(x){ return x.getBoundingClientRect().top > innerHeight*0.92; });
+    rv.forEach(function(x){ x.classList.add("wait"); });
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.remove("wait"); io.unobserve(e.target); } }); },{rootMargin:"0px 0px -6% 0px"});
+    rv.forEach(function(x){ io.observe(x); });
+    setTimeout(function(){ rv.forEach(function(x){ x.classList.remove("wait"); }); },6000);
+  })();
+})();
+</script>
+</body>
+</html>
